@@ -1,8 +1,8 @@
 package br.edu.ufersa.sei.model.VO;
 
 public class TurmaVO {
-	private String nomeTurma;
-	private String codigoTurma;
+	private String nome;
+	private String codigo;
 	private String local;
 	private String horario; 
 	private DisciplinaVO disciplinas[];
@@ -10,28 +10,29 @@ public class TurmaVO {
 	
 	//getters and setters
 	
-	public String getNomeTurma() {
-		return nomeTurma;
+	public String getNome() {
+		return nome;
 	}
 	
-	public void setNomeTurma(String nomeTurma) {
-		if(nomeTurma == null || nomeTurma.equals("")) {
+	public void setNome(String nome) {
+		if(nome == null || nome.equals("")) {
 			System.out.println("Necessário informar Nome da Turma!");
 		}else {
-			this.nomeTurma = nomeTurma;
+			this.nome = nome;
 		}
 	}
 	
-	public String getCodigoTurma() {
-		return codigoTurma;
+	public String getCodigo() {
+		return codigo;
 	}
 	
-	public void setCodigoTurma(String codigoTurma) {
-		if(codigoTurma == null || codigoTurma.equals("")) {
+	// MELHORAR!!!
+	public void setCodigo(String codigo) {
+		if(codigo == null || codigo.equals("")) {
 			System.out.println("Necessário informar Código da Turma!");
 		}else {
-			if(codigoTurma.charAt(0) == 'T' && codigoTurma.length() == 5) { 
-				this.codigoTurma = codigoTurma;
+			if(codigo.charAt(0) == 'T' && codigo.length() == 5) { 
+				this.codigo = codigo;
 			}else {
 				System.out.println("O Código deve começar com 'T' e conter 5 caracteres!");
 			}
@@ -84,23 +85,5 @@ public class TurmaVO {
 		}else {
 			System.out.println("Necessário informar Alunos");
 		}		
-	}
-	
-	//métodos
-	
-	public void cadastrarTurmas(TurmaVO turma) {
-		// a ser implementado
-	}
-	
-	public void editarTurmas(TurmaVO turma) {
-		// a ser implementado
-	}
-	
-	public void excluirTurmas(TurmaVO turma) {
-		// a ser implementado
-	}
-	
-	public void buscarTurmas(TurmaVO turma) {
-		// a ser implementado
 	}
 }

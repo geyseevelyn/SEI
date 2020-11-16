@@ -1,41 +1,12 @@
 package br.edu.ufersa.sei.model.VO;
 
-public class AlunoVO {
-	private String nome;
-	private String endereco;
+public class AlunoVO extends UsuarioVO {;
 	private String matricula;
 	private TurmaVO turma;
-	private double n1;
-	private double n2;
-	private double n3;
-	private double media;
-	private int frequencia;
-	
+	private NotaVO notas;
+	private HistoricoVO hist;
+		
 	//getters and setters
-	
-	public String getNome() {
-		return nome;
-	}
-	
-	public void setNome(String nome) {
-		if(nome != null && !nome.equals("")) {
-			this.nome = nome;
-		} else {
-			System.out.println("Necessário informar Nome!");
-		}			
-	}
-	
-	public String getEndereco() {
-		return endereco;
-	}
-	
-	public void setEndereco(String endereco) {
-		if(endereco != null && !endereco.equals("")) {
-			this.endereco = endereco;
-		} else {
-			System.out.println("Necessário informar Endereço!");
-		}		
-	}
 	
 	public String getMatricula() {
 		return matricula;
@@ -64,92 +35,30 @@ public class AlunoVO {
 			System.out.println("Necessário informar Turma!");
 		}
 	}
-		
-	public double getN1() {
-		return n1;
-	}
 	
-	public void setN1(double n1) {
-		if(n1 >= 0 && n1 <= 10) {
-			this.n1 = n1;
-		}else {
-			System.out.println("Nota Inválida!");
-		}
-	}
-	
-	public double getN2() {
-		return n2;
-	}
-	
-	public void setN2(double n2) {
-		if(n2 >= 0 && n2 <= 10) {
-			this.n2 = n2;
-		}else {
-			System.out.println("Nota Inválida!");
-		}
-	}
-	
-	public double getN3() {
-		return n3;
-	}
-	
-	public void setN3(double n3) {
-		if(n3 >= 0 && n3 <= 10) {
-			this.n3 = n3;
-		}else {
-			System.out.println("Nota Inválida!");
-		}
-	}
-	
-	public double getMedia() {
-		return media;
-	}
-	
-	//método para calcular média
-	public double calcular(double n1, double n2, double n3) {
-		this.media = (n1 + n2 + n3) / 3;
-		return media;
-	}
-	
-	public int getFrequencia() {
-		return frequencia;
-	}
-	
-	public void setFrequencia(int frequencia) {
-		if(frequencia>=0) {
-			this.frequencia = frequencia;
-		}else {
-			System.out.println("Frequência Inválida!");
-		}
+	//PRECISA? já q n é por leitura do teclado, mas o professor que coloca as notas
+	public NotaVO getNotas() {
+		return notas;
 	}
 
-	//métodos
-	
-	public void exibirPerfil(AlunoVO aluno) {
-		// a ser implementado
+	public void setNotas(NotaVO notas) {
+			this.notas = notas;
 	}
 	
-	public void exibirDisc(AlunoVO aluno) {
-		// a ser implementado
+	// PRECISA TER??? Pq historico vai ser gerado e não informado...
+	public HistoricoVO getHist() {
+		return hist;
+	}
+
+	public void setHist(HistoricoVO hist) {
+		this.hist = hist;
 	}
 	
-	public void exibirNotasFreq(AlunoVO aluno) {
-		// a ser implementado
+	@Override
+	public String toString() {
+		String saida;
+		saida = super.toString() + "Matrícula: " + matricula + "\n";
+		// TurmaVO, NotaVO, HistoricoVO
+		return saida;
 	}
-	
-	public void cadastrarAluno(AlunoVO aluno) {
-		// a ser implementado
-	}
-	
-	public void editarAluno(AlunoVO aluno) {
-		// a ser implementado
-	}
-	
-	public void excluirAluno(AlunoVO aluno) {
-		// a ser implementado
-	}
-	
-	public void buscarAluno(AlunoVO aluno) {
-		// a ser implementado
-	}	
 }
