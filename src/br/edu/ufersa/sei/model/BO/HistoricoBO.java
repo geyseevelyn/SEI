@@ -4,10 +4,11 @@ import br.edu.ufersa.sei.model.VO.AlunoVO;
 import br.edu.ufersa.sei.model.VO.HistoricoVO;
 
 public class HistoricoBO {
-	//métodos
 	
 	public HistoricoVO exibirHist(AlunoVO aluno) {
 		return aluno.getHist();
-		//escrever pseudo-código
+		//Busca no banco de dados um aluno
+	    //Se o aluno não existir, retorna um erro
+		//Se existir, exibe o historico do aluno
 	}
 }
