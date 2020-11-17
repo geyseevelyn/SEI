@@ -8,6 +8,7 @@ public class NotaBO {
 	
 	public void lancarNotas(NotaVO notas, AlunoVO aluno, DisciplinaVO disc) {
 		//Cadastra, edita e exclui a nota no banco de dados
+		//Ao alterar uma nota, chama-se o método calcularMedia() novamente
 	}
 	
 	public void lancarFrequencia(NotaVO notas, AlunoVO aluno, DisciplinaVO disc) {

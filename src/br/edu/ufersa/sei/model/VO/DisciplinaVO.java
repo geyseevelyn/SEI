@@ -7,10 +7,8 @@ public class DisciplinaVO {
 	private String codigo;
 	private ProfessorVO profDisc;
 	private boolean status; //ativa ou finalizada
-	//private NotaVO notas;
 	
 	//getters and setters
-	
 	public String getNome() {
 		return nome;
 	}

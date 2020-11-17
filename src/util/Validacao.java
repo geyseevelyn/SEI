@@ -4,7 +4,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 //validações dos atributos
-
 public class Validacao {	
 	
 	public static boolean isCpf(String cpf){
@@ -47,6 +46,7 @@ public class Validacao {
 		if(matricula.length() != 10) {
 			return false;
 		}
+		// retorna se a matricula atende ao padrão ou não
 		return matricula.substring(0).matches("[0-9]*");
 	}
 	
@@ -63,7 +63,7 @@ public class Validacao {
 		if(!codigo.substring(0, 3).matches("[A-Z]*")){
 			return false;
 		}
-		// retorna se o código da codigoiplina atende ao padrão ou não
+		// retorna se o código da disciplina atende ao padrão ou não
 		return codigo.substring(3).matches("[0-9]*");
 	}
 	
@@ -80,7 +80,7 @@ public class Validacao {
 		if(!codigo.substring(0, 1).matches("T")){
 			return false;
 		}
-		// retorna se o código da codigoiplina atende ao padrão ou não
+		// retorna se o código da turma atende ao padrão ou não
 		return codigo.substring(1).matches("[0-9]*");
 	}
 }

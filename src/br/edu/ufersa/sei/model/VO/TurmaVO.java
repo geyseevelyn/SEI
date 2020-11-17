@@ -11,7 +11,6 @@ public class TurmaVO {
 	private AlunoVO alunos[];
 	
 	//getters and setters
-	
 	public String getNome() {
 		return nome;
 	}
@@ -28,7 +27,6 @@ public class TurmaVO {
 		return codigo;
 	}
 	
-	// MELHORAR!!!
 	public void setCodigo(String codigo) {
 		if(Validacao.isCodTurma(codigo)) {
 			this.codigo = codigo;
@@ -89,7 +87,7 @@ public class TurmaVO {
 		String saida;
 		saida = "Turma: " + nome + "\nCódigo: " + codigo + "\nLocal: " +
 		        local + "\nHorário: " + horario;
-		// disciplina [] e alunos[] ?
+		// disciplinas[] e alunos[] ?
 		return saida;
 	}
 }

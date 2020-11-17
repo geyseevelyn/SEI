@@ -12,7 +12,6 @@ public class UsuarioVO {
 	private String senha;
 	
 	//getters and setters
-	
 	public long getIdUsu() {
 		return idUsu;
 	}

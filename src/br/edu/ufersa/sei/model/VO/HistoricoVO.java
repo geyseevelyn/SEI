@@ -6,8 +6,7 @@ public class HistoricoVO {
 	private DisciplinaVO disc;
 	private NotaVO notas;
 	
-	//getters and setters - FAZERRRR
-	
+	//getters and setters
 	public AlunoVO getAluno() {
 		return aluno;
 	}
@@ -55,5 +54,5 @@ public class HistoricoVO {
 		}
 	}	
 	
-	//toString só de objeto?
+	//toString() ?
 }

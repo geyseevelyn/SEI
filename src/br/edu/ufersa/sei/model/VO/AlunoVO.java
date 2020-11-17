@@ -30,33 +30,39 @@ public class AlunoVO extends UsuarioVO {;
 		if(turma != null) {
 			this.turma = turma;
 		}else {
-			System.out.println("Necessário informar Turma!");
+			System.out.println("Turma Inválida!");
 		}
 	}
 	
-	//PRECISA? já q n é por leitura do teclado, mas o professor que coloca as notas
 	public NotaVO getNotas() {
 		return notas;
 	}
 
 	public void setNotas(NotaVO notas) {
+		if(notas != null) {
 			this.notas = notas;
+		}else {
+			System.out.println("Notas Inválidas!");
+		}
 	}
 	
-	// PRECISA TER??? Pq historico vai ser gerado e não informado...
 	public HistoricoVO getHist() {
 		return hist;
 	}
 
 	public void setHist(HistoricoVO hist) {
-		this.hist = hist;
+		if(hist != null) {
+			this.hist = hist;
+		}else {
+			System.out.println("Histórico Inválido");
+		}
 	}
 	
 	@Override
 	public String toString() {
 		String saida;
 		saida = super.toString() + "Matrícula: " + matricula + "\n";
-		// TurmaVO, NotaVO, HistoricoVO
+		// TurmaVO, NotaVO, HistoricoVO ?
 		return saida;
 	}
 }
