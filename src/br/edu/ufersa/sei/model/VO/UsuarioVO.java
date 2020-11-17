@@ -1,5 +1,7 @@
 package br.edu.ufersa.sei.model.VO;
 
+import util.Validacao;
+
 public class UsuarioVO {
 	private long idUsu;
 	private String nome;
@@ -40,14 +42,10 @@ public class UsuarioVO {
 	}
 	
 	public void setCpf(String cpf) {
-		if(cpf != null && !cpf.equals("")) {
-			if(cpf.length() == 11) {
-				this.cpf = cpf;
-			}else {
-				System.out.println("CPF Inválido!");
-			}
+		if(Validacao.isCpf(cpf)) {
+			this.cpf = cpf;
 		}else {
-			System.out.println("Necessário informar CPF!");
+			System.out.println("CPF Inválido!");
 		}
 	}
 	
