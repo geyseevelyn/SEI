@@ -6,6 +6,8 @@ public class NotaVO {
 	private double n3;
 	private double media;
 	private int frequencia;
+	private AlunoVO aluno;
+	private DisciplinaVO disc;
 
 	//getters and setters
 	
@@ -45,6 +47,18 @@ public class NotaVO {
 		}
 	}
 	
+	// PRECISA TER???
+		public double getMedia() {
+				return media;
+		}
+			
+		// FICA NO BO????
+		//método para calcular média
+		public double calcularMedia(double n1, double n2, double n3) {
+			this.media = (n1 + n2 + n3) / 3.0;
+			return media;
+		}
+	
 	public int getFrequencia() {
 		return frequencia;
 	}
@@ -57,15 +71,30 @@ public class NotaVO {
 		}
 	}
 	
-	// PRECISA TER???
-	public double getMedia() {
-			return media;
+	//Precisa?
+	public AlunoVO getAluno() {
+		return aluno;
 	}
+
+	public void setAluno(AlunoVO aluno) {
+		this.aluno = aluno;
+	}
+
+	public DisciplinaVO getDisc() {
+		return disc;
+	}
+
+	public void setDisc(DisciplinaVO disc) {
+		this.disc = disc;
+	}
+
+	public String toString() {
+		String saida;
+		double media = calcularMedia(n1,n2,n3);
 		
-	// FICA NO BO????
-	//método para calcular média
-	public double calcular(double n1, double n2, double n3) {
-		this.media = (n1 + n2 + n3) / 3;
-		return media;
-	}	
+		saida = "P1: " + n1 + "\nP2: " + n2 + "\nP3: " +
+		        n3 + "\nMedia: " + media + "\nFrequencia: " + frequencia;
+		// aluno e disc ?
+		return saida;
+	}
 }

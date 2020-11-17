@@ -1,5 +1,7 @@
 package br.edu.ufersa.sei.model.VO;
 
+import util.Validacao;
+
 public class DisciplinaVO {
 	private String nome;
 	private String codigo;
@@ -25,17 +27,12 @@ public class DisciplinaVO {
 		return codigo;
 	}
 	
-	// MELHORAR!!!
 	public void setCodigo(String codigo) {
-		if(codigo != null && !codigo.equals("")) {
-			if(codigo.length() == 7) {
-				this.codigo = codigo;
-			}else {
-				System.out.println("Códido da Disciplina Inválido!");
-			}
+		if(Validacao.isCodDisc(codigo)) {
+			this.codigo = codigo;
 		}else {
-			System.out.println("Necessário informar Código da Disciplina!");
-		}
+			System.out.println("Códido da Disciplina Inválido!");
+		}		
 	}
 	
 	public ProfessorVO getProfDisc() {
@@ -58,5 +55,17 @@ public class DisciplinaVO {
 		this.status = status;
 	}
 	
-	// FAZER - public String toString(){}
+	public String toString() {
+		String status;
+		if (this.status)
+			status = "Ativa";
+		else
+			status = "Finalizada";
+		
+		String saida;
+		saida = "Disciplina: " + nome + "\nCódigo: " + codigo + "\nStatus: " +
+		        status;
+		//+ "\nProfessor: " + profDisc.getNome()
+		return saida;
+	}
 }

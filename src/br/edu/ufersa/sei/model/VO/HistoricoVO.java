@@ -54,4 +54,6 @@ public class HistoricoVO {
 			System.out.println("Necessário informar Notas!");
 		}
 	}	
+	
+	//toString só de objeto?
 }

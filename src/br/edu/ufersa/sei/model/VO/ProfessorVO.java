@@ -15,6 +15,6 @@ public class ProfessorVO extends UsuarioVO{
 		}
 	}
 	
-	//FAZER - public String toString(){}
-	//TurmaVO[]
+	//public String toString(){}
+	//TurmaVO[] ?
 }

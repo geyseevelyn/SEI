@@ -1,5 +1,7 @@
 package br.edu.ufersa.sei.model.VO;
 
+import util.Validacao;
+
 public class AlunoVO extends UsuarioVO {;
 	private String matricula;
 	private TurmaVO turma;
@@ -13,14 +15,10 @@ public class AlunoVO extends UsuarioVO {;
 	}
 	
 	public void setMatricula(String matricula) {
-		if(matricula != null && !matricula.equals("")) {
-			if(matricula.length() == 10) {
-				this.matricula = matricula;
-			}else {
-				System.out.println("Matrícula deve conter 10 dígitos!");
-			}
+		if(Validacao.isMatricula(matricula)) {
+			this.matricula = matricula;
 		}else {
-			System.out.println("Necessário informar Matrícula!");
+			System.out.println("Matrícula Inválida!");
 		}	
 	}
 	

@@ -1,5 +1,7 @@
 package br.edu.ufersa.sei.model.VO;
 
+import util.Validacao;
+
 public class TurmaVO {
 	private String nome;
 	private String codigo;
@@ -28,14 +30,10 @@ public class TurmaVO {
 	
 	// MELHORAR!!!
 	public void setCodigo(String codigo) {
-		if(codigo == null || codigo.equals("")) {
-			System.out.println("Necessário informar Código da Turma!");
+		if(Validacao.isCodTurma(codigo)) {
+			this.codigo = codigo;
 		}else {
-			if(codigo.charAt(0) == 'T' && codigo.length() == 5) { 
-				this.codigo = codigo;
-			}else {
-				System.out.println("O Código deve começar com 'T' e conter 5 caracteres!");
-			}
+			System.out.println("Códido da Turma Inválido!");
 		}	
 	}
 
@@ -85,5 +83,13 @@ public class TurmaVO {
 		}else {
 			System.out.println("Necessário informar Alunos");
 		}		
+	}
+	
+	public String toString() {
+		String saida;
+		saida = "Turma: " + nome + "\nCódigo: " + codigo + "\nLocal: " +
+		        local + "\nHorário: " + horario;
+		// disciplina [] e alunos[] ?
+		return saida;
 	}
 }

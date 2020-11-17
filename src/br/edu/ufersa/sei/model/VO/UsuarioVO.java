@@ -66,11 +66,11 @@ public class UsuarioVO {
 	}
 	
 	public void setEmail(String email) {
-		if(email != null && !email.equals("")) {
+		if(Validacao.isEmail(email)) {
 			this.email = email;
-		} else {
-			System.out.println("Necessário informar Email!");
-		}		
+		}else {
+			System.out.println("Email Inválido!");
+		}
 	}
 	
 	public String getLogin() {
