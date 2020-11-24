@@ -76,11 +76,49 @@ public class Validacao {
 		if(codigo.length() != 5){
 			return false;
 		}
-		//verifica se os 3 primeiros caracteres são letras
+		//verifica se o primeiro caractere é 'T'
 		if(!codigo.substring(0, 1).matches("T")){
 			return false;
 		}
 		// retorna se o código da turma atende ao padrão ou não
 		return codigo.substring(1).matches("[0-9]*");
+	}
+	
+	public static boolean isLogin(String login) {
+		//verifica se é null ou vazio
+		if(login == null || login.equals("")) {
+			return false;
+		}
+		//verifica a qtd de caracteres
+		if(login.length() < 6 || login.length() > 15) {
+			return false;	
+		}
+		
+		//começar com letra e mín. 6 / max. 10 caracteres alfanuméricos 
+		String padrao = "^[a-zA-Z]\\w{5,14}$";
+		Pattern pattern = Pattern.compile(padrao);
+		Matcher matcher = pattern.matcher(login);
+		
+		// retorna se login atende ao padrão ou não
+		return matcher.matches();
+	}
+	
+	public static boolean isSenha(String senha) {
+		//verifica se é null ou vazio
+		if(senha == null || senha.equals("")) {
+			return false;
+		}
+		//verifica a qtd de caracteres
+		if(senha.length() < 6 || senha.length() > 15) {
+			return false;	
+		}
+		
+		//pelo menos 1 letra e 1 número / mín. 6 e max. 10 caracteres alfanuméricos 
+		String padrao = "^(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,15})$";
+		Pattern pattern = Pattern.compile(padrao);
+		Matcher matcher = pattern.matcher(senha);
+		
+		// retorna se senha atende ao padrão ou não
+		return matcher.matches();
 	}
 }
