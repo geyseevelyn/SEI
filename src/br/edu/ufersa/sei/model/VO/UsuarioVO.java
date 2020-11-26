@@ -2,7 +2,7 @@ package br.edu.ufersa.sei.model.VO;
 
 import util.Validacao;
 
-public class UsuarioVO {
+public abstract class UsuarioVO {
 	private long idUsu;
 	private String nome;
 	private String cpf;
@@ -77,15 +77,12 @@ public class UsuarioVO {
 	}
 	
 	public void setLogin(String login) {
-		if(login == null || login.equals("")) {
-			System.out.println("Login Inválido!");
+		if(Validacao.isLogin(login)) {
+			this.login = login;
 		}else {
-			if(login.length() >= 6) {
-				this.login = login;
-			}else {
-				System.out.println("Login deve ter no mínimo 6 caracteres!");
-			}
-		}
+			System.out.println("Login Inválido! \n(Login deve começar com uma letra,"
+					+ " ter no mínimo 6 e no máximo 10 caracteres)\n");
+		}	
 	}
 	
 	public String getSenha() {
@@ -93,14 +90,11 @@ public class UsuarioVO {
 	}
 	
 	public void setSenha(String senha) {
-		if(senha == null || senha.equals("")) {
-			System.out.println("Senha Inválida!");
+		if(Validacao.isSenha(senha)) {
+			this.senha = senha;
 		}else {
-			if(senha.length() >= 6) {
-				this.senha = senha;
-			}else {
-				System.out.println("Senha deve ter no mínimo 6 caracteres!");
-			}
+			System.out.println("Senha Inválida! \n(Senha deve conter pelo menos "
+					+ "uma letra, um número, no mínimo 6 e no máximo 10 caracteres)\n");
 		}		
 	}
 	
