@@ -1,5 +1,8 @@
 package br.edu.ufersa.sei.model.VO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import util.Validacao;
 
 public class TurmaVO {
@@ -7,8 +10,9 @@ public class TurmaVO {
 	private String codigo;
 	private String local;
 	private String horario; 
-	private DisciplinaVO disciplinas[];
-	private AlunoVO alunos[];
+	private List<DisciplinaVO> disciplinas = new ArrayList<DisciplinaVO>();
+	private List<AlunoVO> alunos = new ArrayList<AlunoVO>();
+	
 	
 	//getters and setters
 	public String getNome() {
@@ -59,11 +63,11 @@ public class TurmaVO {
 		}	
 	}
 	
-	public DisciplinaVO[] getDisciplinas() {
+	public List<DisciplinaVO> getDisciplinas() {
 		return disciplinas;
 	}
 	
-	public void setDisciplinas(DisciplinaVO[] disciplinas) {
+	public void setDisciplinas(List<DisciplinaVO> disciplinas) {
 		if(disciplinas != null) {
 			this.disciplinas = disciplinas;
 		}else {
@@ -71,11 +75,11 @@ public class TurmaVO {
 		}		
 	}
 	
-	public AlunoVO[] getAlunos() {
+	public List<AlunoVO> getAlunos() {
 		return alunos;
 	}
 	
-	public void setAlunos(AlunoVO[] alunos) {
+	public void setAlunos(List<AlunoVO> alunos) {
 		if(alunos != null) {
 			this.alunos = alunos;
 		}else {
@@ -87,7 +91,7 @@ public class TurmaVO {
 		String saida;
 		saida = "Turma: " + nome + "\nCódigo: " + codigo + "\nLocal: " +
 		        local + "\nHorário: " + horario;
-		// disciplinas[] e alunos[] ?
 		return saida;
+		// disciplinas[] e alunos[]
 	}
 }

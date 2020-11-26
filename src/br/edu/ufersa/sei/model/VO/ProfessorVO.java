@@ -1,13 +1,30 @@
 package br.edu.ufersa.sei.model.VO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProfessorVO extends UsuarioVO{
-	private TurmaVO turmas[];
+	private long idProf;
+	private List<TurmaVO> turmas = new ArrayList<TurmaVO>();
 	
-	public TurmaVO[] getTurmas() {
+	//getters and setters
+	public long getIdProf() {
+		return idProf;
+	}
+
+	public void setIdProf(long idProf) {
+		if(idProf >= 0) {
+			this.idProf = idProf;
+		}else {
+			System.out.println("Id do Professor Inválido!");
+		}
+	}
+
+	public List<TurmaVO> getTurmas() {
 		return turmas;
 	}
 
-	public void setTurmas(TurmaVO[] turmas) {
+	public void setTurmas(List<TurmaVO> turmas) {
 		if(turmas != null) {
 			this.turmas = turmas;
 		}else {
@@ -15,6 +32,6 @@ public class ProfessorVO extends UsuarioVO{
 		}
 	}
 	
-	//toString(){}
-	//TurmaVO[] ?
+	//toString()
+	//TurmaVO[] 
 }
