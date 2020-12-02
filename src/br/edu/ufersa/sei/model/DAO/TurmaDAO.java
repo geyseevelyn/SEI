@@ -1,5 +1,6 @@
 package br.edu.ufersa.sei.model.DAO;
 
+import java.sql.ResultSet;
 import java.util.List;
 
 import br.edu.ufersa.sei.model.VO.ProfessorVO;
@@ -23,13 +24,13 @@ public class TurmaDAO extends BaseDAO<TurmaVO> implements TurmaInterDAO{
 	}
 
 	@Override
-	public List<TurmaVO> listar() {
+	public ResultSet listar() {
 		//implementar
 		return null;
 	}
 
 	@Override
-	public TurmaVO buscar(TurmaVO vo) {
+	public ResultSet buscarPorNome(String nome) {
 		//implementar
 		return null;
 	}

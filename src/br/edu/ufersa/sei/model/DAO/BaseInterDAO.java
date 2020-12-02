@@ -1,12 +1,13 @@
 package br.edu.ufersa.sei.model.DAO;
 
-import java.util.List;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public interface BaseInterDAO<VO> {
-	public void inserir(VO vo);
-	public void atualizar(VO vo);
-	public void deletar(VO vo);
-	public List<VO> listar();
-	public VO buscar(VO vo);
+	public void inserir(VO vo) throws SQLException;
+	public void atualizar(VO vo) throws SQLException;
+	public void deletar(VO vo) throws SQLException;
+	public ResultSet listar() throws SQLException;
+	public ResultSet buscarPorNome(String nome) throws SQLException;
 
 }

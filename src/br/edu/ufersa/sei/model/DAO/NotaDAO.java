@@ -1,6 +1,6 @@
 package br.edu.ufersa.sei.model.DAO;
 
-import java.util.List;
+import java.sql.ResultSet;
 
 import br.edu.ufersa.sei.model.VO.AlunoVO;
 import br.edu.ufersa.sei.model.VO.NotaVO;
@@ -23,14 +23,13 @@ public class NotaDAO extends BaseDAO<NotaVO> implements NotaInterDAO{
 	}
 
 	@Override
-	public List<NotaVO> listar() {
+	public ResultSet listar() {
 		//implementar
 		return null;
 	}
 
 	@Override
-	public NotaVO buscar(NotaVO vo) {
-		//implementar
+	public ResultSet buscarPorNome(String nome) {
 		return null;
 	}
 

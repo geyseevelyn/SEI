@@ -1,6 +1,6 @@
 package br.edu.ufersa.sei.model.DAO;
 
-import java.util.List;
+import java.sql.ResultSet;
 
 import br.edu.ufersa.sei.model.VO.DisciplinaVO;
 
@@ -22,13 +22,13 @@ public class DisciplinaDAO extends BaseDAO<DisciplinaVO> implements DisciplinaIn
 	}
 
 	@Override
-	public List<DisciplinaVO> listar() {
+	public ResultSet listar() {
 		//implementar
 		return null;
 	}
 
 	@Override
-	public DisciplinaVO buscar(DisciplinaVO vo) {
+	public ResultSet buscarPorNome(String nome) {
 		//implementar
 		return null;
 	}
