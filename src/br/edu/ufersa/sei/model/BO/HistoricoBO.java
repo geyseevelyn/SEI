@@ -1,4 +1,4 @@
-package br.edu.ufersa.sei.model.BO;
+/*package br.edu.ufersa.sei.model.BO;
 
 import java.util.List;
 
@@ -14,4 +14,4 @@ public class HistoricoBO implements HistoricoInterBO {
 	    //Se o aluno não existir, retorna um erro
 		//Se existir, exibe o historico do aluno
 	}
-}
+}*/

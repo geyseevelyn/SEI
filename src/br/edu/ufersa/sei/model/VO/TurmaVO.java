@@ -7,15 +7,29 @@ import br.edu.ufersa.sei.exception.InsertException;
 import util.Validacao;
 
 public class TurmaVO {
+	private long idTurma;
 	private String nome;
 	private String codigo;
 	private String local;
 	private String horario; 
 	private List<DisciplinaVO> disciplinas = new ArrayList<DisciplinaVO>();
-	private List<AlunoVO> alunos = new ArrayList<AlunoVO>();
+	//private List<AlunoVO> alunos = new ArrayList<AlunoVO>();
 	
 	
 	//getters and setters
+	
+	public long getIdTurma() {
+		return idTurma;
+	}
+
+	public void setIdTurma(long idTurma) {
+		if(idTurma >= 0) {
+			this.idTurma = idTurma;
+		}else {
+			System.out.println("Id da Turma Inválido!");
+		}
+	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -76,7 +90,7 @@ public class TurmaVO {
 		}		
 	}
 	
-	public List<AlunoVO> getAlunos() {
+	/*public List<AlunoVO> getAlunos() {
 		return alunos;
 	}
 	
@@ -86,8 +100,8 @@ public class TurmaVO {
 		}else {
 			throw new InsertException("Necessário informar Alunos");
 		}		
-	}
-	
+	}*/
+		
 	public String toString() {
 		String saida;
 		saida = "Turma: " + nome + "\nCódigo: " + codigo + "\nLocal: " +
@@ -95,4 +109,5 @@ public class TurmaVO {
 		return saida;
 		// disciplinas[] e alunos[]
 	}
+
 }

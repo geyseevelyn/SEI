@@ -10,6 +10,7 @@ public class AlunoDAO extends UsuarioDAO<AlunoVO> implements AlunoInterDAO{
 	@Override
 	public List<AlunoVO> buscarPorTurma(TurmaVO turma) {
 		//implementar
+		// SELECT FROM ALUNO WHERE IdTurma = X
 		return null;
 	}
 }

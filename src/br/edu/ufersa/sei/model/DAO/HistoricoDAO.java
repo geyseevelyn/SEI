@@ -1,4 +1,4 @@
-package br.edu.ufersa.sei.model.DAO;
+/*package br.edu.ufersa.sei.model.DAO;
 
 import java.util.List;
 
@@ -13,4 +13,4 @@ public class HistoricoDAO implements HistoricoInterDAO {
 		return null;
 	}
 	
-}
+}*/

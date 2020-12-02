@@ -4,12 +4,25 @@ import br.edu.ufersa.sei.exception.InsertException;
 import util.Validacao;
 
 public class DisciplinaVO {
-	private String nome;
+	private long idDisc;
 	private String codigo;
+	private String nome;
 	private ProfessorVO profDisc;
 	private boolean status; //ativa ou finalizada
 	
 	//getters and setters
+	public long getIdDisc() {
+		return idDisc;
+	}
+
+	public void setIdDisc(long idDisc) {
+		if(idDisc >= 0) {
+			this.idDisc = idDisc;
+		}else {
+			System.out.println("Id da Disciplina Inválido!");
+		}
+	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -67,4 +80,5 @@ public class DisciplinaVO {
 		        status + "\nProfessor: " + profDisc.getNome();
 		return saida;
 	}
+
 }

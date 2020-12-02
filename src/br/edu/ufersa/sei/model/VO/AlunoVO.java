@@ -1,16 +1,13 @@
 package br.edu.ufersa.sei.model.VO;
 
-//import java.util.ArrayList;
-//import java.util.List;
-
 import br.edu.ufersa.sei.exception.InsertException;
 import util.Validacao;
 
-public class AlunoVO extends UsuarioVO {;
+public class AlunoVO extends UsuarioVO {
 	private long idAluno;
 	private String matricula;
 	private TurmaVO turma;
-	private NotaVO notas;
+	//private NotaVO notas;
 	//private List<HistoricoVO> hist = new ArrayList<HistoricoVO>(); // cada posição representa um ano
 		
 	//getters and setters
@@ -50,7 +47,7 @@ public class AlunoVO extends UsuarioVO {;
 		}
 	}
 	
-	public NotaVO getNotas() {
+	/*public NotaVO getNotas() {
 		return notas;
 	}
 
@@ -60,10 +57,11 @@ public class AlunoVO extends UsuarioVO {;
 		}else {
 			throw new InsertException("Notas Inválidas!");
 		}
-	}
+	}*/
 	
 	/*
 	public List<HistoricoVO> getHist() {
+	/*public List<HistoricoVO> getHist() {
 		return hist;
 	}
 
@@ -82,6 +80,5 @@ public class AlunoVO extends UsuarioVO {;
 		        "\nTurma: " + turma.getNome() + " (" + turma.getCodigo()
 		        + ")";
 		return saida;
-		//NotaVO, HistoricoVO
 	}
 }

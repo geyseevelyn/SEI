@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.ufersa.sei.model.VO.TurmaVO;
-import br.edu.ufersa.sei.model.VO.ProfessorVO;
 
 
 public class TurmaBO extends BaseBO<TurmaVO> implements TurmaInterBO{
@@ -47,8 +46,9 @@ public class TurmaBO extends BaseBO<TurmaVO> implements TurmaInterBO{
 		
 	//buscar turma por prof
 	@Override
-	public List<TurmaVO> buscarPorProf(ProfessorVO prof) {		
-		return prof.getTurmas();
+	public List<TurmaVO> buscarPorProf(String value) {		
+		List<TurmaVO> listTurma = new ArrayList<TurmaVO>();
+		return listTurma;
 		//Busca no banco de dados um professor
 	    //Se o professor não existir, retorna um erro
 		//Se existir, retorna as turmas que esse professor leciona 
