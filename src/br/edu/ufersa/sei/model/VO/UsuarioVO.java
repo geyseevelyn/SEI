@@ -1,5 +1,6 @@
 package br.edu.ufersa.sei.model.VO;
 
+import br.edu.ufersa.sei.exception.InsertException;
 import util.Validacao;
 
 public abstract class UsuarioVO {
@@ -16,11 +17,11 @@ public abstract class UsuarioVO {
 		return idUsu;
 	}
 
-	public void setIdUsu(long idUsu) {
+	public void setIdUsu(long idUsu) throws InsertException {
 		if(idUsu >= 0) {
 			this.idUsu = idUsu;
 		}else {
-			System.out.println("Id Inválido!");
+			throw new InsertException("Id Inválido!");
 		}
 	}
 	
@@ -28,11 +29,11 @@ public abstract class UsuarioVO {
 		return nome;
 	}
 	
-	public void setNome(String nome) {
+	public void setNome(String nome) throws InsertException {
 		if(nome != null && !nome.equals("")) {
 			this.nome = nome;
 		} else {
-			System.out.println("Necessário informar Nome!");
+			throw new InsertException("Necessário informar Nome!");
 		}			
 	}
 	
@@ -40,11 +41,11 @@ public abstract class UsuarioVO {
 		return cpf;
 	}
 	
-	public void setCpf(String cpf) {
+	public void setCpf(String cpf) throws InsertException {
 		if(Validacao.isCpf(cpf)) {
 			this.cpf = cpf;
 		}else {
-			System.out.println("CPF Inválido!");
+			throw new InsertException("CPF Inválido!");
 		}
 	}
 	
@@ -52,23 +53,23 @@ public abstract class UsuarioVO {
 		return endereco;
 	}
 	
-	public void setEndereco(String endereco) {
+	public void setEndereco(String endereco) throws InsertException {
 		if(endereco != null && !endereco.equals("")) {
 			this.endereco = endereco;
 		} else {
-			System.out.println("Necessário informar Endereço!");
+			throw new InsertException("Necessário informar Endereço!");
 		}		
 	}
 	
-	public String getEmail() {
+	public String getEmail(){
 		return email;
 	}
 	
-	public void setEmail(String email) {
+	public void setEmail(String email) throws InsertException{
 		if(Validacao.isEmail(email)) {
 			this.email = email;
 		}else {
-			System.out.println("Email Inválido!");
+			throw new InsertException("Email Inválido!");
 		}
 	}
 	
@@ -76,11 +77,11 @@ public abstract class UsuarioVO {
 		return login;
 	}
 	
-	public void setLogin(String login) {
+	public void setLogin(String login) throws InsertException{
 		if(Validacao.isLogin(login)) {
 			this.login = login;
 		}else {
-			System.out.println("Login Inválido! \n(Login deve começar com uma letra,"
+			throw new InsertException("Login Inválido! \n(Login deve começar com uma letra,"
 					+ " ter no mínimo 6 e no máximo 10 caracteres)\n");
 		}	
 	}
@@ -89,11 +90,11 @@ public abstract class UsuarioVO {
 		return senha;
 	}
 	
-	public void setSenha(String senha) {
+	public void setSenha(String senha) throws InsertException {
 		if(Validacao.isSenha(senha)) {
 			this.senha = senha;
 		}else {
-			System.out.println("Senha Inválida! \n(Senha deve conter pelo menos "
+			throw new InsertException("Senha Inválida! \n(Senha deve conter pelo menos "
 					+ "uma letra, um número, no mínimo 6 e no máximo 10 caracteres)\n");
 		}		
 	}

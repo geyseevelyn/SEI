@@ -3,6 +3,7 @@ package br.edu.ufersa.sei.model.VO;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.ufersa.sei.exception.InsertException;
 import util.Validacao;
 
 public class TurmaVO {
@@ -19,9 +20,9 @@ public class TurmaVO {
 		return nome;
 	}
 	
-	public void setNome(String nome) {
+	public void setNome(String nome) throws InsertException{
 		if(nome == null || nome.equals("")) {
-			System.out.println("Necessário informar Nome da Turma!");
+			throw new InsertException("Necessário informar Nome da Turma!");
 		}else {
 			this.nome = nome;
 		}
@@ -31,11 +32,11 @@ public class TurmaVO {
 		return codigo;
 	}
 	
-	public void setCodigo(String codigo) {
+	public void setCodigo(String codigo) throws InsertException{
 		if(Validacao.isCodTurma(codigo)) {
 			this.codigo = codigo;
 		}else {
-			System.out.println("Códido da Turma Inválido!");
+			throw new InsertException("Códido da Turma Inválido!");
 		}	
 	}
 
@@ -43,11 +44,11 @@ public class TurmaVO {
 		return horario;
 	}
 	
-	public void setHorario(String horario) {
+	public void setHorario(String horario) throws InsertException{
 		if(horario != null && !horario.equals("")) {
 			this.horario = horario;
 		} else {
-			System.out.println("Horário Inválido!");
+			throw new InsertException("Horário Inválido!");
 		}
 	}
 	
@@ -55,9 +56,9 @@ public class TurmaVO {
 		return local;
 	}
 	
-	public void setLocal(String local) {
+	public void setLocal(String local) throws InsertException{
 		if(local == null || local.equals("")) {
-			System.out.println("Necessário informar Local!");
+			throw new InsertException("Necessário informar Local!");
 		}else {
 			this.local = local;
 		}	
@@ -67,11 +68,11 @@ public class TurmaVO {
 		return disciplinas;
 	}
 	
-	public void setDisciplinas(List<DisciplinaVO> disciplinas) {
+	public void setDisciplinas(List<DisciplinaVO> disciplinas) throws InsertException{
 		if(disciplinas != null) {
 			this.disciplinas = disciplinas;
 		}else {
-			System.out.println("Necessário informar Disciplinas");
+			throw new InsertException("Necessário informar Disciplinas");
 		}		
 	}
 	
@@ -79,11 +80,11 @@ public class TurmaVO {
 		return alunos;
 	}
 	
-	public void setAlunos(List<AlunoVO> alunos) {
+	public void setAlunos(List<AlunoVO> alunos) throws InsertException{
 		if(alunos != null) {
 			this.alunos = alunos;
 		}else {
-			System.out.println("Necessário informar Alunos");
+			throw new InsertException("Necessário informar Alunos");
 		}		
 	}
 	

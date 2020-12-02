@@ -3,6 +3,8 @@ package br.edu.ufersa.sei.model.VO;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.ufersa.sei.exception.InsertException;
+
 public class ProfessorVO extends UsuarioVO{
 	private long idProf;
 	private List<TurmaVO> turmas = new ArrayList<TurmaVO>();
@@ -12,11 +14,11 @@ public class ProfessorVO extends UsuarioVO{
 		return idProf;
 	}
 
-	public void setIdProf(long idProf) {
+	public void setIdProf(long idProf) throws InsertException {
 		if(idProf >= 0) {
 			this.idProf = idProf;
 		}else {
-			System.out.println("Id do Professor Inválido!");
+			throw new InsertException("Id do Professor Inválido!");
 		}
 	}
 
@@ -24,11 +26,11 @@ public class ProfessorVO extends UsuarioVO{
 		return turmas;
 	}
 
-	public void setTurmas(List<TurmaVO> turmas) {
+	public void setTurmas(List<TurmaVO> turmas) throws InsertException{
 		if(turmas != null) {
 			this.turmas = turmas;
 		}else {
-			System.out.println("Necessário informar Turmas!");
+			throw new InsertException("Necessário informar Turmas!");
 		}
 	}
 	

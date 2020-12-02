@@ -1,5 +1,7 @@
 package br.edu.ufersa.sei.model.VO;
 
+import br.edu.ufersa.sei.exception.InsertException;
+
 public class DiretorVO extends UsuarioVO{
 	private long idDir;
 
@@ -8,11 +10,11 @@ public class DiretorVO extends UsuarioVO{
 		return idDir;
 	}
 
-	public void setIdDir(long idDir) {
+	public void setIdDir(long idDir) throws InsertException {
 		if(idDir >= 0) {
 			this.idDir = idDir;
 		}else {
-			System.out.println("Id do Diretor Inválido!");
+			throw new InsertException("Id do Diretor Inválido!");
 		}
 	}
 }

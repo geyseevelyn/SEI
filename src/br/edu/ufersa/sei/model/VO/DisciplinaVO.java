@@ -1,5 +1,6 @@
 package br.edu.ufersa.sei.model.VO;
 
+import br.edu.ufersa.sei.exception.InsertException;
 import util.Validacao;
 
 public class DisciplinaVO {
@@ -13,11 +14,11 @@ public class DisciplinaVO {
 		return nome;
 	}
 	
-	public void setNome(String nome) {
+	public void setNome(String nome) throws InsertException{
 		if(nome != null && !nome.equals("")) {
 			this.nome = nome;
 		} else {
-			System.out.println("Necessário informar o nome da Disciplina!");
+			throw new InsertException("Necessário informar o nome da Disciplina!");
 		}	
 	}
 	
@@ -25,11 +26,11 @@ public class DisciplinaVO {
 		return codigo;
 	}
 	
-	public void setCodigo(String codigo) {
+	public void setCodigo(String codigo) throws InsertException{
 		if(Validacao.isCodDisc(codigo)) {
 			this.codigo = codigo;
 		}else {
-			System.out.println("Códido da Disciplina Inválido!");
+			throw new InsertException("Códido da Disciplina Inválido!");
 		}		
 	}
 	
@@ -37,11 +38,11 @@ public class DisciplinaVO {
 		return profDisc;
 	}
 	
-	public void setProfDisc(ProfessorVO profDisc) {
+	public void setProfDisc(ProfessorVO profDisc) throws InsertException {
 		if(profDisc != null) {
 			this.profDisc = profDisc;
 		}else {
-			System.out.println("Necessário informar Professor!");
+			throw new InsertException("Necessário informar Professor!");
 		}
 	}
 	
@@ -49,6 +50,7 @@ public class DisciplinaVO {
 		return status;
 	}
 	
+	//precisa fazer exceção??
 	public void setStatus(boolean status) {
 		this.status = status;
 	}

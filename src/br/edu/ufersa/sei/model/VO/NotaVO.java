@@ -1,5 +1,7 @@
 package br.edu.ufersa.sei.model.VO;
 
+import br.edu.ufersa.sei.exception.InsertException;
+
 public class NotaVO {
 	private double n1;
 	private double n2;
@@ -14,11 +16,11 @@ public class NotaVO {
 		return n1;
 	}
 	
-	public void setN1(double n1) {
+	public void setN1(double n1) throws InsertException{
 		if(n1 >= 0 && n1 <= 10) {
 			this.n1 = n1;
 		}else {
-			System.out.println("Nota Inválida!");
+			throw new InsertException("Nota Inválida!");
 		}
 	}
 	
@@ -26,11 +28,11 @@ public class NotaVO {
 		return n2;
 	}
 	
-	public void setN2(double n2) {
+	public void setN2(double n2) throws InsertException{
 		if(n2 >= 0 && n2 <= 10) {
 			this.n2 = n2;
 		}else {
-			System.out.println("Nota Inválida!");
+			throw new InsertException("Nota Inválida!");
 		}
 	}
 	
@@ -38,11 +40,11 @@ public class NotaVO {
 		return n3;
 	}
 	
-	public void setN3(double n3) {
+	public void setN3(double n3) throws InsertException {
 		if(n3 >= 0 && n3 <= 10) {
 			this.n3 = n3;
 		}else {
-			System.out.println("Nota Inválida!");
+			throw new InsertException("Nota Inválida!");
 		}
 	}
 	
@@ -50,6 +52,7 @@ public class NotaVO {
 			return media;	
 	}
 	
+	//precisa fazer exceção??
 	//método para calcular média
 	public double calcularMedia(double n1, double n2, double n3) {
 		this.media = (n1 + n2 + n3) / 3.0;
@@ -60,22 +63,22 @@ public class NotaVO {
 		return frequencia;
 	}
 	
-	public void setFrequencia(int frequencia) {
+	public void setFrequencia(int frequencia) throws InsertException{
 		if(frequencia>=0) {
 			this.frequencia = frequencia;
 		}else {
-			System.out.println("Frequência Inválida!");
+			throw new InsertException("Frequência Inválida!");
 		}
 	}
 	
 	public AlunoVO getAluno() {
 		return aluno;
 	}
-	public void setAluno(AlunoVO aluno) {
+	public void setAluno(AlunoVO aluno) throws InsertException {
 		if(aluno != null) {
 			this.aluno = aluno;		
 		}else {
-			System.out.println("Necessário informar Aluno!");
+			throw new InsertException("Necessário informar Aluno!");
 		}
 	}
 
@@ -83,11 +86,11 @@ public class NotaVO {
 		return disc;
 	}
 	
-	public void setDisc(DisciplinaVO disc) {
+	public void setDisc(DisciplinaVO disc) throws InsertException{
 		if(disc != null) {
 			this.disc = disc;
 		}else {
-			System.out.println("Necessário informar Disciplina!");
+			throw new InsertException("Necessário informar Disciplina!");
 		}
 	}
 
