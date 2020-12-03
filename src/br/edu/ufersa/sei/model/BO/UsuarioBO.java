@@ -1,11 +1,41 @@
 package br.edu.ufersa.sei.model.BO;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.ufersa.sei.exception.InsertException;
+import br.edu.ufersa.sei.model.DAO.UsuarioDAO;
 import br.edu.ufersa.sei.model.VO.UsuarioVO;
 
 public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<VO>{
+	
+	UsuarioDAO<UsuarioVO> usuDao = new UsuarioDAO<UsuarioVO>();
+	
+	public List<UsuarioVO> listarUsuarios() throws InsertException{
+		
+        List<UsuarioVO> usuarios = new ArrayList<UsuarioVO>();
+      
+        try {
+        		ResultSet usuRS = usuDao.listar();
+        		while(usuRS.next()) {
+        			UsuarioVO vo = new UsuarioVO();
+			    
+        			vo.setNome(usuRS.getString("nome"));
+        			vo.setCpf(usuRS.getString("cpf"));
+        			vo.setEndereco(usuRS.getString("endereco"));
+        			vo.setEmail(usuRS.getString("email"));
+        			vo.setLogin(usuRS.getString("login"));
+        			vo.setSenha(usuRS.getString("senha"));
+			    
+        			usuarios.add(vo);
+        		}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+        return usuarios;
+}
 	
 	@Override
 	public void cadastrar(UsuarioVO user) {

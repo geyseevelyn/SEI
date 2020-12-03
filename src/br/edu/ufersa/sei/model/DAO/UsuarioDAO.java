@@ -27,6 +27,7 @@ public class UsuarioDAO<VO extends UsuarioVO> extends BaseDAO<VO> implements Usu
 			if(affectedRows == 0) {
 				throw new SQLException("A inserção falhou. Nenhuma linha foi alterada.");
 			}
+			
 			ResultSet generatedKeys = ptst.getGeneratedKeys();
 			if(generatedKeys.next()) {
 				vo.setIdUsu(generatedKeys.getLong(1));
@@ -35,7 +36,7 @@ public class UsuarioDAO<VO extends UsuarioVO> extends BaseDAO<VO> implements Usu
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
+		  }
 	} 
 
 	@Override
@@ -68,7 +69,6 @@ public class UsuarioDAO<VO extends UsuarioVO> extends BaseDAO<VO> implements Usu
 		PreparedStatement ptst;
 		
 		try {
-			
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setLong(1, vo.getIdUsu());
 			int affectedRows = ptst.executeUpdate();
@@ -131,7 +131,7 @@ public class UsuarioDAO<VO extends UsuarioVO> extends BaseDAO<VO> implements Usu
 	}
 
 	@Override
-	public ResultSet buscarPorLogin(VO vo) {
+	public ResultSet buscarPorLogin(VO vo) throws SQLException{
 		String sql = "select idUsu, nome, cpf, endereco, email from Usuario where login = ?";
 		PreparedStatement ptst;
 		ResultSet rs = null;

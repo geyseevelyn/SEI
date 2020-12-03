@@ -1,10 +1,10 @@
 package br.edu.ufersa.sei.model.DAO;
 
-import java.util.List;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-import br.edu.ufersa.sei.model.VO.AlunoVO;
 import br.edu.ufersa.sei.model.VO.TurmaVO;
 
 public interface AlunoInterDAO {
-	public List<AlunoVO> buscarPorTurma(TurmaVO turma);
+	public ResultSet buscarPorTurma(TurmaVO turma) throws SQLException; //buscar alunos por turma
 }

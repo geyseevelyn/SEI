@@ -1,6 +1,7 @@
 package br.edu.ufersa.sei.model.DAO;
 
-//import br.edu.ufersa.sei.exception.InsertException;
+import br.edu.ufersa.sei.model.VO.AlunoVO;
+import br.edu.ufersa.sei.model.VO.ProfessorVO;
 import br.edu.ufersa.sei.model.VO.UsuarioVO;
 import java.sql.SQLException;
 
@@ -36,14 +37,57 @@ public class TesteDAO {
 			vo3.setEndereco("Rua Coronel Miguel, 34");
 			vo3.setLogin("kkarinn");
 			vo3.setSenha("karina16857");
-			//vo3.setIdUsu(new Long (3));
+			//vo3.setIdUsu(new Long (3));	
 			
 			//usuDao.inserir(vo3);
 			//usuDao.atualizar(vo2);
-			//usuDao.deletar(vo3);
-			//usuDao.listar();
-			usuDao.buscarPorNome("Maria Luiza");
+			//usuDao.deletar(vo3)
 			
+			//usuDao.listar();
+			//usuDao.buscarPorNome();
+			
+			
+			AlunoDAO<AlunoVO> aDao = new AlunoDAO<AlunoVO>();
+			AlunoVO avo = new AlunoVO();
+			AlunoVO avo2 = new AlunoVO();
+			
+			avo.setNome("Beatriz Souza");
+			avo.setCpf("234.534.093-09");
+			avo.setEmail("biasouza@gmail.com");
+			avo.setEndereco("Rua Santos Dummont, 45");
+			avo.setLogin("bia123");
+			avo.setSenha("1234abc");
+			avo.setMatricula("2019090721");
+			//avo.setTurma();  //tem que setar só IdTurma e nao o obj.
+			avo.setIdUsu(new Long(1));
+			
+			avo2.setNome("Pedro Souza");
+			avo2.setCpf("111.534.093-09");
+			avo2.setEmail("pedro@gmail.com");
+			avo2.setEndereco("Rua Duque de Caixias, 450");
+			avo2.setLogin("pedro123");
+			avo2.setSenha("pe1234");
+			avo2.setMatricula("2018090721");
+			//avo2.getTurma().setIdTurma((long)2);  //tem que setar só IdTurma e nao o obj.
+			avo2.setIdUsu(new Long(1));
+			
+			aDao.inserir(avo2);
+			
+			ProfessorDAO<ProfessorVO> pDao = new ProfessorDAO<ProfessorVO>();
+			ProfessorVO pvo = new ProfessorVO();
+			
+			pvo.setNome("Felipe Barbosa");
+			pvo.setCpf("334.555.957-09");
+			pvo.setEmail("fbarbosa@gmail.com");
+			pvo.setEndereco("Rua Dragão do Mar, 123");
+			pvo.setLogin("felipe");
+			pvo.setSenha("barbosa123");
+			pvo.setIdUsu(new Long(1));
+			
+			//pDao.inserir(pvo);
+			//pDao.atualizar(pvo); // idUsu = 7
+			//pDao.deletar(pvo);  // idUsu = 7
+		
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
