@@ -39,30 +39,111 @@ public class UsuarioDAO<VO extends UsuarioVO> extends BaseDAO<VO> implements Usu
 	} 
 
 	@Override
-	public void atualizar(VO vo) {
-		//implementar
+	public void atualizar(VO vo) throws SQLException {
+		String sql = "update usuario set nome = ?, cpf = ?, email = ?, endereco = ?, login = ?, senha = ? where idUsu = ?";
+		PreparedStatement ptst;
+		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setString(1, vo.getNome());
+			ptst.setString(2, vo.getCpf());
+			ptst.setString(3, vo.getEmail());
+			ptst.setString(4, vo.getEndereco());
+			ptst.setString(5, vo.getLogin());
+			ptst.setString(6, vo.getSenha());
+			ptst.setLong(7, vo.getIdUsu());
+			int affectedRows = ptst.executeUpdate();
+			
+			if(affectedRows == 0) {
+				throw new SQLException("A atualização falhou. Nenhuma linha foi alterada.");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
-	public void deletar(VO vo) {
-		//implementar
+	public void deletar(VO vo) throws SQLException {
+		String sql = "delete from usuario where idUsu = ?";
+		PreparedStatement ptst;
+		
+		try {
+			
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setLong(1, vo.getIdUsu());
+			int affectedRows = ptst.executeUpdate();
+			
+			if(affectedRows == 0) {
+				throw new SQLException("A deleção falhou. Nenhuma linha foi alterada.");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
-	public ResultSet listar() {
-		//implementar
-		return null;
+	public ResultSet listar() throws SQLException {
+		String sql = "select * from usuario";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+		
+ 		try {
+			ptst = getConnection().prepareStatement(sql);
+			rs = ptst.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
 	}
 
 	@Override
-	public ResultSet buscarPorNome(String nome) {
-		//implementar
-		return null;
+	public ResultSet buscarPorNome(String nome) throws SQLException {
+		String sql = "select * from usuario where nome = ?";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+				
+ 		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setString(1,nome);
+			rs = ptst.executeQuery();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
 	}
-	
+
 	@Override
-	public UsuarioVO autenticar(VO user) {
-		//implementar
-		return null;
+	public ResultSet buscarPorId(long id) throws SQLException {
+		String sql = "select * from usuario where idUsu = ?";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+				
+ 		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setLong(1,id);
+			rs = ptst.executeQuery();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+
+	@Override
+	public ResultSet buscarPorLogin(VO vo) {
+		String sql = "select idUsu, nome, cpf, endereco, email from Usuario where login = ?";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+			
+		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setString(1, vo.getLogin());
+			rs = ptst.executeQuery();
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
 	}
 }

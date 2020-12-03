@@ -9,5 +9,6 @@ public interface BaseInterDAO<VO> {
 	public void deletar(VO vo) throws SQLException;
 	public ResultSet listar() throws SQLException;
 	public ResultSet buscarPorNome(String nome) throws SQLException;
+	public ResultSet buscarPorId(long id) throws SQLException;
 
 }

@@ -3,7 +3,7 @@ package br.edu.ufersa.sei.model.VO;
 import br.edu.ufersa.sei.exception.InsertException;
 import util.Validacao;
 
-public abstract class UsuarioVO {
+public class UsuarioVO {
 	private long idUsu;
 	private String nome;
 	private String cpf;

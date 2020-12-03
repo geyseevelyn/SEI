@@ -1,6 +1,7 @@
 package br.edu.ufersa.sei.model.DAO;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import br.edu.ufersa.sei.model.VO.ProfessorVO;
@@ -38,6 +39,12 @@ public class TurmaDAO extends BaseDAO<TurmaVO> implements TurmaInterDAO{
 	@Override
 	public List<TurmaVO> buscarPorProf(ProfessorVO prof) {		
 		//implementar
+		return null;
+	}
+
+	@Override
+	public ResultSet buscarPorId(long id) throws SQLException {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

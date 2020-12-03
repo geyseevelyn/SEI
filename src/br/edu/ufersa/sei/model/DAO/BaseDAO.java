@@ -7,9 +7,9 @@ import java.sql.SQLException;
 
 public abstract class BaseDAO<VO> implements BaseInterDAO<VO>{
 	private static Connection conn = null;
-	private static final String url = ""; //link do bd ("jdbc:mariadb://localhost:3306/sequence";)
-	private static final String user = "";
-	private static final String senha = "";
+	private static final String url = "jdbc:postgresql://localhost:5432/SEI";
+	private static final String user = "sei";
+	private static final String senha = "admin";
 	
 	public static Connection getConnection() {
 		if(conn == null) {

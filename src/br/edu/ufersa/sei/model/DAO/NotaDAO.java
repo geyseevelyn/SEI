@@ -1,6 +1,7 @@
 package br.edu.ufersa.sei.model.DAO;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import br.edu.ufersa.sei.model.VO.AlunoVO;
 import br.edu.ufersa.sei.model.VO.NotaVO;
@@ -41,5 +42,11 @@ public class NotaDAO extends BaseDAO<NotaVO> implements NotaInterDAO{
 	@Override
 	public void lancarFrequencia(AlunoVO aluno) {
 		//implementar
+	}
+
+	@Override
+	public ResultSet buscarPorId(long id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
