@@ -72,6 +72,7 @@ public class UsuarioDAO<VO extends UsuarioVO> extends BaseDAO<VO> implements Usu
 		try {
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setLong(1, vo.getIdUsu());
+			
 			int affectedRows = ptst.executeUpdate();
 			
 			if(affectedRows == 0) {

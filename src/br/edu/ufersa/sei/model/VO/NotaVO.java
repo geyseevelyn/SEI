@@ -98,7 +98,7 @@ public class NotaVO {
 		double media = calcularMedia(n1,n2,n3);
 		
 		saida = "Aluno: " + aluno.getNome() + "\nDisciplina: " + disc.getNome() + 
-				" (" + disc.getCodigo() + ")" + "\nP1: " + n1 + "\nP2: " + n2 +
+				" (" + disc.getCodDisc() + ")" + "\nP1: " + n1 + "\nP2: " + n2 +
 				"\nP3: " + n3 + "\nMedia: " + media + "\nFrequência: " + frequencia;
 		
 	    return saida;

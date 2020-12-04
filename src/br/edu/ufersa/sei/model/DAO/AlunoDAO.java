@@ -62,23 +62,23 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 		}
 	}
 	
-//	@Override
-//	public void deletar(VO vo) throws SQLException {
-//		String sql = "delete from aluno where idAluno = ?";
-//		PreparedStatement ptst;
-//		
-//		try {
-//			ptst = getConnection().prepareStatement(sql);
-//			ptst.setLong(1, vo.getIdAluno());
-//			int affectedRows = ptst.executeUpdate();
-//			
-//			if(affectedRows == 0) {
-//				throw new SQLException("A deleção falhou. Nenhuma linha foi alterada.");
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//	}
+	@Override
+	public void deletar(VO vo) throws SQLException {
+		String sql = "delete from aluno where idAluno = ?";
+		PreparedStatement ptst;
+		
+		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setLong(1, vo.getIdAluno());
+			int affectedRows = ptst.executeUpdate();
+			
+			if(affectedRows == 0) {
+				throw new SQLException("A deleção falhou. Nenhuma linha foi alterada.");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	@Override
 	public ResultSet listar() throws SQLException {

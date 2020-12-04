@@ -5,7 +5,7 @@ import util.Validacao;
 
 public class DisciplinaVO {
 	private long idDisc;
-	private String codigo;
+	private String codDisc;
 	private String nome;
 	private ProfessorVO profDisc;
 	private boolean status; //ativa ou finalizada
@@ -35,13 +35,13 @@ public class DisciplinaVO {
 		}	
 	}
 	
-	public String getCodigo() {
-		return codigo;
+	public String getCodDisc() {
+		return codDisc;
 	}
 	
-	public void setCodigo(String codigo) throws InsertException{
-		if(Validacao.isCodDisc(codigo)) {
-			this.codigo = codigo;
+	public void setCodigo(String codDisc) throws InsertException{
+		if(Validacao.isCodDisc(codDisc)) {
+			this.codDisc = codDisc;
 		}else {
 			throw new InsertException("Códido da Disciplina Inválido!");
 		}		
@@ -76,7 +76,7 @@ public class DisciplinaVO {
 			status = "Finalizada";
 		
 		String saida;
-		saida = "Disciplina: " + nome + "\nCódigo: " + codigo + "\nStatus: " +
+		saida = "Disciplina: " + nome + "\nCódigo: " + codDisc + "\nStatus: " +
 		        status + "\nProfessor: " + profDisc.getNome();
 		return saida;
 	}

@@ -52,7 +52,12 @@ public class TurmaDAO extends BaseDAO<TurmaVO> implements TurmaInterDAO{
 			ptst.setString(3, vo.getSala());
 			ptst.setString(4, vo.getHorario());
 			ptst.setLong(5, vo.getIdTurma());
-			ptst.executeUpdate();
+			
+			int affectedRows = ptst.executeUpdate();
+			
+			if(affectedRows == 0) {
+				throw new SQLException("A atualização falhou. Nenhuma linha foi alterada.");
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -62,12 +67,18 @@ public class TurmaDAO extends BaseDAO<TurmaVO> implements TurmaInterDAO{
 	@Override
 	public void deletar(TurmaVO vo) throws SQLException {
 		String sql = "delete from turma where idTurma = ?";
-		PreparedStatement psts;
+		PreparedStatement ptst;
 		
 		try {
-			psts = getConnection().prepareStatement(sql);
-			psts.setLong(1, vo.getIdTurma());
-			psts.executeUpdate();
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setLong(1, vo.getIdTurma());
+			ptst.executeUpdate();
+			
+			int affectedRows = ptst.executeUpdate();
+			
+			if(affectedRows == 0) {
+				throw new SQLException("A atualização falhou. Nenhuma linha foi alterada.");
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -106,7 +117,6 @@ public class TurmaDAO extends BaseDAO<TurmaVO> implements TurmaInterDAO{
 		return rs;
 	}
 
-
 	@Override
 	public ResultSet buscarPorId(TurmaVO vo) throws SQLException {
 		String sql = "select * from turma where idTurma = ?";
@@ -124,8 +134,8 @@ public class TurmaDAO extends BaseDAO<TurmaVO> implements TurmaInterDAO{
 		return rs;
 	}
 
-	@Override
 	//buscar turma por prof
+	@Override
 	public ResultSet buscarPorProf(ProfessorVO vo) {		
 		String sql = "select t.nome, t.codturma, t.sala, t.horario from turma t where t.idturma in" + 
 					 "(select tp.idturma from turmaprof tp where idprof = ?)";
