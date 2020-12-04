@@ -38,5 +38,6 @@ public abstract class BaseDAO<VO> implements BaseInterDAO<VO>{
 	public abstract void atualizar(VO vo) throws SQLException;
 	public abstract void deletar(VO vo) throws SQLException;
 	public abstract ResultSet listar() throws SQLException;
-	public abstract ResultSet buscarPorNome(String nome) throws SQLException;
+	public abstract ResultSet buscarPorNome(VO vo) throws SQLException;
+	public abstract ResultSet buscarPorId(VO vo) throws SQLException;
 }

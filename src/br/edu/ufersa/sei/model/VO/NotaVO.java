@@ -72,28 +72,27 @@ public class NotaVO {
 	}
 	
 	public AlunoVO getAluno() {
-		return aluno;
-	}
-	public void setAluno(AlunoVO aluno) throws InsertException {
-		if(aluno != null) {
-			this.aluno = aluno;		
-		}else {
-			throw new InsertException("Necessário informar Aluno!");
-		}
-	}
+        return aluno;
+    }
+    public void setAluno(AlunoVO aluno) throws InsertException {
+        if(aluno != null) {
+            this.aluno = aluno;
+        }else {
+            throw new InsertException("Necessário informar Aluno!");
+        }
+    }
 
-	public DisciplinaVO getDisc() {
-		return disc;
-	}
-	
-	public void setDisc(DisciplinaVO disc) throws InsertException{
-		if(disc != null) {
-			this.disc = disc;
-		}else {
-			throw new InsertException("Necessário informar Disciplina!");
-		}
-	}
+    public DisciplinaVO getDisc() {
+        return disc;
+    }
 
+    public void setDisc(DisciplinaVO disc) throws InsertException{
+        if(disc != null) {
+            this.disc = disc;
+        }else {
+            throw new InsertException("Necessário informar Disciplina!");
+        }
+    }
 	public String toString() {
 		String saida;
 		double media = calcularMedia(n1,n2,n3);

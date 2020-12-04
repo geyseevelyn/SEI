@@ -9,12 +9,10 @@ import util.Validacao;
 public class TurmaVO {
 	private long idTurma;
 	private String nome;
-	private String codigo;
-	private String local;
+	private String codTurma;
+	private String sala;
 	private String horario; 
-	private List<DisciplinaVO> disciplinas = new ArrayList<DisciplinaVO>();
-	//private List<AlunoVO> alunos = new ArrayList<AlunoVO>();
-	
+	private List<DisciplinaVO> disciplinas = new ArrayList<DisciplinaVO>();	
 	
 	//getters and setters
 	
@@ -42,13 +40,13 @@ public class TurmaVO {
 		}
 	}
 	
-	public String getCodigo() {
-		return codigo;
+	public String getCodTurma() {
+		return codTurma;
 	}
 	
-	public void setCodigo(String codigo) throws InsertException{
-		if(Validacao.isCodTurma(codigo)) {
-			this.codigo = codigo;
+	public void setCodTurma(String codTurma) throws InsertException{
+		if(Validacao.isCodTurma(codTurma)) {
+			this.codTurma = codTurma;
 		}else {
 			throw new InsertException("Códido da Turma Inválido!");
 		}	
@@ -66,15 +64,15 @@ public class TurmaVO {
 		}
 	}
 	
-	public String getLocal() {
-		return local;
+	public String getSala() {
+		return sala;
 	}
 	
-	public void setLocal(String local) throws InsertException{
-		if(local == null || local.equals("")) {
+	public void setSala(String sala) throws InsertException{
+		if(sala == null || sala.equals("")) {
 			throw new InsertException("Necessário informar Local!");
 		}else {
-			this.local = local;
+			this.sala = sala;
 		}	
 	}
 	
@@ -89,23 +87,11 @@ public class TurmaVO {
 			throw new InsertException("Necessário informar Disciplinas");
 		}		
 	}
-	
-	/*public List<AlunoVO> getAlunos() {
-		return alunos;
-	}
-	
-	public void setAlunos(List<AlunoVO> alunos) throws InsertException{
-		if(alunos != null) {
-			this.alunos = alunos;
-		}else {
-			throw new InsertException("Necessário informar Alunos");
-		}		
-	}*/
 		
 	public String toString() {
 		String saida;
-		saida = "Turma: " + nome + "\nCódigo: " + codigo + "\nLocal: " +
-		        local + "\nHorário: " + horario;
+		saida = "Turma: " + nome + "\nCódigo: " + codTurma + "\nLocal: " +
+		        sala + "\nHorário: " + horario;
 		return saida;
 		// disciplinas[] e alunos[]
 	}

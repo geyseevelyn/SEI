@@ -38,8 +38,45 @@ public class ProfessorDAO<VO extends ProfessorVO> extends UsuarioDAO<VO>{
 		  }
 	} 
 	
-	//ATUALIZAR??
-	//DELETAR??
+	@Override
+	public void atualizar(VO vo) throws SQLException {
+		super.atualizar(vo);
+		String sql = "update professor set idUsu = ? where idProf = ?";
+		PreparedStatement ptst;
+		
+		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setLong(1, vo.getIdUsu());
+			ptst.setLong(2, vo.getIdProf());
+			
+			int affectedRows = ptst.executeUpdate();
+			
+			if(affectedRows == 0) {
+				throw new SQLException("A atualização falhou. Nenhuma linha foi alterada.");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	public void deletar(VO vo) throws SQLException {
+		String sql = "delete from professor where idProf = ?";
+		PreparedStatement ptst;
+		
+		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setLong(1, vo.getIdProf());
+			int affectedRows = ptst.executeUpdate();
+			
+			if(affectedRows == 0) {
+				throw new SQLException("A deleção falhou. Nenhuma linha foi alterada.");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	@Override
 	public ResultSet listar() throws SQLException {
@@ -57,7 +94,7 @@ public class ProfessorDAO<VO extends ProfessorVO> extends UsuarioDAO<VO>{
 	}
 	
 	@Override
-	public ResultSet buscarPorNome(String nome) throws SQLException {
+	public ResultSet buscarPorNome(VO vo) throws SQLException {
 		String sql = "select p.IdProf, u.nome, u.cpf, u.endereco, u.email from " +
 					 "professor p, usuario u where u.nome = ? and p.idUsu = u.idUsu;";
 		PreparedStatement ptst;
@@ -65,7 +102,7 @@ public class ProfessorDAO<VO extends ProfessorVO> extends UsuarioDAO<VO>{
 				
  		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setString(1,nome);
+			ptst.setString(1,vo.getNome());
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {
@@ -75,14 +112,14 @@ public class ProfessorDAO<VO extends ProfessorVO> extends UsuarioDAO<VO>{
 	}
 	
 	@Override
-	public ResultSet buscarPorId(long id) throws SQLException {
-		String sql = "select * from professor where idUsu = ?"; //vai mostrar só idProf
+	public ResultSet buscarPorId(VO vo) throws SQLException {
+		String sql = "select * from professor where idUsu = ?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 				
  		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setLong(1,id);
+			ptst.setLong(1,vo.getIdUsu());
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {

@@ -52,6 +52,7 @@ public class UsuarioDAO<VO extends UsuarioVO> extends BaseDAO<VO> implements Usu
 			ptst.setString(5, vo.getLogin());
 			ptst.setString(6, vo.getSenha());
 			ptst.setLong(7, vo.getIdUsu());
+			
 			int affectedRows = ptst.executeUpdate();
 			
 			if(affectedRows == 0) {
@@ -97,14 +98,14 @@ public class UsuarioDAO<VO extends UsuarioVO> extends BaseDAO<VO> implements Usu
 	}
 
 	@Override
-	public ResultSet buscarPorNome(String nome) throws SQLException {
+	public ResultSet buscarPorNome(VO vo) throws SQLException {
 		String sql = "select * from usuario where nome = ?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 				
  		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setString(1,nome);
+			ptst.setString(1,vo.getNome());
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {
@@ -114,14 +115,14 @@ public class UsuarioDAO<VO extends UsuarioVO> extends BaseDAO<VO> implements Usu
 	}
 
 	@Override
-	public ResultSet buscarPorId(long id) throws SQLException {
+	public ResultSet buscarPorId(VO vo) throws SQLException {
 		String sql = "select * from usuario where idUsu = ?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 				
  		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setLong(1,id);
+			ptst.setLong(1,vo.getIdUsu());
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {

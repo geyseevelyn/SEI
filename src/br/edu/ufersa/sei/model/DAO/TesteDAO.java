@@ -69,22 +69,22 @@ public class TesteDAO {
 			avo2.setSenha("pe1234");
 			avo2.setMatricula("2018090721");
 			//avo2.getTurma().setIdTurma((long)2);  //tem que setar só IdTurma e nao o obj.
-			avo2.setIdUsu(new Long(1));
+			//avo2.setIdUsu(new Long(1));
 			
-			aDao.inserir(avo2);
+			//aDao.inserir(avo2);
 			
 			ProfessorDAO<ProfessorVO> pDao = new ProfessorDAO<ProfessorVO>();
 			ProfessorVO pvo = new ProfessorVO();
 			
-			pvo.setNome("Felipe Barbosa");
-			pvo.setCpf("334.555.957-09");
-			pvo.setEmail("fbarbosa@gmail.com");
-			pvo.setEndereco("Rua Dragão do Mar, 123");
-			pvo.setLogin("felipe");
-			pvo.setSenha("barbosa123");
-			pvo.setIdUsu(new Long(1));
+			pvo.setNome("Pedro Marcos");
+			pvo.setCpf("233.486.987-20");
+			pvo.setEmail("pema@gmail.com");
+			pvo.setEndereco("Rua Dragão do Mar, 124");
+			pvo.setLogin("peixemar");
+			pvo.setSenha("marpe1xe");
+			//pvo.setIdUsu(new Long(1));
 			
-			//pDao.inserir(pvo);
+			pDao.inserir(pvo);
 			//pDao.atualizar(pvo); // idUsu = 7
 			//pDao.deletar(pvo);  // idUsu = 7
 		

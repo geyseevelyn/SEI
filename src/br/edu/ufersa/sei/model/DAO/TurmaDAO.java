@@ -1,8 +1,9 @@
 package br.edu.ufersa.sei.model.DAO;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
+import java.sql.Statement;
 
 import br.edu.ufersa.sei.model.VO.ProfessorVO;
 import br.edu.ufersa.sei.model.VO.TurmaVO;
@@ -10,41 +11,135 @@ import br.edu.ufersa.sei.model.VO.TurmaVO;
 public class TurmaDAO extends BaseDAO<TurmaVO> implements TurmaInterDAO{
 
 	@Override
-	public void inserir(TurmaVO vo) {
-		//implementar
+	public void inserir(TurmaVO vo) throws SQLException {
+		String sql = "insert into turma (nome, codturma, sala, horario) values (?,?,?,?)";
+		PreparedStatement ptst;
+		
+		try {
+			
+			ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			ptst.setString(1, vo.getNome());
+			ptst.setString(2, vo.getCodTurma());
+			ptst.setString(3, vo.getSala());
+			ptst.setString(4, vo.getHorario());
+			
+			int affectedRows = ptst.executeUpdate();
+			if (affectedRows == 0) {
+				throw new SQLException("Nenhuma linha modificada, falha na inserção.");
+			}
+			
+			ResultSet generatedKey = ptst.getGeneratedKeys();
+			if (generatedKey.next()) {
+				vo.setIdTurma(generatedKey.getLong(1));
+			} else {
+				throw new SQLException("Nenhum ID retornado, falha na inserção.");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
-	public void atualizar(TurmaVO vo) {
-		//implementar
+	public void atualizar(TurmaVO vo) throws SQLException {
+		String sql = "update turma set nome = ?, codturma = ?, sala = ?, horario = ? where idTurma= ?";
+		PreparedStatement ptst;
+		
+		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setString(1, vo.getNome());
+			ptst.setString(2, vo.getCodTurma());
+			ptst.setString(3, vo.getSala());
+			ptst.setString(4, vo.getHorario());
+			ptst.setLong(5, vo.getIdTurma());
+			ptst.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
-	public void deletar(TurmaVO vo) {
-		//implementar
+	public void deletar(TurmaVO vo) throws SQLException {
+		String sql = "delete from turma where idTurma = ?";
+		PreparedStatement psts;
+		
+		try {
+			psts = getConnection().prepareStatement(sql);
+			psts.setLong(1, vo.getIdTurma());
+			psts.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
-	public ResultSet listar() {
-		//implementar
-		return null;
+	public ResultSet listar() throws SQLException {
+		String sql = "select * from turma";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+		
+ 		try {
+			ptst = getConnection().prepareStatement(sql);
+			rs = ptst.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
 	}
 
 	@Override
-	public ResultSet buscarPorNome(String nome) {
-		//implementar
-		return null;
+	public ResultSet buscarPorNome(TurmaVO vo) throws SQLException {
+		String sql = "select * from turma where nome = ?";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+				
+ 		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setString(1,vo.getNome());
+			rs = ptst.executeQuery();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+
+
+	@Override
+	public ResultSet buscarPorId(TurmaVO vo) throws SQLException {
+		String sql = "select * from turma where idTurma = ?";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+				
+ 		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setLong(1,vo.getIdTurma());
+			rs = ptst.executeQuery();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
 	}
 
 	@Override
-	public List<TurmaVO> buscarPorProf(ProfessorVO prof) {		
-		//implementar
-		return null;
-	}
-
-	@Override
-	public ResultSet buscarPorId(long id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	//buscar turma por prof
+	public ResultSet buscarPorProf(ProfessorVO vo) {		
+		String sql = "select t.nome, t.codturma, t.sala, t.horario from turma t where t.idturma in" + 
+					 "(select tp.idturma from turmaprof tp where idprof = ?)";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+				
+ 		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setLong(1,vo.getIdProf());
+			rs = ptst.executeQuery();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
 	}
 }

@@ -8,40 +8,45 @@ import br.edu.ufersa.sei.model.VO.DisciplinaVO;
 public class DisciplinaDAO extends BaseDAO<DisciplinaVO> implements DisciplinaInterDAO{
 
 	@Override
-	public void inserir(DisciplinaVO vo) {
-		//implementar	
+	public void inserir(DisciplinaVO vo) throws SQLException {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void atualizar(DisciplinaVO vo) {
-		//implementar
+	public void atualizar(DisciplinaVO vo) throws SQLException {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void deletar(DisciplinaVO vo) {
-		//implementar
+	public void deletar(DisciplinaVO vo) throws SQLException {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public ResultSet listar() {
-		//implementar
-		return null;
-	}
-
-	@Override
-	public ResultSet buscarPorNome(String nome) {
-		//implementar
-		return null;
-	}
-
-	@Override
-	public void finalizar(DisciplinaVO disc) {
-		//implementar
-	}
-
-	@Override
-	public ResultSet buscarPorId(long id) throws SQLException {
+	public ResultSet listar() throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
-	}	
+	}
+
+	@Override
+	public ResultSet buscarPorNome(DisciplinaVO vo) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultSet buscarPorId(DisciplinaVO vo) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public void finalizar(DisciplinaVO disc) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

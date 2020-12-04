@@ -8,7 +8,6 @@ public class AlunoVO extends UsuarioVO {
 	private String matricula;
 	private TurmaVO turma;
 	//private NotaVO notas;
-	//private List<HistoricoVO> hist = new ArrayList<HistoricoVO>(); // cada posição representa um ano
 		
 	//getters and setters
 	public long getIdAluno() {
@@ -47,37 +46,11 @@ public class AlunoVO extends UsuarioVO {
 		}
 	}
 	
-	/*public NotaVO getNotas() {
-		return notas;
-	}
-
-	public void setNotas(NotaVO notas) throws InsertException{
-		if(notas != null) {
-			this.notas = notas;
-		}else {
-			throw new InsertException("Notas Inválidas!");
-		}
-	}*/
-	
-	/*
-	public List<HistoricoVO> getHist() {
-	/*public List<HistoricoVO> getHist() {
-		return hist;
-	}
-
-	public void setHist(List<HistoricoVO> hist) {
-		if(hist != null) {
-			this.hist = hist;
-		}else {
-			System.out.println("Histórico Inválido");
-		}
-	}*/
-	
 	@Override
 	public String toString() {
 		String saida;
 		saida = super.toString() + "Matrícula: " + matricula + 
-		        "\nTurma: " + turma.getNome() + " (" + turma.getCodigo()
+		        "\nTurma: " + turma.getNome() + " (" + turma.getCodTurma()
 		        + ")";
 		return saida;
 	}

@@ -20,7 +20,7 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 			
 			ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ptst.setString(1, vo.getMatricula());
-			ptst.setLong(2, vo.getTurma().getIdTurma()); //???
+			ptst.setLong(2, vo.getTurma().getIdTurma());
 			ptst.setLong(3, vo.getIdUsu());
 			
 			int affectedRows = ptst.executeUpdate();
@@ -40,8 +40,45 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 		  }
 	} 
 
-	//ATUALIZAR??
-	//DELETAR??
+	@Override
+	public void atualizar(VO vo) throws SQLException {
+			
+		try {
+			super.atualizar(vo);
+			String sql = "update aluno set matricula = ?, idTurma = ?, idUsu = ? where idAluno = ?";
+			PreparedStatement ptst;
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setString(1, vo.getMatricula());
+			ptst.setLong(2, vo.getTurma().getIdTurma());
+			ptst.setLong(3, vo.getIdUsu());
+			int affectedRows = ptst.executeUpdate();
+			
+			if(affectedRows == 0) {
+				throw new SQLException("A atualização falhou. Nenhuma linha foi alterada.");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+//	@Override
+//	public void deletar(VO vo) throws SQLException {
+//		String sql = "delete from aluno where idAluno = ?";
+//		PreparedStatement ptst;
+//		
+//		try {
+//			ptst = getConnection().prepareStatement(sql);
+//			ptst.setLong(1, vo.getIdAluno());
+//			int affectedRows = ptst.executeUpdate();
+//			
+//			if(affectedRows == 0) {
+//				throw new SQLException("A deleção falhou. Nenhuma linha foi alterada.");
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//	}
 	
 	@Override
 	public ResultSet listar() throws SQLException {
@@ -59,7 +96,7 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 	}
 	
 	@Override
-	public ResultSet buscarPorNome(String nome) throws SQLException {
+	public ResultSet buscarPorNome(VO vo) throws SQLException {
 		String sql = "select u.nome, u.cpf, u.endereco, u.email, a.matricula from " + 
 				     "usuario u, aluno a WHERE u.nome = ? and u.idUsu = a.idUsu;";
 		PreparedStatement ptst;
@@ -67,7 +104,7 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 				
  		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setString(1,nome);
+			ptst.setString(1,vo.getNome());
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {
@@ -77,14 +114,14 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 	}
 	
 	@Override
-	public ResultSet buscarPorId(long id) throws SQLException {
+	public ResultSet buscarPorId(VO vo) throws SQLException {
 		String sql = "select * from aluno where idUsu = ?"; //vai mostrar idAluno, mat., idTurma, idUsu
 		PreparedStatement ptst;
 		ResultSet rs = null;
 				
  		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setLong(1,id);
+			ptst.setLong(1,vo.getIdUsu());
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {
@@ -93,10 +130,23 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 		return rs;
 	}
 
-	//buscar alunos por turma (nome, id ou código??)
+	//buscar alunos por turma
 	@Override
-	public ResultSet buscarPorTurma(TurmaVO turma) throws SQLException {
-		//implementar
-		return null;
+	public ResultSet buscarPorTurma(TurmaVO vo) throws SQLException {
+		String sql = "select u.nome, a.matricula from usuario u inner join aluno " + 
+					 "on u.IdUsu = a.IdUsu where u.IdUsu IN " + 
+				     "(select a.idUsu from aluno a where idTurma = ?)";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+				
+ 		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setLong(1,vo.getIdTurma());
+			rs = ptst.executeQuery();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
 	}
 }
