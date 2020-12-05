@@ -12,11 +12,11 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 	
 	@Override
 	public void inserir(VO vo) throws SQLException{
+		String sql = "insert into aluno (matricula, idTurma, idUsu) values (?,?,?)";
+		PreparedStatement ptst;
 		
 		try {
 			super.inserir(vo);
-			String sql = "insert into aluno (matricula, idTurma, idUsu) values (?,?,?)";
-			PreparedStatement ptst;
 			
 			ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ptst.setString(1, vo.getMatricula());
@@ -42,15 +42,16 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 
 	@Override
 	public void atualizar(VO vo) throws SQLException {
+		String sql = "update aluno set matricula = ?, idTurma = ?, idUsu = ? where idAluno = ?";
+		PreparedStatement ptst;
 			
 		try {
 			super.atualizar(vo);
-			String sql = "update aluno set matricula = ?, idTurma = ?, idUsu = ? where idAluno = ?";
-			PreparedStatement ptst;
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setString(1, vo.getMatricula());
 			ptst.setLong(2, vo.getTurma().getIdTurma());
 			ptst.setLong(3, vo.getIdUsu());
+			ptst.setLong(4, vo.getIdAluno());
 			int affectedRows = ptst.executeUpdate();
 			
 			if(affectedRows == 0) {
@@ -115,7 +116,7 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 	
 	@Override
 	public ResultSet buscarPorId(VO vo) throws SQLException {
-		String sql = "select * from aluno where idUsu = ?"; //vai mostrar idAluno, mat., idTurma, idUsu
+		String sql = "select * from aluno where idUsu = ?"; 
 		PreparedStatement ptst;
 		ResultSet rs = null;
 				

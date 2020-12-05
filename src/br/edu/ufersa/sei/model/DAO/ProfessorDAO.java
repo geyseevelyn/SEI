@@ -13,11 +13,11 @@ public class ProfessorDAO<VO extends ProfessorVO> extends UsuarioDAO<VO>{
 	
 	@Override
 	public void inserir(VO vo) throws SQLException{
+		String sql = "insert into professor (idUsu) values (?)";
+		PreparedStatement ptst;
+		
 		try {
 			super.inserir(vo);
-			String sql = "insert into professor (idUsu) values (?)";
-			PreparedStatement ptst;
-			
 			ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ptst.setLong(1, vo.getIdUsu());
 			
@@ -40,11 +40,11 @@ public class ProfessorDAO<VO extends ProfessorVO> extends UsuarioDAO<VO>{
 	
 	@Override
 	public void atualizar(VO vo) throws SQLException {
-		super.atualizar(vo);
 		String sql = "update professor set idUsu = ? where idProf = ?";
 		PreparedStatement ptst;
 		
 		try {
+			super.atualizar(vo);
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setLong(1, vo.getIdUsu());
 			ptst.setLong(2, vo.getIdProf());

@@ -13,6 +13,7 @@ public class UsuarioDAO<VO extends UsuarioVO> extends BaseDAO<VO> implements Usu
 	public void inserir(VO vo) throws SQLException{
 		String sql = "insert into Usuario (nome, cpf, endereco, email, login, senha) values (?,?,?,?,?,?)";
 		PreparedStatement ptst;
+		
 		try {
 			ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ptst.setString(1, vo.getNome());
@@ -43,6 +44,7 @@ public class UsuarioDAO<VO extends UsuarioVO> extends BaseDAO<VO> implements Usu
 	public void atualizar(VO vo) throws SQLException {
 		String sql = "update usuario set nome = ?, cpf = ?, email = ?, endereco = ?, login = ?, senha = ? where idUsu = ?";
 		PreparedStatement ptst;
+		
 		try {
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setString(1, vo.getNome());
@@ -85,7 +87,7 @@ public class UsuarioDAO<VO extends UsuarioVO> extends BaseDAO<VO> implements Usu
 
 	@Override
 	public ResultSet listar() throws SQLException {
-		String sql = "select * from usuario";
+		String sql = "select * from usuario";  //mostra a senha
 		PreparedStatement ptst;
 		ResultSet rs = null;
 		
@@ -100,13 +102,13 @@ public class UsuarioDAO<VO extends UsuarioVO> extends BaseDAO<VO> implements Usu
 
 	@Override
 	public ResultSet buscarPorNome(VO vo) throws SQLException {
-		String sql = "select * from usuario where nome = ?";
+		String sql = "select * from usuario where nome = ?"; //mostra a senha
 		PreparedStatement ptst;
 		ResultSet rs = null;
 				
  		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setString(1,vo.getNome());
+			ptst.setString(1, vo.getNome());
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {
@@ -134,7 +136,7 @@ public class UsuarioDAO<VO extends UsuarioVO> extends BaseDAO<VO> implements Usu
 
 	@Override
 	public ResultSet buscarPorLogin(VO vo) throws SQLException{
-		String sql = "select idUsu, nome, cpf, endereco, email from Usuario where login = ?";
+		String sql = "select * from Usuario where login = ?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 			

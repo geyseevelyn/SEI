@@ -11,11 +11,11 @@ public class DiretorDAO<VO extends DiretorVO> extends UsuarioDAO<VO>{
 
 	@Override
 	public void inserir(VO vo) throws SQLException{
+		String sql = "insert into diretor (idUsu) values (?)";
+		PreparedStatement ptst;
+		
 		try {
 			super.inserir(vo);
-			String sql = "insert into diretor (idUsu) values (?)";
-			PreparedStatement ptst;
-			
 			ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ptst.setLong(1, vo.getIdUsu());
 			
@@ -75,7 +75,7 @@ public class DiretorDAO<VO extends DiretorVO> extends UsuarioDAO<VO>{
 	
 	@Override
 	public ResultSet buscarPorId(VO vo) throws SQLException {
-		String sql = "select * from diretor where idDir = ?";
+		String sql = "select * from diretor where idUsu = ?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 				

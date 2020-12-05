@@ -1,24 +1,39 @@
 package br.edu.ufersa.sei.model.DAO;
 
+import br.edu.ufersa.sei.exception.InsertException;
+import br.edu.ufersa.sei.exception.NotFoundException;
+import br.edu.ufersa.sei.model.BO.UsuarioBO;
 import br.edu.ufersa.sei.model.VO.AlunoVO;
 import br.edu.ufersa.sei.model.VO.ProfessorVO;
 import br.edu.ufersa.sei.model.VO.UsuarioVO;
 import java.sql.SQLException;
+import java.util.List;
 
 public class TesteDAO {
 	public static void main(String[] args) {
+		
 		System.out.println(BaseDAO.getConnection());
+		
+		UsuarioDAO<UsuarioVO> usuDao = new UsuarioDAO<UsuarioVO>();
+		AlunoDAO<AlunoVO> aDao = new AlunoDAO<AlunoVO>();
+		ProfessorDAO<ProfessorVO> pDao = new ProfessorDAO<ProfessorVO>();
+		
+		UsuarioBO<UsuarioVO> usuBO = new UsuarioBO<UsuarioVO>();
+		
+		UsuarioVO vo = new UsuarioVO();
+		UsuarioVO vo2 = new UsuarioVO();
+		UsuarioVO vo3 = new UsuarioVO();
+
+		AlunoVO avo = new AlunoVO();
+		AlunoVO avo2 = new AlunoVO();
+		
+		ProfessorVO pvo = new ProfessorVO();
 				
 		try {
-			UsuarioDAO<UsuarioVO> usuDao = new UsuarioDAO<UsuarioVO>();
-			UsuarioVO vo = new UsuarioVO();
-			UsuarioVO vo2 = new UsuarioVO();
-			UsuarioVO vo3 = new UsuarioVO();
-			
-			vo.setCpf("777.888.999-56");
 			vo.setNome("Joao Pedro");
-			vo.setEmail("jp_sadw@gmail.com");
-			vo.setEndereco("Caverna");
+			vo.setCpf("456.888.999-56");
+			vo.setEmail("jp_soares@gmail.com");
+			vo.setEndereco("Rua Virgilio Tavora, 345");
 			vo.setLogin("jppj65");
 			vo.setSenha("AA3456789");
 			//vo.setIdUsu(new Long (1));
@@ -39,17 +54,12 @@ public class TesteDAO {
 			vo3.setSenha("karina16857");
 			//vo3.setIdUsu(new Long (3));	
 			
-			//usuDao.inserir(vo3);
-			//usuDao.atualizar(vo2);
-			//usuDao.deletar(vo3)
+			//usuDao.inserir(vo);
+			//usuDao.atualizar(vo);
+			usuDao.deletar(vo);
 			
 			//usuDao.listar();
 			//usuDao.buscarPorNome();
-			
-			
-			AlunoDAO<AlunoVO> aDao = new AlunoDAO<AlunoVO>();
-			AlunoVO avo = new AlunoVO();
-			AlunoVO avo2 = new AlunoVO();
 			
 			avo.setNome("Beatriz Souza");
 			avo.setCpf("234.534.093-09");
@@ -73,9 +83,6 @@ public class TesteDAO {
 			
 			//aDao.inserir(avo2);
 			
-			ProfessorDAO<ProfessorVO> pDao = new ProfessorDAO<ProfessorVO>();
-			ProfessorVO pvo = new ProfessorVO();
-			
 			pvo.setNome("Pedro Marcos");
 			pvo.setCpf("233.486.987-20");
 			pvo.setEmail("pema@gmail.com");
@@ -84,14 +91,28 @@ public class TesteDAO {
 			pvo.setSenha("marpe1xe");
 			//pvo.setIdUsu(new Long(1));
 			
-			pDao.inserir(pvo);
+			//pDao.inserir(pvo);
 			//pDao.atualizar(pvo); // idUsu = 7
 			//pDao.deletar(pvo);  // idUsu = 7
+			
 		
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
+		//BO
+		
+		// listar pelo BO
+		try {
+			
+			List<UsuarioVO> usuarios = usuBO.listar();
+			
+			for(UsuarioVO usu : usuarios) {
+				//System.out.println(usu);
+			}
+		} catch (InsertException e) {
+			e.printStackTrace();
+		}
 	}
 }
 

@@ -10,5 +10,4 @@ public interface BaseInterDAO<VO> {
 	public ResultSet listar() throws SQLException;
 	public ResultSet buscarPorNome(VO vo) throws SQLException;
 	public ResultSet buscarPorId(VO vo) throws SQLException;
-
 }
