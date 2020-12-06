@@ -61,7 +61,7 @@ public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<UsuarioVO
 							 alu.setEndereco(usuRS.getString("endereco"));
 							 alu.setEmail(usuRS.getString("email"));
 							 alu.setMatricula(aluRS.getString("matricula"));
-							 //alu.getTurma().setIdTurma(aluRS.getLong("idTurma"));  //criar uma TurmaVO e TurmaBO??
+							 //alu.getTurma().setIdTurma(aluRS.getLong("idTurma")); //??
 							 return alu;
 							 
 						 } else {	
@@ -82,6 +82,7 @@ public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<UsuarioVO
 		}
 	}
 	
+	//criar uma TurmaVO e TurmaBO??
 	@Override
 	public void cadastrar(UsuarioVO vo) throws InsertException {
 		try {
@@ -122,14 +123,6 @@ public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<UsuarioVO
 		}
 	}
 	
-//	@Override
-//	public List<VO> listar() throws InsertException {
-//		List<VO> usuarios = new ArrayList<VO>();
-//		return usuarios;
-//		//lista todos os usuários
-//	}
-
-	// deveria ser o listar()
 	@Override
 	public List<UsuarioVO> listar() throws InsertException{
 		List<UsuarioVO> usuarios = new ArrayList<UsuarioVO>();

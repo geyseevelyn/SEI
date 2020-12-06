@@ -1,7 +1,6 @@
 package br.edu.ufersa.sei.model.DAO;
 
 import br.edu.ufersa.sei.exception.InsertException;
-import br.edu.ufersa.sei.exception.NotFoundException;
 import br.edu.ufersa.sei.model.BO.UsuarioBO;
 import br.edu.ufersa.sei.model.VO.AlunoVO;
 import br.edu.ufersa.sei.model.VO.ProfessorVO;
