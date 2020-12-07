@@ -9,25 +9,32 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
-public class LoginAlunoController implements Initializable {
-	
-	//Componentes da Tela de Login
+public class ProfessorController implements Initializable {
 
+	//Componentes da Tela de Login
+	
 	@FXML
 	private TextField login;
 	@FXML
 	private TextField senha;
 	
-	public void entrar(ActionEvent event) throws Exception{
-		Telas.telaPrincipalAluno();
+	public void autenticar(ActionEvent event) throws Exception{
+		Telas.telaPrincipalProf();
 	}
 	
 	public void sair(ActionEvent event) throws Exception{
-		Telas.telaLoginAluno();
+		Telas.telaLoginprof();
+	}
+
+	//Componentes da Tela Principal Professor
+
+	public void voltarProf(ActionEvent event) throws Exception{
+		Telas.telaPrincipalProf();;
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub	
 	}
+
 }

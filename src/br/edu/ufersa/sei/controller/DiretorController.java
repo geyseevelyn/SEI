@@ -9,10 +9,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
-public class LoginDiretorController  implements Initializable {
+public class DiretorController implements Initializable {
 	
-	//Componentes da Tela de Login
-
+	//Componentes de Login de Diretor
+	
 	@FXML
 	private TextField login;
 	@FXML
@@ -25,9 +25,16 @@ public class LoginDiretorController  implements Initializable {
 	public void sair(ActionEvent event) throws Exception{
 		Telas.telaLoginDiretor();
 	}
+	
+	//Componentes da Tela Principal Diretor
+	
+	public void voltarDiretor(ActionEvent event) throws Exception{
+		Telas.telaPrincipalDiretor();
+	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub	
+		// TODO Auto-generated method stub
 	}
+
 }

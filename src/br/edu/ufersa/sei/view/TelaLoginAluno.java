@@ -14,11 +14,11 @@ public class TelaLoginAluno extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-	Parent root = FXMLLoader.load(getClass().getResource("VE/telaLoginAluno.fxml"));
-	Scene cena = new Scene(root);
-		
-	primaryStage.setTitle("SEI - Sistema de Ensino Integrado");
-	primaryStage.setScene(cena);
-	primaryStage.show();	
+		Parent root = FXMLLoader.load(getClass().getResource("VE/telaLoginAluno.fxml"));
+		Scene cena = new Scene(root);
+			
+		primaryStage.setTitle("SEI - Sistema de Ensino Integrado");
+		primaryStage.setScene(cena);
+		primaryStage.show();	
 	}
 }
