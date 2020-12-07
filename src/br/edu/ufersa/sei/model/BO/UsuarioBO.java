@@ -8,8 +8,8 @@ import java.util.List;
 import br.edu.ufersa.sei.exception.AutenticationException;
 import br.edu.ufersa.sei.exception.InsertException;
 import br.edu.ufersa.sei.exception.NotFoundException;
-import br.edu.ufersa.sei.model.DAO.AlunoDAO;
 import br.edu.ufersa.sei.model.DAO.DiretorDAO;
+import br.edu.ufersa.sei.model.DAO.ProfessorDAO;
 import br.edu.ufersa.sei.model.DAO.UsuarioDAO;
 import br.edu.ufersa.sei.model.DAO.UsuarioInterDAO;
 import br.edu.ufersa.sei.model.VO.AlunoVO;
@@ -20,8 +20,8 @@ import br.edu.ufersa.sei.model.VO.UsuarioVO;
 public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<UsuarioVO>{
 	
 	private static UsuarioInterDAO<UsuarioVO> usuDAO = new UsuarioDAO<UsuarioVO>();
-	private static UsuarioInterDAO<AlunoVO> aluDAO = new AlunoDAO<AlunoVO>();
-	//private static UsuarioInterDAO<ProfessorVO> profDAO = new ProfessorDAO<ProfessorVO>();
+	//private static UsuarioInterDAO<AlunoVO> aluDAO = new AlunoDAO<AlunoVO>();
+	private static UsuarioInterDAO<ProfessorVO> profDAO = new ProfessorDAO<ProfessorVO>();
 	private static UsuarioInterDAO<DiretorVO> dirDAO = new DiretorDAO<DiretorVO>();
 	
 	@Override
@@ -49,26 +49,25 @@ public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<UsuarioVO
 						 
 					 } else {
 						 
-						 AlunoVO alu = new AlunoVO();
-						 alu.setIdUsu(usuRS.getLong("idUsu"));
+						 ProfessorVO prof = new ProfessorVO();
+						 prof.setIdUsu(usuRS.getLong("idUsu"));
 						 
-						 ResultSet aluRS = aluDAO.buscarPorId(alu);
-						 if(aluRS.next()) {
+						 ResultSet profRS = profDAO.buscarPorId(prof);
+						 if(profRS.next()) {
 							 //é um aluno
-							 alu.setLogin(vo.getLogin());
-							 alu.setNome(usuRS.getString("nome"));
-							 alu.setCpf(usuRS.getString("cpf"));
-							 alu.setEndereco(usuRS.getString("endereco"));
-							 alu.setEmail(usuRS.getString("email"));
-							 alu.setMatricula(aluRS.getString("matricula"));
+							 prof.setLogin(vo.getLogin());
+							 prof.setNome(usuRS.getString("nome"));
+							 prof.setCpf(usuRS.getString("cpf"));
+							 prof.setEndereco(usuRS.getString("endereco"));
+							 prof.setEmail(usuRS.getString("email"));
 							 //alu.getTurma().setIdTurma(aluRS.getLong("idTurma")); //??
-							 return alu;
+							 return prof;
 							 
 						 } else {	
 							 //tem que ser um professor
-							 ProfessorVO prof = new ProfessorVO();  //tem que preencher tudo?
-							 prof.setIdUsu(usuRS.getLong("idUsu"));
-							 return prof;
+							 AlunoVO alu = new AlunoVO();  //tem que preencher tudo?
+							 alu.setIdUsu(usuRS.getLong("idUsu"));
+							 return alu;
 						 }
 					 }
 					 

@@ -25,17 +25,17 @@
             <Image url="@LoginLayout.png" />
          </image>
       </ImageView>
-      <TextField fx:id="login" layoutX="307.0" layoutY="274.0" prefHeight="40.0" prefWidth="221.0" />
-      <PasswordField fx:id="senha" layoutX="300.0" layoutY="355.0" prefHeight="39.0" prefWidth="226.0" />
-      <ImageView fitHeight="25.0" fitWidth="248.0" layoutX="538.0" layoutY="572.0" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="login" layoutX="307.0" layoutY="274.0" prefHeight="40.0" prefWidth="221.0" style="-fx-background-color: #00000000;" />
+      <PasswordField fx:id="senha" layoutX="300.0" layoutY="355.0" prefHeight="39.0" prefWidth="226.0" style="-fx-background-color: #00000000;" />
+      <ImageView fitHeight="12.0" fitWidth="208.0" layoutX="578.0" layoutY="574.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@SEI%20-%20Sistema%20de%20Ensino%20Integrado%20®.png" />
          </image>
       </ImageView>
-      <Button layoutX="376.0" layoutY="416.0" mnemonicParsing="false" onAction="#autenticar" prefHeight="47.0" prefWidth="48.0" scaleShape="false" />
-      <Label fx:id="erroLogin" layoutX="336.0" layoutY="396.0" text="Login ou senha inválidos" textAlignment="CENTER" textFill="#f52c2ce8" visible="false">
+      <Button layoutX="377.0" layoutY="420.0" mnemonicParsing="false" onAction="#autenticar" prefHeight="47.0" prefWidth="48.0" scaleShape="false" style="-fx-background-color: #00000000;" />
+      <Label fx:id="erroLogin" layoutX="344.0" layoutY="400.0" text="Login ou senha inválidos" textAlignment="CENTER" textFill="#f52c2ce8" visible="false">
          <font>
-            <Font name="Dubai Bold" size="12.0" />
+            <Font name="Calibri" size="11.0" />
          </font>
       </Label>
    </children>

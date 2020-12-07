@@ -5,11 +5,34 @@ import java.util.ResourceBundle;
 
 import br.edu.ufersa.sei.view.Telas;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 
 public class PrincipalAlunoController implements Initializable{
 	
 	//Componentes da Tela Principal Aluno
+    @FXML
+    private Label matricula;
+
+    @FXML
+    private Label cpf;
+
+    @FXML
+    private Label nome;
+
+    @FXML
+    private Label turno;
+
+    @FXML
+    private Label turma;
+
+    @FXML
+    private Label email;
+
+    public void sair(ActionEvent event) throws Exception{
+		Telas.telaLoginAluno();
+	}
 	
 	public void voltarAluno(ActionEvent event) throws Exception{
 		Telas.telaPrincipalAluno();

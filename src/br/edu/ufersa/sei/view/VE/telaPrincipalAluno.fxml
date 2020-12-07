@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.sei.controller.PrincipalAlunoController">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@MenuLateralAluno.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="68.0" fitWidth="19.0" layoutX="77.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Selecionado.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="minhasDisciplinas" layoutX="13.0" layoutY="241.0" mnemonicParsing="false" prefHeight="104.0" prefWidth="70.0" style="-fx-background-color: #00000000;" />
+      <Button fx:id="minhasNotas" layoutX="5.0" layoutY="357.0" mnemonicParsing="false" prefHeight="104.0" prefWidth="85.0" style="-fx-background-color: #00000000;" />
+      <Button fx:id="sair" layoutX="13.0" layoutY="507.0" mnemonicParsing="false" onAction="#sair" prefHeight="79.0" prefWidth="70.0" style="-fx-background-color: #00000000;" />
+      <ImageView fitHeight="344.0" fitWidth="569.0" layoutX="134.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@card%20aluno.png" />
+         </image></ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="657.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logotelas.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="141.0" layoutY="32.0" text="Bem Vindo(a)">
+         <font>
+            <Font size="41.0" />
+         </font>
+      </Label>
+      <Label fx:id="nome" layoutX="297.0" layoutY="242.0" prefHeight="36.0" prefWidth="287.0" text="Carlos Alberto de Faria" textAlignment="CENTER">
+         <font>
+            <Font size="19.0" />
+         </font></Label>
+      <Label fx:id="matricula" layoutX="190.0" layoutY="338.0" prefHeight="26.0" prefWidth="176.0" text="Matrícula: 2021252623">
+         <font>
+            <Font size="17.0" />
+         </font></Label>
+      <Label fx:id="cpf" layoutX="189.0" layoutY="373.0" text="CPF: 048.985.678-22">
+         <font>
+            <Font size="17.0" />
+         </font></Label>
+      <Label fx:id="endereco" layoutX="188.0" layoutY="406.0" text="Endereço: Rua João Câmara, 1366">
+         <font>
+            <Font size="17.0" />
+         </font></Label>
+      <Label fx:id="turma" layoutX="488.0" layoutY="338.0" text="Turma: 1º Ano A">
+         <font>
+            <Font size="17.0" />
+         </font></Label>
+      <Label fx:id="email" layoutX="187.0" layoutY="440.0" text="Email: Carlosalberto@gmail.com">
+         <font>
+            <Font size="17.0" />
+         </font></Label>
+      <Label fx:id="turno" layoutX="489.0" layoutY="373.0" text="Turno: Matutino">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

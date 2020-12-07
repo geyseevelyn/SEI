@@ -24,9 +24,27 @@ public class Telas extends Application {
 		telaLogin();
 	}
 	
-	//Login
+	//Login principal
 	public static void telaLogin() throws Exception {	
 		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaLogin.fxml"));
+		Scene cena = new Scene(root);
+		primaryStage.setScene(cena);
+	}
+	
+	public static void telaLoginAluno() throws Exception {	
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaLogin.fxml"));
+		Scene cena = new Scene(root);
+		primaryStage.setScene(cena);
+	}
+	
+	public static void telaLoginDiretor() throws Exception {	
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaLoginDiretor.fxml"));
+		Scene cena = new Scene(root);
+		primaryStage.setScene(cena);
+	}
+	
+	public static void telaLoginprof() throws Exception {	
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaLoginProf.fxml"));
 		Scene cena = new Scene(root);
 		primaryStage.setScene(cena);
 	}

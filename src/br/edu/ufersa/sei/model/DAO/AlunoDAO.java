@@ -135,7 +135,7 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 	@Override
 	public ResultSet buscarPorTurma(TurmaVO vo) throws SQLException {
 		String sql = "select u.nome, a.matricula from usuario u inner join aluno " + 
-					 "on u.IdUsu = a.IdUsu where u.IdUsu IN " + 
+					 "on u.IdUsu = a.IdUsu where u.IdUsu in " + 
 				     "(select a.idUsu from aluno a where idTurma = ?)";
 		PreparedStatement ptst;
 		ResultSet rs = null;
