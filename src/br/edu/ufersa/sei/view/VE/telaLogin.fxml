@@ -33,7 +33,7 @@
             <Image url="@SEI%20-%20Sistema%20de%20Ensino%20Integrado%20®.png" />
          </image>
       </ImageView>
-      <Button layoutX="377.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#autenticar" prefHeight="47.0" prefWidth="48.0" scaleShape="false" style="-fx-background-color: #00000000;" />
+      <Button layoutX="377.0" layoutY="420.0" mnemonicParsing="false" onAction="#autenticar" prefHeight="47.0" prefWidth="48.0" scaleShape="false" style="-fx-background-color: #00000000;" />
       <Label fx:id="erroLogin" layoutX="344.0" layoutY="400.0" text="Login ou senha inválidos" textAlignment="CENTER" textFill="#f52c2ce8" visible="false">
          <font>
             <Font name="Calibri" size="11.0" />

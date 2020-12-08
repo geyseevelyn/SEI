@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.sei.controller.LoginController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.sei.controller.AlunoController">
    <children>
       <ImageView fitHeight="189.0" fitWidth="318.0" layoutX="241.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -33,7 +33,7 @@
             <Image url="@SEI%20-%20Sistema%20de%20Ensino%20Integrado%20®.png" />
          </image>
       </ImageView>
-      <Button layoutX="377.0" layoutY="420.0" mnemonicParsing="false" onAction="#autenticar" prefHeight="47.0" prefWidth="48.0" scaleShape="false" style="-fx-background-color: #00000000;" />
+      <Button layoutX="377.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#entrar" prefHeight="47.0" prefWidth="48.0" scaleShape="false" style="-fx-background-color: #00000000;" />
       <Label fx:id="erroLogin" layoutX="344.0" layoutY="400.0" text="Login ou senha inválidos" textAlignment="CENTER" textFill="#f52c2ce8" visible="false">
          <font>
             <Font name="Calibri" size="11.0" />
