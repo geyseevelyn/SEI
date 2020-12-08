@@ -38,21 +38,21 @@ public class LoginController implements Initializable {
 		catch (InsertException e) {
 			e.printStackTrace();
 		}
+		
 		try {
 			UsuarioVO autenticado = usuBO.autenticar(vo);
 			if(autenticado instanceof DiretorVO) {
-				Telas.telaPrincipalDiretor();
+				Telas.telaPrincipalDiretor(vo); 
 			} else {
 					if(autenticado instanceof AlunoVO) {
 						Telas.telaPrincipalAluno();
 					} else {
-					Telas.telaPrincipalProf();
+						Telas.telaPrincipalProf();
 					}	
 			}
 		} catch(AutenticationException e) {
 			erroLogin.setText("Usuário ou senha inválidos");
 			erroLogin.setVisible(true);
-			//Telas.telaLogin();
 		}
 	}
 	

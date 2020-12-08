@@ -5,31 +5,42 @@ import java.util.ResourceBundle;
 
 import br.edu.ufersa.sei.view.Telas;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TextField;
 
 public class DiretorController implements Initializable {
 	
-	//Componentes de Login de Diretor
+	//Componentes da Tela Principal Diretor
 	
-	@FXML
-	private TextField login;
-	@FXML
-	private TextField senha;
+    public void goToTurmasDir(ActionEvent event) throws Exception {
+    	Telas.telaGerenciarTurmasDiretor();
+    }
 	
-	public void autenticar(ActionEvent event) throws Exception{
+    public void goToDiscDir(ActionEvent event) throws Exception {
+    	Telas.telaGerenciarDiscDiretor();
+    }
+	
+    public void goToPessoasDir(ActionEvent event) throws Exception {
+    	Telas.telaGerenciarPessoaDiretor();
+    }
+    
+    public void goToGenrenciarAluno(ActionEvent event) throws Exception {
+    	Telas.telaGerenciarAlunoDiretor();
+    }
+    
+    public void goToGerenciarProf(ActionEvent event) throws Exception {
+    	Telas.telaGerenciarProfDiretor(); 
+    }
+    
+    public void goToBuscarDir(ActionEvent event) throws Exception {
+    	//Telas.
+    }
+
+	public void voltar(ActionEvent event) throws Exception{
 		Telas.telaPrincipalDiretor();
 	}
 	
 	public void sair(ActionEvent event) throws Exception{
-		Telas.telaLoginDiretor();
-	}
-	
-	//Componentes da Tela Principal Diretor
-	
-	public void voltarDiretor(ActionEvent event) throws Exception{
-		Telas.telaPrincipalDiretor();
+		Telas.telaLogin();
 	}
 
 	@Override
