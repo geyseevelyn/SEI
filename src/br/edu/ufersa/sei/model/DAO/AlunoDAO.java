@@ -16,8 +16,7 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 		PreparedStatement ptst;
 		
 		try {
-			super.inserir(vo);
-			
+			super.inserir(vo);  // tem que ser fora??
 			ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ptst.setString(1, vo.getMatricula());
 			ptst.setLong(2, vo.getTurma().getIdTurma());
@@ -42,16 +41,16 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 
 	@Override
 	public void atualizar(VO vo) throws SQLException {
-		String sql = "update aluno set matricula = ?, idTurma = ?, idUsu = ? where idAluno = ?";
+		String sql = "update aluno set matricula = ?, idTurma = ? where idUsu = ?";
 		PreparedStatement ptst;
 			
 		try {
-			super.atualizar(vo);
+			super.atualizar(vo);  // tem que ser fora??
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setString(1, vo.getMatricula());
 			ptst.setLong(2, vo.getTurma().getIdTurma());
 			ptst.setLong(3, vo.getIdUsu());
-			ptst.setLong(4, vo.getIdAluno());
+			
 			int affectedRows = ptst.executeUpdate();
 			
 			if(affectedRows == 0) {
@@ -64,14 +63,18 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 	}
 	
 	@Override
+	
 	public void deletar(VO vo) throws SQLException {
-		String sql = "delete from aluno where idAluno = ?";
+		String sql = "delete from aluno where idUsu = ?";
 		PreparedStatement ptst;
 		
 		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setLong(1, vo.getIdAluno());
+			ptst.setLong(1, vo.getIdUsu());
+			
 			int affectedRows = ptst.executeUpdate();
+			
+			super.deletar(vo);
 			
 			if(affectedRows == 0) {
 				throw new SQLException("A deleção falhou. Nenhuma linha foi alterada.");
@@ -83,7 +86,8 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 	
 	@Override
 	public ResultSet listar() throws SQLException {
-		String sql = "select * from aluno";  //vai mostrar só idAluno, mat., idTurma, idUsu
+		String sql = "select * from aluno";  //vai mostrar só idAluno, mat., idTurma, idUsu 
+		//select * from usuario, aluno ??
 		PreparedStatement ptst;
 		ResultSet rs = null;
 		

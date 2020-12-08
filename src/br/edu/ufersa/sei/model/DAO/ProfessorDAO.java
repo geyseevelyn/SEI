@@ -40,25 +40,34 @@ public class ProfessorDAO<VO extends ProfessorVO> extends UsuarioDAO<VO>{
 	
 	@Override
 	public void atualizar(VO vo) throws SQLException {
-		String sql = "update professor set idUsu = ? where idProf = ?";
-		PreparedStatement ptst;
 		
 		try {
-			super.atualizar(vo);
-			ptst = getConnection().prepareStatement(sql);
-			ptst.setLong(1, vo.getIdUsu());
-			ptst.setLong(2, vo.getIdProf());
 			
-			int affectedRows = ptst.executeUpdate();
-			
-			if(affectedRows == 0) {
-				throw new SQLException("A atualização falhou. Nenhuma linha foi alterada.");
-			}
+			super.atualizar(vo);  
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
+	
+	/*
+	public void atualizar(VO vo) throws SQLException {
+		
+		String sql = "update professor set idProf = ? where idUsu = ?";
+		PreparedStatement ptst;
+		
+		try {
+			super.atualizar(vo);  // colocar fora??
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setLong(1, vo.getIdUsu());
+			ptst.setLong(2, vo.getIdProf());
+			
+			ptst.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}*/
 	
 	@Override
 	public void deletar(VO vo) throws SQLException {
@@ -68,11 +77,10 @@ public class ProfessorDAO<VO extends ProfessorVO> extends UsuarioDAO<VO>{
 		try {
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setLong(1, vo.getIdProf());
-			int affectedRows = ptst.executeUpdate();
+			ptst.executeUpdate();
 			
-			if(affectedRows == 0) {
-				throw new SQLException("A deleção falhou. Nenhuma linha foi alterada.");
-			}
+			super.deletar(vo);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

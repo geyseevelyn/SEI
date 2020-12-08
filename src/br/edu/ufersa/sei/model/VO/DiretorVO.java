@@ -10,7 +10,6 @@ public class DiretorVO extends UsuarioVO{
 		return idDir;
 	}
 
-
 	public void setIdDir(long idDir) throws InsertException {
 		if(idDir >= 0) {
 			this.idDir = idDir;

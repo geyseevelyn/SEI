@@ -42,15 +42,15 @@ public class UsuarioDAO<VO extends UsuarioVO> extends BaseDAO<VO> implements Usu
 
 	@Override
 	public void atualizar(VO vo) throws SQLException {
-		String sql = "update usuario set nome = ?, cpf = ?, email = ?, endereco = ?, login = ?, senha = ? where idUsu = ?";
+		String sql = "update usuario set nome = ?, cpf = ?, endereco = ?, email = ?, login = ?, senha = ? where idUsu = ?";
 		PreparedStatement ptst;
 		
 		try {
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setString(1, vo.getNome());
 			ptst.setString(2, vo.getCpf());
-			ptst.setString(3, vo.getEmail());
-			ptst.setString(4, vo.getEndereco());
+			ptst.setString(3, vo.getEndereco());
+			ptst.setString(4, vo.getEmail());
 			ptst.setString(5, vo.getLogin());
 			ptst.setString(6, vo.getSenha());
 			ptst.setLong(7, vo.getIdUsu());
@@ -136,7 +136,7 @@ public class UsuarioDAO<VO extends UsuarioVO> extends BaseDAO<VO> implements Usu
 
 	@Override
 	public ResultSet buscarPorLogin(VO vo) throws SQLException{
-		String sql = "select * from Usuario where login = ?";
+		String sql = "select * from usuario where login = ?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 			

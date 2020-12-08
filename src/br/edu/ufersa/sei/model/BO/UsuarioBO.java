@@ -20,7 +20,6 @@ import br.edu.ufersa.sei.model.VO.UsuarioVO;
 public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<UsuarioVO>{
 	
 	private static UsuarioInterDAO<UsuarioVO> usuDAO = new UsuarioDAO<UsuarioVO>();
-	//private static UsuarioInterDAO<AlunoVO> aluDAO = new AlunoDAO<AlunoVO>();
 	private static UsuarioInterDAO<ProfessorVO> profDAO = new ProfessorDAO<ProfessorVO>();
 	private static UsuarioInterDAO<DiretorVO> dirDAO = new DiretorDAO<DiretorVO>();
 	
@@ -54,17 +53,16 @@ public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<UsuarioVO
 						 
 						 ResultSet profRS = profDAO.buscarPorId(prof);
 						 if(profRS.next()) {
-							 //é um aluno
+							 //é um professor
 							 prof.setLogin(vo.getLogin());
 							 prof.setNome(usuRS.getString("nome"));
 							 prof.setCpf(usuRS.getString("cpf"));
 							 prof.setEndereco(usuRS.getString("endereco"));
 							 prof.setEmail(usuRS.getString("email"));
-							 //alu.getTurma().setIdTurma(aluRS.getLong("idTurma")); //??
 							 return prof;
 							 
 						 } else {	
-							 //tem que ser um professor
+							 //tem que ser um aluno
 							 AlunoVO alu = new AlunoVO();  //tem que preencher tudo?
 							 alu.setIdUsu(usuRS.getLong("idUsu"));
 							 return alu;
@@ -80,8 +78,7 @@ public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<UsuarioVO
 			throw new AutenticationException();
 		}
 	}
-	
-	//criar uma TurmaVO e TurmaBO??
+
 	@Override
 	public void cadastrar(UsuarioVO vo) throws InsertException {
 		try {
@@ -99,9 +96,15 @@ public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<UsuarioVO
 	
 	@Override
 	public void editar(UsuarioVO vo) throws InsertException {
-		//pesquisar se existe???
 		try {
-			usuDAO.atualizar(vo);
+			ResultSet usuRS = usuDAO.buscarPorLogin(vo);
+			
+			//pesquisar se existe
+			if(usuRS.next()) {
+				usuDAO.atualizar(vo);
+			} else {
+				throw new InsertException("Usuário informado não existe!");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}		
@@ -192,9 +195,9 @@ public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<UsuarioVO
 	        	 vo2.setLogin(usuRS.getString("login"));
 	        	 vo2.setSenha(usuRS.getString("senha"));
 	        	 
-			 } //else {
-				 //throw new NotFoundException();
-			 //}
+			 } else {
+				 throw new NotFoundException();
+			 }
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

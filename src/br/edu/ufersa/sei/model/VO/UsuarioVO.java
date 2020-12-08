@@ -95,7 +95,7 @@ public class UsuarioVO {
 			this.senha = senha;
 		}else {
 			throw new InsertException("Senha Inválida! \n(Senha deve conter pelo menos "
-					+ "uma letra, um número, no mínimo 6 e no máximo 10 caracteres)\n");
+					+ "uma letra, um número, no mínimo 6 e no máximo 15 caracteres)\n");
 		}		
 	}
 	

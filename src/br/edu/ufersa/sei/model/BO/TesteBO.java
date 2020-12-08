@@ -1,9 +1,6 @@
 package br.edu.ufersa.sei.model.BO;
 
-import java.util.List;
-
 import br.edu.ufersa.sei.exception.InsertException;
-import br.edu.ufersa.sei.exception.NotFoundException;
 import br.edu.ufersa.sei.model.VO.UsuarioVO;
 
 public class TesteBO {
@@ -61,6 +58,8 @@ public class TesteBO {
 		}
 			
 		//listar (BO)
+		
+		/*
 		try {
 			List<UsuarioVO> usuarios = usuBO.listar();
 			
@@ -83,12 +82,12 @@ public class TesteBO {
 			e.printStackTrace();
 		}
 		
-//		//buscar por id  (BO)
-//		try {
-//			System.out.println(usuBO.buscarPorId(vo4));
-//		} catch (NotFoundException e) {
-//			e.printStackTrace();
-//		}
+    	//buscar por id  (BO)
+		try {
+			System.out.println(usuBO.buscarPorId(vo4));
+		} catch (NotFoundException e) {
+			e.printStackTrace();
+		} */
 	}
 }
 

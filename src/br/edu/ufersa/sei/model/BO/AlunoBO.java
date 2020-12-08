@@ -6,7 +6,7 @@ import java.util.List;
 import br.edu.ufersa.sei.model.VO.AlunoVO;
 import br.edu.ufersa.sei.model.VO.TurmaVO;
 
-public class AlunoBO extends UsuarioBO<AlunoVO> implements AlunoInterBO{
+public class AlunoBO<VO extends AlunoVO>  extends UsuarioBO<AlunoVO> implements AlunoInterBO{
 	
 	//buscar alunos por turma
 	@Override

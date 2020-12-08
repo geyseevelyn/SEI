@@ -38,35 +38,39 @@ public class DiretorDAO<VO extends DiretorVO> extends UsuarioDAO<VO>{
 
 	@Override
 	public void atualizar(VO vo) throws SQLException {
-		super.atualizar(vo);
-		String sql = "update diretor set idUsu = ? where idDir = ?";
-		PreparedStatement ptst;
 		
 		try {
-			ptst = getConnection().prepareStatement(sql);
-			ptst.setLong(1, vo.getIdUsu());
-			ptst.setLong(2, vo.getIdDir());
 			
-			int affectedRows = ptst.executeUpdate();
-			
-			if(affectedRows == 0) {
-				throw new SQLException("A atualização falhou. Nenhuma linha foi alterada.");
-			}
+			super.atualizar(vo);  
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
+	
+	/*
+	public void atualizar(VO vo) throws SQLException {
+		
+		super.atualizar(vo); 
+		
+		String sql = "update diretor set idUsu = ? where idUsu = ?";
+		PreparedStatement ptst;
+		
+		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setLong(1, vo.getIdUsu());
+			ptst.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}*/
 
 	@Override
 	public void deletar(VO vo) throws SQLException {
-		String sql = "delete from diretor where idDir = ?";
-		PreparedStatement psts;
 		
 		try {
-			psts = getConnection().prepareStatement(sql);
-			psts.setLong(1, vo.getIdDir());
-			psts.executeUpdate();
+			super.deletar(vo);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -81,7 +85,7 @@ public class DiretorDAO<VO extends DiretorVO> extends UsuarioDAO<VO>{
 				
  		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setLong(1,vo.getIdDir());
+			ptst.setLong(1,vo.getIdUsu());
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {
