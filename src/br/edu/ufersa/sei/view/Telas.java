@@ -31,44 +31,81 @@ public class Telas extends Application {
 		primaryStage.setScene(cena);
 	}
 	
-	public static void telaLoginAluno() throws Exception {	
-		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaLoginAluno.fxml"));
-		Scene cena = new Scene(root);
-		primaryStage.setScene(cena);
-	}
-	
-	public static void telaLoginDiretor() throws Exception {	
-		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaLoginDiretor.fxml"));
-		Scene cena = new Scene(root);
-		primaryStage.setScene(cena);
-	}
-	
-	public static void telaLoginprof() throws Exception {	
-		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaLoginProf.fxml"));
-		Scene cena = new Scene(root);
-		primaryStage.setScene(cena);
-	}
-	
-	//Principal Aluno
+	//ALUNO
+
 	public static void telaPrincipalAluno() throws Exception {	
 		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaPrincipalAluno.fxml"));
 		Scene cena = new Scene(root);
 		primaryStage.setScene(cena);
 	}
 	
-	//Principal Diretor
-	public static void telaPrincipalDiretor() throws Exception {	
-		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaPrincipalAluno.fxml"));
+	public static void telaDisciplinaAluno() throws Exception {	
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaDisciplinaAluno.fxml"));
 		Scene cena = new Scene(root);
 		primaryStage.setScene(cena);
 	}
 	
-	//Principal Professor
+	public static void telaNotaluno() throws Exception {	
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaNotaAluno.fxml"));
+		Scene cena = new Scene(root);
+		primaryStage.setScene(cena);
+	}
+
+	//PROFESSOR
 	public static void telaPrincipalProf() throws Exception{
 		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaPrincipalProf.fxml"));
 		Scene cena = new Scene(root);
 		primaryStage.setScene(cena);
 	};
+	
+	public static void telaNotaProf() throws Exception{
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaNotaProf.fxml"));
+		Scene cena = new Scene(root);
+		primaryStage.setScene(cena);
+	};
+	
+	public static void telaTurmaProf() throws Exception{
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaTurmaProf.fxml"));
+		Scene cena = new Scene(root);
+		primaryStage.setScene(cena);
+	};
+	
+	//DIRETOR
+	public static void telaPrincipalDiretor() throws Exception {	
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaPrincipalDiretor.fxml"));
+		Scene cena = new Scene(root);
+		primaryStage.setScene(cena);
+	}
+	
+	public static void telaGerenciarTurmasDiretor() throws Exception {	
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaGerenciarTurmasDiretor.fxml"));
+		Scene cena = new Scene(root);
+		primaryStage.setScene(cena);
+	}
+	
+	public static void telaGerenciarDiscDiretor() throws Exception {	
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaGerenciarDiscDiretor.fxml"));
+		Scene cena = new Scene(root);
+		primaryStage.setScene(cena);
+	}
+	
+	public static void telaGerenciarPessoaDiretor() throws Exception {	
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaGerenciarPessoaDiretor.fxml"));
+		Scene cena = new Scene(root);
+		primaryStage.setScene(cena);
+	}
+	
+	public static void telaGerenciarAlunoDiretor() throws Exception {	
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaGerenciarAlunoDiretor.fxml"));
+		Scene cena = new Scene(root);
+		primaryStage.setScene(cena);
+	}
+	
+	public static void telaGerenciarProfDiretor() throws Exception {	
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaGerenciarProfDiretor.fxml"));
+		Scene cena = new Scene(root);
+		primaryStage.setScene(cena);
+	}
 	
 	public static void main(String[] args) {
 		launch();
