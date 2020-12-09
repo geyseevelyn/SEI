@@ -107,6 +107,12 @@ public class Telas extends Application {
 		primaryStage.setScene(cena);
 	}
 	
+	public static void telaBuscarDiretor() throws Exception {	
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaBuscarDiretor.fxml"));
+		Scene cena = new Scene(root);
+		primaryStage.setScene(cena);
+	}
+	
 	public static void main(String[] args) {
 		launch();
 	}

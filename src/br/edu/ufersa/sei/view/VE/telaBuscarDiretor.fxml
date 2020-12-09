@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.sei.controller.DiretorController">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@MenuLateralDiretor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="68.0" fitWidth="19.0" layoutX="77.0" layoutY="439.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Selecionado.png" />
+         </image>
+      </ImageView>
+      <VBox layoutX="133.0" layoutY="336.0" prefHeight="116.0" prefWidth="183.0" spacing="20.0">
+         <children>
+            <Label text="Busca por nome:" textFill="#195683">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </Label>
+            <ChoiceBox prefWidth="150.0" />
+         </children></VBox>
+      <ImageView fitHeight="127.0" fitWidth="125.0" layoutX="683.0" layoutY="-22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logotelas.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="371.0" layoutX="133.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@BUSCAR.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="13.0" layoutY="62.0" mnemonicParsing="false" onAction="#voltar" prefHeight="76.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
+      <Button layoutX="11.0" layoutY="147.0" mnemonicParsing="false" onAction="#goToTurmasDir" prefHeight="86.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
+      <Button layoutX="15.0" layoutY="243.0" mnemonicParsing="false" onAction="#goToDiscDir" prefHeight="84.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
+      <Button layoutX="14.0" layoutY="336.0" mnemonicParsing="false" onAction="#goToPessoasDir" prefHeight="84.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
+      <Button layoutX="14.0" layoutY="423.0" mnemonicParsing="false" onAction="#goToBuscarDir" prefHeight="77.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
+      <Button layoutX="12.0" layoutY="508.0" mnemonicParsing="false" onAction="#sair" prefHeight="77.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
+      <TextField layoutX="298.0" layoutY="390.0" prefHeight="25.0" prefWidth="327.0" promptText="nome do aluno,professor ou disciplina" />
+      <Label layoutX="134.0" layoutY="113.0" text="Busca turma:" textFill="#195683">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <TextField layoutX="133.0" layoutY="162.0" prefHeight="25.0" prefWidth="327.0" promptText="professor" />
+      <Label layoutX="134.0" layoutY="216.0" text="Busca aluno:" textFill="#195683">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <TextField layoutX="133.0" layoutY="265.0" prefHeight="25.0" prefWidth="327.0" promptText="turma" />
+      <TableView layoutX="481.0" layoutY="124.0" prefHeight="76.0" prefWidth="302.0">
+        <columns>
+          <TableColumn prefWidth="191.0" text="Professor" />
+          <TableColumn minWidth="0.0" prefWidth="110.0" text="Turma" />
+        </columns>
+      </TableView>
+      <TableView layoutX="481.0" layoutY="227.0" prefHeight="76.0" prefWidth="302.0">
+         <columns>
+            <TableColumn prefWidth="191.0" text="Aluno" />
+            <TableColumn minWidth="0.0" prefWidth="110.0" text="Turma" />
+         </columns>
+      </TableView>
+      <TableView layoutX="134.0" layoutY="434.0" prefHeight="138.0" prefWidth="641.0">
+         <columns>
+            <TableColumn prefWidth="191.0" text="Aluno" />
+            <TableColumn minWidth="0.0" prefWidth="110.0" text="Turma" />
+         </columns>
+      </TableView>
+   </children>
+</Pane>

@@ -32,7 +32,7 @@ public class DiretorController implements Initializable {
     }
     
     public void goToBuscarDir(ActionEvent event) throws Exception {
-    	//Telas.
+    	Telas.telaBuscarDiretor();
     }
 
 	public void voltar(ActionEvent event) throws Exception{

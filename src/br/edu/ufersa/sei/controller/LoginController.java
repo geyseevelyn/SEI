@@ -42,7 +42,7 @@ public class LoginController implements Initializable {
 		try {
 			UsuarioVO autenticado = usuBO.autenticar(vo);
 			if(autenticado instanceof DiretorVO) {
-				Telas.telaPrincipalDiretor(vo); 
+				Telas.telaPrincipalDiretor(); 
 			} else {
 					if(autenticado instanceof AlunoVO) {
 						Telas.telaPrincipalAluno();
