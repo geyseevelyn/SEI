@@ -39,32 +39,13 @@ public class DiretorDAO<VO extends DiretorVO> extends UsuarioDAO<VO>{
 	@Override
 	public void atualizar(VO vo) throws SQLException {
 		
-		try {
-			
+		try {		
 			super.atualizar(vo);  
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	/*
-	public void atualizar(VO vo) throws SQLException {
-		
-		super.atualizar(vo); 
-		
-		String sql = "update diretor set idUsu = ? where idUsu = ?";
-		PreparedStatement ptst;
-		
-		try {
-			ptst = getConnection().prepareStatement(sql);
-			ptst.setLong(1, vo.getIdUsu());
-			ptst.executeUpdate();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}*/
 
 	@Override
 	public void deletar(VO vo) throws SQLException {

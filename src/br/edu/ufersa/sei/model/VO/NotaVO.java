@@ -7,7 +7,7 @@ public class NotaVO {
 	private double n2;
 	private double n3;
 	private double media;
-	private int frequencia;
+	private int faltas;
 	private AlunoVO aluno;
 	private DisciplinaVO disc;
 
@@ -59,13 +59,13 @@ public class NotaVO {
 		return media;
 	}
 	
-	public int getFrequencia() {
-		return frequencia;
+	public int getFaltas() {
+		return faltas;
 	}
 	
-	public void setFrequencia(int frequencia) throws InsertException{
-		if(frequencia>=0) {
-			this.frequencia = frequencia;
+	public void setFaltas(int faltas) throws InsertException{
+		if(faltas>=0) {
+			this.faltas = faltas;
 		}else {
 			throw new InsertException("Frequência Inválida!");
 		}
@@ -99,7 +99,7 @@ public class NotaVO {
 		
 		saida = "Aluno: " + aluno.getNome() + "\nDisciplina: " + disc.getNome() + 
 				" (" + disc.getCodDisc() + ")" + "\nP1: " + n1 + "\nP2: " + n2 +
-				"\nP3: " + n3 + "\nMedia: " + media + "\nFrequência: " + frequencia;
+				"\nP3: " + n3 + "\nMedia: " + media + "\nFaltas: " + faltas;
 		
 	    return saida;
 	}

@@ -1,5 +1,6 @@
 package br.edu.ufersa.sei.view;
 
+import br.edu.ufersa.sei.model.VO.UsuarioVO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,6 +8,17 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Telas extends Application {
+	
+	private static UsuarioVO user;
+	
+	public static UsuarioVO getUser() {
+		return user;
+	}
+
+	public static void setUser(UsuarioVO user) {
+		Telas.user = user;
+	}
+	
 	private static Stage primaryStage;
 	
 	public static Stage getPrimaryStage() {

@@ -12,7 +12,7 @@ public class TurmaDAO extends BaseDAO<TurmaVO> implements TurmaInterDAO{
 
 	@Override
 	public void inserir(TurmaVO vo) throws SQLException {
-		String sql = "insert into turma (nome, codturma, sala, horario) values (?,?,?,?)";
+		String sql = "insert into turma (nome, codturma, sala, turno) values (?,?,?,?)";
 		PreparedStatement ptst;
 		
 		try {
@@ -30,7 +30,8 @@ public class TurmaDAO extends BaseDAO<TurmaVO> implements TurmaInterDAO{
 			
 			ResultSet generatedKey = ptst.getGeneratedKeys();
 			if (generatedKey.next()) {
-				vo.setIdTurma(generatedKey.getLong(1));
+				vo.setIdTurma(generatedKey.getLong("idTurma"));
+				//System.out.println(vo.getIdTurma());
 			} else {
 				throw new SQLException("Nenhum ID retornado, falha na inserção.");
 			}
@@ -42,7 +43,7 @@ public class TurmaDAO extends BaseDAO<TurmaVO> implements TurmaInterDAO{
 
 	@Override
 	public void atualizar(TurmaVO vo) throws SQLException {
-		String sql = "update turma set nome = ?, codturma = ?, sala = ?, horario = ? where idTurma= ?";
+		String sql = "update turma set nome = ?, codturma = ?, sala = ?, turno = ? where idTurma= ?";
 		PreparedStatement ptst;
 		
 		try {
@@ -137,7 +138,7 @@ public class TurmaDAO extends BaseDAO<TurmaVO> implements TurmaInterDAO{
 	//buscar turma por prof
 	@Override
 	public ResultSet buscarPorProf(ProfessorVO vo) {		
-		String sql = "select t.nome, t.codturma, t.sala, t.horario from turma t where t.idturma in" + 
+		String sql = "select t.nome, t.codturma, t.sala, t.turno from turma t where t.idturma in" + 
 					 "(select tp.idturma from turmaprof tp where idprof = ?)";
 		PreparedStatement ptst;
 		ResultSet rs = null;

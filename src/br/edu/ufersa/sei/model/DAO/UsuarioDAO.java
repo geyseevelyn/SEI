@@ -102,13 +102,13 @@ public class UsuarioDAO<VO extends UsuarioVO> extends BaseDAO<VO> implements Usu
 
 	@Override
 	public ResultSet buscarPorNome(VO vo) throws SQLException {
-		String sql = "select * from usuario where nome = ?"; //mostra a senha
+		String sql = "select * from usuario where nome like ?"; //mostra a senha
 		PreparedStatement ptst;
 		ResultSet rs = null;
 				
  		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setString(1, vo.getNome());
+			ptst.setString(1, "%"+vo.getNome()+"%");
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {
@@ -125,7 +125,7 @@ public class UsuarioDAO<VO extends UsuarioVO> extends BaseDAO<VO> implements Usu
 				
  		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setLong(1,vo.getIdUsu());
+			ptst.setLong(1, vo.getIdUsu());
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {

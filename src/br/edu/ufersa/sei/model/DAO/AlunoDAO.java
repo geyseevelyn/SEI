@@ -16,7 +16,7 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 		PreparedStatement ptst;
 		
 		try {
-			super.inserir(vo);  // tem que ser fora??
+			super.inserir(vo);  
 			ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ptst.setString(1, vo.getMatricula());
 			ptst.setLong(2, vo.getTurma().getIdTurma());
@@ -30,7 +30,7 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 			
 			ResultSet generatedKeys = ptst.getGeneratedKeys();
 			if(generatedKeys.next()) {
-				vo.setIdAluno(generatedKeys.getLong(1));
+				vo.setIdAluno(generatedKeys.getLong("idAluno"));
 			}else {
 				throw new SQLException("A inserção falhou. Nenhum ID foi retornado.");
 			}
@@ -45,40 +45,32 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 		PreparedStatement ptst;
 			
 		try {
-			super.atualizar(vo);  // tem que ser fora??
+			super.atualizar(vo);  
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setString(1, vo.getMatricula());
 			ptst.setLong(2, vo.getTurma().getIdTurma());
 			ptst.setLong(3, vo.getIdUsu());
 			
-			int affectedRows = ptst.executeUpdate();
-			
-			if(affectedRows == 0) {
-				throw new SQLException("A atualização falhou. Nenhuma linha foi alterada.");
-			}
-			
+			ptst.executeUpdate();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	@Override
-	
 	public void deletar(VO vo) throws SQLException {
 		String sql = "delete from aluno where idUsu = ?";
 		PreparedStatement ptst;
 		
 		try {
+			super.listar();
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setLong(1, vo.getIdUsu());
-			
-			int affectedRows = ptst.executeUpdate();
+			ptst.executeUpdate();
 			
 			super.deletar(vo);
-			
-			if(affectedRows == 0) {
-				throw new SQLException("A deleção falhou. Nenhuma linha foi alterada.");
-			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -86,8 +78,7 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 	
 	@Override
 	public ResultSet listar() throws SQLException {
-		String sql = "select * from aluno";  //vai mostrar só idAluno, mat., idTurma, idUsu 
-		//select * from usuario, aluno ??
+		String sql = "select * from aluno"; //"select * from aluno" ??
 		PreparedStatement ptst;
 		ResultSet rs = null;
 		
@@ -102,14 +93,14 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 	
 	@Override
 	public ResultSet buscarPorNome(VO vo) throws SQLException {
-		String sql = "select u.nome, u.cpf, u.endereco, u.email, a.matricula from " + 
-				     "usuario u, aluno a WHERE u.nome = ? and u.idUsu = a.idUsu;";
+		String sql = "select u.idusu, u.nome, u.cpf, u.endereco, u.email, a.matricula, a.idTurma as turma "
+				+ "from usuario u, aluno a WHERE u.nome like ? and u.idUsu = a.idUsu";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 				
  		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setString(1,vo.getNome());
+			ptst.setString(1, "%"+vo.getNome()+"%");
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {
@@ -120,13 +111,14 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 	
 	@Override
 	public ResultSet buscarPorId(VO vo) throws SQLException {
-		String sql = "select * from aluno where idUsu = ?"; 
+		String sql = "select * from usuario u, aluno a where a.idUsu = ? and u.idUsu = ?"; //select * from aluno where idUsu = ?
 		PreparedStatement ptst;
 		ResultSet rs = null;
 				
  		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setLong(1,vo.getIdUsu());
+			ptst.setLong(1, vo.getIdUsu());
+			ptst.setLong(2, vo.getIdUsu());
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {
@@ -135,10 +127,10 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 		return rs;
 	}
 
-	//buscar alunos por turma
+	//buscar alunos por turma (por id)
 	@Override
 	public ResultSet buscarPorTurma(TurmaVO vo) throws SQLException {
-		String sql = "select u.nome, a.matricula from usuario u inner join aluno " + 
+		String sql = "select u.nome, a.matricula from usuario u inner join aluno a " + 
 					 "on u.IdUsu = a.IdUsu where u.IdUsu in " + 
 				     "(select a.idUsu from aluno a where idTurma = ?)";
 		PreparedStatement ptst;

@@ -45,6 +45,7 @@ public class LoginController implements Initializable {
 				Telas.telaPrincipalDiretor(); 
 			} else {
 					if(autenticado instanceof AlunoVO) {
+						Telas.setUser(vo);
 						Telas.telaPrincipalAluno();
 					} else {
 						Telas.telaPrincipalProf();

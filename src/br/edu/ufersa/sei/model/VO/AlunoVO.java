@@ -51,7 +51,7 @@ public class AlunoVO extends UsuarioVO {
 		String saida;
 		saida = super.toString() + "Matrícula: " + matricula + 
 		        "\nTurma: " + turma.getNome() + " (" + turma.getCodTurma()
-		        + ")";
+		        + ")\n";
 		return saida;
 	}
 }

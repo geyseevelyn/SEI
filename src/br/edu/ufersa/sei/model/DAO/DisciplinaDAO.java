@@ -52,12 +52,8 @@ public class DisciplinaDAO extends BaseDAO<DisciplinaVO> {
 			ptst.setBoolean(4, vo.isStatus());
 			ptst.setLong(5, vo.getIdDisc());
 			
-			int affectedRows = ptst.executeUpdate();
-			
-			if(affectedRows == 0) {
-				throw new SQLException("A atualização falhou. Nenhuma linha foi alterada.");
-			}
-			
+			ptst.executeUpdate();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -71,13 +67,8 @@ public class DisciplinaDAO extends BaseDAO<DisciplinaVO> {
 		try {
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setLong(1, vo.getIdDisc());
+			
 			ptst.executeUpdate();
-			
-			int affectedRows = ptst.executeUpdate();
-			
-			if(affectedRows == 0) {
-				throw new SQLException("A atualização falhou. Nenhuma linha foi alterada.");
-			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

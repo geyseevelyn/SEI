@@ -41,8 +41,7 @@ public class ProfessorDAO<VO extends ProfessorVO> extends UsuarioDAO<VO>{
 	@Override
 	public void atualizar(VO vo) throws SQLException {
 		
-		try {
-			
+		try {		
 			super.atualizar(vo);  
 			
 		} catch (SQLException e) {

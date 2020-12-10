@@ -35,6 +35,11 @@ public class AlunoController implements Initializable {
 	private Button minhasNotas;
 	@FXML
 	private Button sair;
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+			//cpf.setText(Telas.getUser().getCpf());
+	}
 	    
 	public void goToDisciplina(ActionEvent event) throws Exception {
 		Telas.telaDisciplinaAluno();
@@ -50,10 +55,5 @@ public class AlunoController implements Initializable {
 	    
 	public void sair() throws Exception {
 		Telas.telaLogin();
-	}
-		
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub	
 	}
 }

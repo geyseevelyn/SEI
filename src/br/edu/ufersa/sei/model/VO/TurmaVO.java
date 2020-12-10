@@ -90,10 +90,9 @@ public class TurmaVO {
 		
 	public String toString() {
 		String saida;
-		saida = "Turma: " + nome + "\nCódigo: " + codTurma + "\nLocal: " +
-		        sala + "\nHorário: " + horario;
+		saida = "Id: " + idTurma + "\nTurma: " + nome + "\nCódigo: " + codTurma + 
+				"\nLocal: " + sala + "\nHorário: " + horario;
 		return saida;
-		// disciplinas[] e alunos[]
 	}
 
 }

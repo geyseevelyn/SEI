@@ -142,7 +142,7 @@ public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<UsuarioVO
 	        	 vo.setEmail(usuRS.getString("email"));
 	        	 vo.setLogin(usuRS.getString("login"));
 	        	 vo.setSenha(usuRS.getString("senha"));
-    
+	        	 
 	        	 usuarios.add(vo);
 	        }
 		} catch (SQLException e) {
@@ -180,12 +180,12 @@ public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<UsuarioVO
 
 	@Override
 	public UsuarioVO buscarPorId(UsuarioVO vo) throws NotFoundException {
-		UsuarioVO vo2 = new UsuarioVO();
 		
 		try {
 			 ResultSet usuRS = usuDAO.buscarPorId(vo);
 			 
 			 if(usuRS.next()) {
+				 UsuarioVO vo2 = new UsuarioVO();
 				 
 				 vo2.setIdUsu(usuRS.getLong("idUsu"));
 	        	 vo2.setNome(usuRS.getString("nome"));
@@ -194,13 +194,13 @@ public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<UsuarioVO
 	        	 vo2.setEmail(usuRS.getString("email"));
 	        	 vo2.setLogin(usuRS.getString("login"));
 	        	 vo2.setSenha(usuRS.getString("senha"));
-	        	 
+	        	 return vo2;
 			 } else {
 				 throw new NotFoundException();
 			 }
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return vo2;
+		return null;
 	}
 }

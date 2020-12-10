@@ -5,7 +5,7 @@ import java.util.List;
 import br.edu.ufersa.sei.exception.InsertException;
 import br.edu.ufersa.sei.exception.NotFoundException;
 
-public interface BaseInterBO<VO> {
+public interface BaseInterBO<VO>{
 	
 	public void cadastrar(VO vo) throws InsertException;
 	public void editar(VO vo) throws InsertException;
