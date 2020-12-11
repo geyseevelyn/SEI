@@ -25,8 +25,7 @@ public class NotaDAO extends BaseDAO<NotaVO>{
 			
 			if(affectedRows == 0) {
 				throw new SQLException("A inserção falhou. Nenhuma linha foi alterada.");
-			}
-			
+			}			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -47,16 +46,11 @@ public class NotaDAO extends BaseDAO<NotaVO>{
 			ptst.setLong(5, vo.getAluno().getIdAluno());
 			ptst.setLong(6, vo.getDisc().getIdDisc());
 			
-			int affectedRows = ptst.executeUpdate();
-			
-			if(affectedRows == 0) {
-				throw new SQLException("A atualização falhou. Nenhuma linha foi alterada.");
-			}
+			ptst.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		
+		}		
 	}
 
 	@Override
@@ -69,12 +63,7 @@ public class NotaDAO extends BaseDAO<NotaVO>{
 			ptst.setLong(1, vo.getAluno().getIdAluno());
 			ptst.setLong(2, vo.getDisc().getIdDisc());
 			
-			int affectedRows = ptst.executeUpdate();
-			
-			if(affectedRows == 0) {
-				throw new SQLException("A atualização falhou. Nenhuma linha foi alterada.");
-			}
-			
+			ptst.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

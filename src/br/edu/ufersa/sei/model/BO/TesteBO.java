@@ -1,9 +1,6 @@
 package br.edu.ufersa.sei.model.BO;
 
-import java.util.List;
-
 import br.edu.ufersa.sei.exception.InsertException;
-import br.edu.ufersa.sei.exception.NotFoundException;
 import br.edu.ufersa.sei.model.DAO.BaseDAO;
 import br.edu.ufersa.sei.model.VO.AlunoVO;
 import br.edu.ufersa.sei.model.VO.TurmaVO;
@@ -15,7 +12,7 @@ public class TesteBO {
 		
 		System.out.println(BaseDAO.getConnection());
 		
-		UsuarioBO<UsuarioVO> usuBO = new UsuarioBO<UsuarioVO>();
+		//UsuarioBO<UsuarioVO> usuBO = new UsuarioBO<UsuarioVO>();
 		UsuarioVO vo = new UsuarioVO();
 		UsuarioVO vo2 = new UsuarioVO();
 		UsuarioVO vo3 = new UsuarioVO();
@@ -60,31 +57,36 @@ public class TesteBO {
 			//usuBO.cadastrar(vo4);
 			//usuBO.editar(vo4);
 			//usuBO.excluir(vo4);
+		
+			//TurmaBO tbo = new TurmaBO();
+			TurmaVO turma2 = new TurmaVO();
 			
-			TurmaVO turma = new TurmaVO();
-			turma.setIdTurma(3);
+			turma2.setCodTurma("T0908");
+			turma2.setNome("2º ANO Bbbbbbbbbbbbb");
+			turma2.setSala("Sala 25");
+			turma2.setHorario("Tarde");
 			
-			AlunoBO<AlunoVO> aluBO = new AlunoBO<AlunoVO>();
+			//tbo.cadastrar(turma2);
+			//tbo.editar(turma2);
+			//System.out.println(turma2.getIdTurma() + "\n");
 			
-			AlunoVO avo = new AlunoVO();
+			//AlunoBO<AlunoVO> aluBO = new AlunoBO<AlunoVO>();
+			AlunoVO avo2 = new AlunoVO();
 			
-			avo.setCpf("111.888.999-56");
-			avo.setNome("José Lima");
-			avo.setEmail("zelima@gmail.com");
-			avo.setEndereco("Rua São Paulo");
-			avo.setLogin("jose34");
-			avo.setSenha("abc123");
-			avo.setMatricula("2019030405");
-			avo.setTurma(turma);
-			avo.setIdUsu(61);  // NÃO ESTÁ PEGANDO AUTOMATICAMENTE
+			avo2.setCpf("222.888.999-56");
+			avo2.setNome("Ana Muller");
+			avo2.setEmail("amuller@gmail.com");
+			avo2.setEndereco("Rua Santos Dummont, 34");
+			avo2.setLogin("aninha23");
+			avo2.setSenha("abc123");
+			avo2.setMatricula("2020110405");
+			avo2.setTurma(turma2);
 			
-			//aluBO.cadastrar(avo);
+			//aluBO.cadastrar(avo2);
 			//aluBO.editar(avo);  //não está pegando o IdUsu
 			//aluBO.excluir(avo);  //não está pegando o IdUsu
 			
-			//System.out.println(avo.getTurma().getIdTurma());
-			//System.out.println(avo.getTurma().getIdTurma());
-			
+			//System.out.println(avo2.getTurma().getIdTurma() + "\n\n\n");
 			
 //			try {
 //				List<AlunoVO> alunos = aluBO.listar();
@@ -95,9 +97,9 @@ public class TesteBO {
 //			} catch (InsertException e) {
 //					e.printStackTrace();
 //			}	
-				
+			
 //			try {
-//				List<AlunoVO> alunos = aluBO.buscarPorNome(avo);
+//				List<AlunoVO> alunos = aluBO.buscarPorNome(avo2);
 //				
 //				for(UsuarioVO alu : alunos) {
 //					System.out.println(alu);
@@ -105,61 +107,68 @@ public class TesteBO {
 //			} catch (NotFoundException e) {
 //				e.printStackTrace();
 //			}	
-			
+//			
 //			try {
-//				   System.out.println(aluBO.buscarPorId(avo));
+//				   System.out.println(aluBO.buscarPorId(avo2));
 //			} catch (NotFoundException e) {
 //				e.printStackTrace();
 //			}	
 	
 			//buscar por turma
 //			try {
-//			List<AlunoVO> alunos = aluBO.buscarPorTurma();
-//			
-//			for(UsuarioVO alu : alunos) {
+//			List<AlunoVO> alunos = aluBO.buscarPorTurma(turma2);
+//
+//				for(UsuarioVO alu : alunos) {
 //				System.out.println(alu);
-//			}
+//				}
 //			} catch (InsertException e) {
-//			e.printStackTrace();
+//				e.printStackTrace();
 //			}	
 			
+			TurmaVO tvo = new TurmaVO();
+			
+			tvo.setCodTurma("T0808");
+			tvo.setNome("8º ANO A");
+			tvo.setSala("Sala 15");
+			tvo.setHorario("Tarde");
+			tvo.setIdTurma(26);
+			
+			//tbo.cadastrar(tvo);
+			//tbo.editar(tvo);
+			
+			System.out.println(tvo.getIdTurma() + "\n");
+			
+//			try {
+//				List<TurmaVO> turmas = tbo.listar();
+//				
+//				for(TurmaVO tur : turmas) {
+//					System.out.println(tur);
+//				}
+//			} catch (InsertException e) {
+//				e.printStackTrace();
+//			}	
+			
+//			try {
+//				List<TurmaVO> turmas = tbo.buscarPorNome(tvo);
+//				
+//				for(TurmaVO tur : turmas) {
+//					System.out.println(tur);
+//				}
+//			} catch (NotFoundException e) {
+//				e.printStackTrace();
+//			}	
+			
+//			try {
+//				   System.out.println(tbo.buscarPorId(tvo));
+//			} catch (NotFoundException e) {
+//				e.printStackTrace();
+//			}	
+		
 		} catch (InsertException e) {
 			System.out.println("FALHOU\n");
 			e.printStackTrace();
 		}
-	
-		// USUÁRIO
-		/* 
-		//listar 
-		try {
-			List<UsuarioVO> usuarios = usuBO.listar();
-			
-			for(UsuarioVO usu : usuarios) {
-				System.out.println(usu);
-			}
-		} catch (InsertException e) {
-			e.printStackTrace();
-		}	
 		
-		// buscar por nome 
-		try {
-			
-			List<UsuarioVO> usuarios = usuBO.buscarPorNome(vo3);
-			
-			for(UsuarioVO usu : usuarios) {
-				System.out.println(usu);
-			}
-		} catch (NotFoundException e) {
-			e.printStackTrace();
-		}
-	
-    	//buscar por id 
-		try {
-			System.out.println(usuBO.buscarPorId(vo4));
-		} catch (NotFoundException e) {
-			e.printStackTrace();
-		}
-		*/ 	
 	}
 }
 

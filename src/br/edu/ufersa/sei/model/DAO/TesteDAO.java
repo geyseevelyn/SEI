@@ -6,7 +6,6 @@ import br.edu.ufersa.sei.model.VO.DisciplinaVO;
 import br.edu.ufersa.sei.model.VO.NotaVO;
 import br.edu.ufersa.sei.model.VO.ProfessorVO;
 import br.edu.ufersa.sei.model.VO.TurmaVO;
-import br.edu.ufersa.sei.model.VO.UsuarioVO;
 import java.sql.SQLException;
 
 public class TesteDAO {
@@ -15,7 +14,7 @@ public class TesteDAO {
 		System.out.println(BaseDAO.getConnection());
 
 		try {
-			TurmaDAO tDao = new TurmaDAO();
+			//TurmaDAO tDao = new TurmaDAO();
 			
 			TurmaVO tvo3 = new TurmaVO();
 			TurmaVO tvo4 = new TurmaVO();
@@ -38,12 +37,12 @@ public class TesteDAO {
 			
 			//System.out.println(tvo4.getIdTurma());
 			
-			UsuarioDAO<UsuarioVO> usuDao = new UsuarioDAO<UsuarioVO>();
+			//UsuarioDAO<UsuarioVO> usuDao = new UsuarioDAO<UsuarioVO>();
 			
 //			UsuarioVO vo = new UsuarioVO();
 //			UsuarioVO vo2 = new UsuarioVO();
 //			UsuarioVO vo3 = new UsuarioVO();
-			UsuarioVO vo4 = new UsuarioVO();
+//			UsuarioVO vo4 = new UsuarioVO();
 
 //			vo.setNome("Joao Pedro");
 //			vo.setCpf("456.888.999-56");
@@ -75,7 +74,7 @@ public class TesteDAO {
 			
 			AlunoDAO<AlunoVO> aDao = new AlunoDAO<AlunoVO>();
 			//ProfessorDAO<ProfessorVO> pDao = new ProfessorDAO<ProfessorVO>();
-			DiretorDAO<DiretorVO> dDao = new DiretorDAO<DiretorVO>();
+			//DiretorDAO<DiretorVO> dDao = new DiretorDAO<DiretorVO>();
 			
 			AlunoVO avo = new AlunoVO();
 			AlunoVO avo2 = new AlunoVO();

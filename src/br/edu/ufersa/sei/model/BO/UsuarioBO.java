@@ -82,7 +82,7 @@ public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<UsuarioVO
 	@Override
 	public void cadastrar(UsuarioVO vo) throws InsertException {
 		try {
-			ResultSet usuRS = usuDAO.buscarPorLogin(vo);
+			ResultSet usuRS = usuDAO.buscarPorId(vo);
 			
 			if(usuRS.next()) {
 				throw new InsertException("Usuário já existe!");
@@ -170,8 +170,7 @@ public class UsuarioBO<VO extends UsuarioVO> implements UsuarioInterBO<UsuarioVO
 	        	 vo2.setSenha(usuRS.getString("senha"));
 	        	 
 	        	 usuarios.add(vo2);
-			 }
-			
+			 }			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

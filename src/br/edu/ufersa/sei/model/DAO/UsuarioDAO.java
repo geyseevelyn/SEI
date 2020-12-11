@@ -136,13 +136,13 @@ public class UsuarioDAO<VO extends UsuarioVO> extends BaseDAO<VO> implements Usu
 
 	@Override
 	public ResultSet buscarPorLogin(VO vo) throws SQLException{
-		String sql = "select * from usuario where login = ?";
+		String sql = "select * from usuario where login like ?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 			
 		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setString(1, vo.getLogin());
+			ptst.setString(1, "%"+vo.getLogin()+"%");
 			rs = ptst.executeQuery();
 		} 
 		catch (SQLException e) {

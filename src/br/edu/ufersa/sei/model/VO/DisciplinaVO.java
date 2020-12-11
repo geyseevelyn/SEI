@@ -77,7 +77,7 @@ public class DisciplinaVO {
 		
 		String saida;
 		saida = "Disciplina: " + nome + "\nCódigo: " + codDisc + "\nStatus: " +
-		        status + "\nProfessor: " + profDisc.getNome();
+		        status + "\nProfessor: " + profDisc.getNome() + "\n";
 		return saida;
 	}
 

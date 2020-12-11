@@ -8,6 +8,7 @@ public class NotaVO {
 	private double n3;
 	private double media;
 	private int faltas;
+	private String situacao;
 	private AlunoVO aluno;
 	private DisciplinaVO disc;
 
@@ -93,13 +94,22 @@ public class NotaVO {
             throw new InsertException("Necessário informar Disciplina!");
         }
     }
+    
+	public String getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(String situacao) throws InsertException{
+		this.situacao = situacao;
+	}
+	
 	public String toString() {
 		String saida;
 		double media = calcularMedia(n1,n2,n3);
 		
 		saida = "Aluno: " + aluno.getNome() + "\nDisciplina: " + disc.getNome() + 
 				" (" + disc.getCodDisc() + ")" + "\nP1: " + n1 + "\nP2: " + n2 +
-				"\nP3: " + n3 + "\nMedia: " + media + "\nFaltas: " + faltas;
+				"\nP3: " + n3 + "\nMedia: " + media + "\nFaltas: " + faltas + "\n";
 		
 	    return saida;
 	}

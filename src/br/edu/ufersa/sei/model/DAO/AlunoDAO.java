@@ -64,7 +64,6 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 		PreparedStatement ptst;
 		
 		try {
-			super.listar();
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setLong(1, vo.getIdUsu());
 			ptst.executeUpdate();
@@ -78,7 +77,7 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 	
 	@Override
 	public ResultSet listar() throws SQLException {
-		String sql = "select * from aluno"; //"select * from aluno" ??
+		String sql = "select * from usuario inner join aluno using (Idusu)"; //"select * from aluno" 
 		PreparedStatement ptst;
 		ResultSet rs = null;
 		
@@ -93,7 +92,7 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 	
 	@Override
 	public ResultSet buscarPorNome(VO vo) throws SQLException {
-		String sql = "select u.idusu, u.nome, u.cpf, u.endereco, u.email, a.matricula, a.idTurma as turma "
+		String sql = "select u.idusu, u.nome, u.cpf, u.endereco, u.email, a.matricula, a.idTurma "
 				+ "from usuario u, aluno a WHERE u.nome like ? and u.idUsu = a.idUsu";
 		PreparedStatement ptst;
 		ResultSet rs = null;

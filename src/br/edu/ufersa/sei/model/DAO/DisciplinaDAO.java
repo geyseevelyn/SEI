@@ -92,13 +92,13 @@ public class DisciplinaDAO extends BaseDAO<DisciplinaVO> {
 
 	@Override
 	public ResultSet buscarPorNome(DisciplinaVO vo) throws SQLException {
-		String sql = "select * from disciplina where nome = ?";
+		String sql = "select * from disciplina where nome like ?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
 				
  		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setString(1,vo.getNome());
+			ptst.setString(1, "%"+vo.getNome()+"%");
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {
@@ -123,4 +123,8 @@ public class DisciplinaDAO extends BaseDAO<DisciplinaVO> {
 		}
 		return rs;
 	}
+	
+	//buscar disciplinas de uma turma
+	//public ResultSet buscarDiscTurma(TurmaVO turma) throws SQLException {
+	// //IMPLEMENTAR};
 }

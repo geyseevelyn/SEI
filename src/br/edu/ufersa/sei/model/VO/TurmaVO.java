@@ -20,11 +20,11 @@ public class TurmaVO {
 		return idTurma;
 	}
 
-	public void setIdTurma(long idTurma) {
+	public void setIdTurma(long idTurma) throws InsertException {
 		if(idTurma >= 0) {
 			this.idTurma = idTurma;
 		}else {
-			System.out.println("Id da Turma Inválido!");
+			throw new InsertException("Id da Turma Inválido!");
 		}
 	}
 	
@@ -76,11 +76,11 @@ public class TurmaVO {
 		}	
 	}
 	
-	public List<DisciplinaVO> getDisciplinas() {
-		return disciplinas;
+	public ArrayList<DisciplinaVO> getDisciplinas() {
+		return (ArrayList<DisciplinaVO>)disciplinas;
 	}
 	
-	public void setDisciplinas(List<DisciplinaVO> disciplinas) throws InsertException{
+	public void setDisciplinas(ArrayList<DisciplinaVO> disciplinas) throws InsertException{
 		if(disciplinas != null) {
 			this.disciplinas = disciplinas;
 		}else {
@@ -91,8 +91,12 @@ public class TurmaVO {
 	public String toString() {
 		String saida;
 		saida = "Id: " + idTurma + "\nTurma: " + nome + "\nCódigo: " + codTurma + 
-				"\nLocal: " + sala + "\nHorário: " + horario;
+				"\nLocal: " + sala + "\nTurno: " + horario + "\n" +
+				"Disciplinas: \n";
+		
+		for(DisciplinaVO disc : disciplinas) {
+			saida += disc.toString();
+		}
 		return saida;
 	}
-
 }

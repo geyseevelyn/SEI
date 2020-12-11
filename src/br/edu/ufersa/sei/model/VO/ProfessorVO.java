@@ -22,11 +22,11 @@ public class ProfessorVO extends UsuarioVO{
 		}
 	}
 
-	public List<TurmaVO> getTurmas() {
-		return turmas;
+	public ArrayList<TurmaVO>getTurmas() {
+		return (ArrayList<TurmaVO>)turmas;
 	}
 
-	public void setTurmas(List<TurmaVO> turmas) throws InsertException{
+	public void setTurmas(ArrayList<TurmaVO> turmas) throws InsertException{
 		if(turmas != null) {
 			this.turmas = turmas;
 		}else {
@@ -34,6 +34,14 @@ public class ProfessorVO extends UsuarioVO{
 		}
 	}
 	
-	//toString()
-	//TurmaVO[] 
+	public String toString() {
+		String saida;
+		saida = super.toString() + "Id: " + idProf + "\n" +
+		        "Turmas: \n"; 
+		
+		for(TurmaVO tur : turmas) {
+			saida += tur.toString();
+		}	
+		return saida;
+	}
 }
