@@ -13,7 +13,7 @@ import br.edu.ufersa.sei.model.VO.AlunoVO;
 import br.edu.ufersa.sei.model.VO.TurmaVO;
 
 public class AlunoBO<VO extends AlunoVO> extends BaseBO<AlunoVO> implements AlunoInterBO{ 
-	private static UsuarioInterDAO<AlunoVO> aluDAO = new AlunoDAO<AlunoVO>();
+	private static AlunoDAO<AlunoVO> aluDAO = new AlunoDAO<AlunoVO>();
 	private static ResultSet aluRS = null;
 
 	@Override
@@ -182,26 +182,29 @@ public class AlunoBO<VO extends AlunoVO> extends BaseBO<AlunoVO> implements Alun
 			 TurmaDAO tdao = new TurmaDAO();
 			 TurmaVO tvo = new TurmaVO();
 			 
-			 try {
-				 ResultSet turRS = tdao.buscarPorId(turma);
-				 while(turRS.next()) {
-					 tvo.setIdTurma(turRS.getLong("idTurma"));
-				 }
-			 } catch (SQLException e) {
-				e.printStackTrace();
-			 }
+//			 try {
+//				 ResultSet turRS = tdao.buscarPorId(turma);
+//				 while(turRS.next()) {
+//					 tvo.setIdTurma(turRS.getLong("idTurma"));
+//				 }
+//			 } catch (SQLException e) {
+//				e.printStackTrace();
+//			 }
+			 
+			 tvo.setIdTurma(turma.getIdTurma());
 
-			 AlunoVO vo = new AlunoVO();
-	         aluRS = aluDAO.listar();
+	         aluRS = aluDAO.buscarPorTurma(tvo);
 	         
 	         while(aluRS.next()) {	 
+	        	 AlunoVO vo = new AlunoVO();
+	        	 
 	        	 vo.setIdUsu(aluRS.getLong("idusu"));
 	        	 vo.setNome(aluRS.getString("nome"));
 	        	 vo.setMatricula(aluRS.getString("matricula"));
 	        	 vo.setTurma(tvo);
-	        	}
-	        	 alunos.add(vo);  
-
+	        	 
+	        	 alunos.add(vo); 
+	        }	 
 		} catch (SQLException e) {
 				e.printStackTrace();
 		}

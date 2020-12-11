@@ -129,7 +129,7 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 	//buscar alunos por turma (por id)
 	@Override
 	public ResultSet buscarPorTurma(TurmaVO vo) throws SQLException {
-		String sql = "select u.nome, a.matricula from usuario u inner join aluno a " + 
+		String sql = "select u.idusu, u.nome, a.matricula from usuario u inner join aluno a " + 
 					 "on u.IdUsu = a.IdUsu where u.IdUsu in " + 
 				     "(select a.idUsu from aluno a where idTurma = ?)";
 		PreparedStatement ptst;
@@ -137,7 +137,7 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 				
  		try {
 			ptst = getConnection().prepareStatement(sql);
-			ptst.setLong(1,vo.getIdTurma());
+			ptst.setLong(1, vo.getIdTurma());
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {

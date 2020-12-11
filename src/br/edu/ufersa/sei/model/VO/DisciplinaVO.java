@@ -76,7 +76,7 @@ public class DisciplinaVO {
 			status = "Finalizada";
 		
 		String saida;
-		saida = "Disciplina: " + nome + "\nCódigo: " + codDisc + "\nStatus: " +
+		saida = "Id: " + idDisc + "\nDisciplina: " + nome + "\nCódigo: " + codDisc + "\nStatus: " +
 		        status + "\nProfessor: " + profDisc.getNome() + "\n";
 		return saida;
 	}

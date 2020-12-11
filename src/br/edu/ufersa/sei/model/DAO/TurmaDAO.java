@@ -130,7 +130,7 @@ public class TurmaDAO extends BaseDAO<TurmaVO> implements TurmaInterDAO{
 	//buscar turmas de um prof
 	@Override
 	public ResultSet buscarPorProf(ProfessorVO vo) {		
-		String sql = "select t.nome, t.codturma, t.sala, t.turno from turma t where t.idturma in" + 
+		String sql = "select t.codturma, t.nome, t.sala, t.turno from turma t where t.idturma in" + 
 					 "(select tp.idturma from turmaprof tp where idprof = ?)";
 		PreparedStatement ptst;
 		ResultSet rs = null;
@@ -148,11 +148,10 @@ public class TurmaDAO extends BaseDAO<TurmaVO> implements TurmaInterDAO{
 	
 	//TurmaDisc (atribuir diciplinas a uma turma)
 	@Override
-	public void cadastrarDisicplinas(TurmaVO turma) throws SQLException {
+	public void cadastrarDisicplinas(TurmaVO turma, DisciplinaVO disc) throws SQLException {
 		String sql = "insert into turmadisc (idturma, iddisc) values (?,?)";
 		PreparedStatement ptst;
 		
-		for(DisciplinaVO disc : turma.getDisciplinas()) {
 			try {		
 				ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 				ptst.setLong(1, turma.getIdTurma());
@@ -162,15 +161,14 @@ public class TurmaDAO extends BaseDAO<TurmaVO> implements TurmaInterDAO{
 				if (affectedRows == 0) {
 					throw new SQLException("Não foi possível cadastrar disciplina");
 				}
-				
-				ResultSet generatedKeys = ptst.getGeneratedKeys();
-				if (!generatedKeys.next()) {
-					throw new SQLException("Não foi possível cadastrar disciplina");
-				}
+//				
+//				ResultSet generatedKeys = ptst.getGeneratedKeys();
+//				if (!generatedKeys.next()) {
+//					throw new SQLException("Não foi possível cadastrar disciplina");
+//				}
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}
-		}	
+			}	
 	}
 }

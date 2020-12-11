@@ -1,6 +1,9 @@
 package br.edu.ufersa.sei.model.BO;
 
+import java.util.List;
+
 import br.edu.ufersa.sei.exception.InsertException;
+import br.edu.ufersa.sei.exception.NotFoundException;
 import br.edu.ufersa.sei.model.DAO.BaseDAO;
 import br.edu.ufersa.sei.model.VO.AlunoVO;
 import br.edu.ufersa.sei.model.VO.TurmaVO;
@@ -58,7 +61,7 @@ public class TesteBO {
 			//usuBO.editar(vo4);
 			//usuBO.excluir(vo4);
 		
-			//TurmaBO tbo = new TurmaBO();
+			TurmaBO tbo = new TurmaBO();
 			TurmaVO turma2 = new TurmaVO();
 			
 			turma2.setCodTurma("T0908");
@@ -70,7 +73,7 @@ public class TesteBO {
 			//tbo.editar(turma2);
 			//System.out.println(turma2.getIdTurma() + "\n");
 			
-			//AlunoBO<AlunoVO> aluBO = new AlunoBO<AlunoVO>();
+			AlunoBO<AlunoVO> aluBO = new AlunoBO<AlunoVO>();
 			AlunoVO avo2 = new AlunoVO();
 			
 			avo2.setCpf("222.888.999-56");
@@ -87,6 +90,53 @@ public class TesteBO {
 			//aluBO.excluir(avo);  //não está pegando o IdUsu
 			
 			//System.out.println(avo2.getTurma().getIdTurma() + "\n\n\n");
+			
+			TurmaVO tvo2 = new TurmaVO();
+			
+			tvo2.setCodTurma("T9999");
+			tvo2.setNome("1º ANO C");
+			tvo2.setSala("Sala 18");
+			tvo2.setHorario("Manhã");
+			
+			tbo.cadastrar(tvo2);			
+			System.out.println(tvo2.getIdTurma());
+			
+			AlunoVO a1 = new AlunoVO();
+			AlunoVO a2 = new AlunoVO();
+			
+			a1.setCpf("333.555.999-56");
+			a1.setNome("Ariana Grande");
+			a1.setEmail("arig69@gmail.com");
+			a1.setEndereco("Hollywood, 34");
+			a1.setLogin("ariana");
+			a1.setSenha("abc123");
+			a1.setMatricula("2017110405");
+			a1.setTurma(tvo2);
+			
+			aluBO.cadastrar(a1);
+			System.out.println(a1.getTurma().getIdTurma());
+			
+			a2.setCpf("123.555.000-76");
+			a2.setNome("Carlos Maia");
+			a2.setEmail("carlinhos@gmail.com");
+			a2.setEndereco("Vila, 34");
+			a2.setLogin("carlinhos");
+			a2.setSenha("abc123");
+			a2.setMatricula("2016110411");
+			a2.setTurma(tvo2);
+			
+			aluBO.cadastrar(a2);
+			System.out.println(a2.getTurma().getIdTurma() + "\n\n\n");
+			
+			try {
+			List<AlunoVO> alunos = aluBO.buscarPorTurma(tvo2);
+
+				for(UsuarioVO alu : alunos) {
+				System.out.println(alu);
+				}
+			} catch (NotFoundException e) {
+				e.printStackTrace();
+			}
 			
 //			try {
 //				List<AlunoVO> alunos = aluBO.listar();
@@ -123,8 +173,9 @@ public class TesteBO {
 //				}
 //			} catch (InsertException e) {
 //				e.printStackTrace();
-//			}	
+//			}				
 			
+			//TurmaBO
 			TurmaVO tvo = new TurmaVO();
 			
 			tvo.setCodTurma("T0808");
@@ -136,7 +187,7 @@ public class TesteBO {
 			//tbo.cadastrar(tvo);
 			//tbo.editar(tvo);
 			
-			System.out.println(tvo.getIdTurma() + "\n");
+			//System.out.println(tvo.getIdTurma() + "\n");
 			
 //			try {
 //				List<TurmaVO> turmas = tbo.listar();

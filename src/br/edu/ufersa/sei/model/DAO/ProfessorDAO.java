@@ -8,7 +8,7 @@ import java.sql.Statement;
 import br.edu.ufersa.sei.model.VO.ProfessorVO;
 import br.edu.ufersa.sei.model.VO.TurmaVO;
 
-public class ProfessorDAO<VO extends ProfessorVO> extends UsuarioDAO<VO>{
+public class ProfessorDAO<VO extends ProfessorVO> extends UsuarioDAO<VO>  implements ProfessorInterDAO{
 	
 	@Override
 	public void inserir(VO vo) throws SQLException{
@@ -117,11 +117,11 @@ public class ProfessorDAO<VO extends ProfessorVO> extends UsuarioDAO<VO>{
 	}
 	
 	//TurmaProf (atribuir turmas)
-	public void cadastrarTurmas(ProfessorVO prof) throws SQLException {
+	@Override
+	public void cadastrarTurmas(TurmaVO tur, ProfessorVO prof) throws SQLException {
 		String sql = "insert into turmaprof (idturma, idprof) values (?,?)";
 		PreparedStatement ptst;
-		
-		for(TurmaVO tur : prof.getTurmas()) {
+
 			try {		
 				ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 				ptst.setLong(1, tur.getIdTurma());
@@ -140,6 +140,5 @@ public class ProfessorDAO<VO extends ProfessorVO> extends UsuarioDAO<VO>{
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}	
 	}
 }

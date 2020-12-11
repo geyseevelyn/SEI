@@ -23,10 +23,11 @@ public class TesteDAO {
 			tvo3.setCodTurma("T0109");
 			tvo3.setSala("Sala 20");
 			tvo3.setHorario("Manhã");
+			tvo3.setIdTurma(3);
 			
 			//tDao.inserir(tvo3);
 			
-			//System.out.println(tvo3.getIdTurma());
+			System.out.println(tvo3.getIdTurma());
 			
 			tvo4.setNome("3º ANO b");
 			tvo4.setCodTurma("T1000");
@@ -34,7 +35,6 @@ public class TesteDAO {
 			tvo4.setHorario("Tarde");
 			
 			//tDao.inserir(tvo4);
-			
 			//System.out.println(tvo4.getIdTurma());
 			
 			//UsuarioDAO<UsuarioVO> usuDao = new UsuarioDAO<UsuarioVO>();
@@ -73,7 +73,7 @@ public class TesteDAO {
 			//usuDao.deletar(vo2);
 			
 			AlunoDAO<AlunoVO> aDao = new AlunoDAO<AlunoVO>();
-			//ProfessorDAO<ProfessorVO> pDao = new ProfessorDAO<ProfessorVO>();
+			ProfessorDAO<ProfessorVO> pDao = new ProfessorDAO<ProfessorVO>();
 			//DiretorDAO<DiretorVO> dDao = new DiretorDAO<DiretorVO>();
 			
 			AlunoVO avo = new AlunoVO();
@@ -139,11 +139,16 @@ public class TesteDAO {
 			pvo3.setEndereco("Rua Pedro Pereira, 1290");
 			pvo3.setLogin("luizasouza");
 			pvo3.setSenha("abc123");
+			pvo3.setIdProf(10);
 			
 			//pDao.inserir(pvo);
 			//pDao.inserir(pvo3);
 			//pDao.atualizar(pvo2); // idUsu = 7
 			//pDao.deletar(pvo);  // idUsu = 7
+			
+			pDao.cadastrarTurmas(tvo3, pvo3);
+			System.out.println(tvo3.getIdTurma() + "   " + pvo3.getIdProf());
+			System.out.println(pvo3);
 			
 			dvo.setNome("Weitinho Sales");
 			dvo.setCpf("345.098.444-01");
@@ -197,6 +202,10 @@ public class TesteDAO {
 			//discDao.inserir(discvo3);
 			//discDao.atualizar(discvo3);
 			//discDao.deletar(discvo3);
+			
+			//tDao.cadastrarDisicplinas(tvo3, discvo2);
+			//System.out.println(tvo3.getIdTurma() + "     " + discvo2.getIdDisc());
+			//System.out.println(tvo3);
 			
 			avo.setIdAluno(14);
 			avo2.setIdAluno(11);
@@ -266,21 +275,6 @@ public class TesteDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		//BO
-		
-		// listar pelo BO
-		
-		/*
-		try {
-			UsuarioBO<UsuarioVO> usuBO = new UsuarioBO<UsuarioVO>();
-			List<UsuarioVO> usuarios = usuBO.listar();
-			
-			for(UsuarioVO usu : usuarios) {
-				System.out.println(usu);
-			}
-		} catch (InsertException e) {
-			e.printStackTrace();
-		}*/
+
 	}
 }
