@@ -146,7 +146,6 @@ public class TesteDAO {
 			//pDao.atualizar(pvo2); // idUsu = 7
 			//pDao.deletar(pvo);  // idUsu = 7
 			
-			pDao.cadastrarTurmas(tvo3, pvo3);
 			System.out.println(tvo3.getIdTurma() + "   " + pvo3.getIdProf());
 			System.out.println(pvo3);
 			

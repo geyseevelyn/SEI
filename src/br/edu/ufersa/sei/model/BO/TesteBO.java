@@ -98,7 +98,7 @@ public class TesteBO {
 			tvo2.setSala("Sala 18");
 			tvo2.setHorario("Manhã");
 			
-			tbo.cadastrar(tvo2);			
+			//tbo.cadastrar(tvo2);			
 			System.out.println(tvo2.getIdTurma());
 			
 			AlunoVO a1 = new AlunoVO();
@@ -113,7 +113,7 @@ public class TesteBO {
 			a1.setMatricula("2017110405");
 			a1.setTurma(tvo2);
 			
-			aluBO.cadastrar(a1);
+			//aluBO.cadastrar(a1);
 			System.out.println(a1.getTurma().getIdTurma());
 			
 			a2.setCpf("123.555.000-76");
@@ -125,7 +125,7 @@ public class TesteBO {
 			a2.setMatricula("2016110411");
 			a2.setTurma(tvo2);
 			
-			aluBO.cadastrar(a2);
+			//aluBO.cadastrar(a2);
 			System.out.println(a2.getTurma().getIdTurma() + "\n\n\n");
 			
 			try {
@@ -138,15 +138,15 @@ public class TesteBO {
 				e.printStackTrace();
 			}
 			
-//			try {
-//				List<AlunoVO> alunos = aluBO.listar();
-//					
-//				for(UsuarioVO alu : alunos) {
-//					System.out.println(alu);
-//				}
-//			} catch (InsertException e) {
-//					e.printStackTrace();
-//			}	
+			try {
+				List<AlunoVO> alunos = aluBO.listar();
+					
+				for(UsuarioVO alu : alunos) {
+					System.out.println(alu);
+				}
+			} catch (InsertException e) {
+					e.printStackTrace();
+			}	
 			
 //			try {
 //				List<AlunoVO> alunos = aluBO.buscarPorNome(avo2);

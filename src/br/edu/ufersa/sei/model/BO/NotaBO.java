@@ -19,7 +19,8 @@ public class NotaBO extends BaseBO<NotaVO>{
 	@Override
 	public void cadastrar(NotaVO vo) throws InsertException {
 		try {
-			nDAO.inserir(vo);
+			 nDAO.inserir(vo);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}	
@@ -28,7 +29,8 @@ public class NotaBO extends BaseBO<NotaVO>{
 	@Override
 	public void editar(NotaVO vo) throws InsertException {
 		try {
-			nDAO.atualizar(vo);
+			 nDAO.atualizar(vo);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}	
@@ -37,7 +39,8 @@ public class NotaBO extends BaseBO<NotaVO>{
 	@Override
 	public void excluir(NotaVO vo) {
 		try {
-			nDAO.deletar(vo);
+			 nDAO.deletar(vo);
+			 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}	

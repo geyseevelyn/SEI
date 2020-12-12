@@ -7,8 +7,6 @@ import java.util.List;
 import br.edu.ufersa.sei.exception.InsertException;
 import br.edu.ufersa.sei.exception.NotFoundException;
 import br.edu.ufersa.sei.model.DAO.AlunoDAO;
-import br.edu.ufersa.sei.model.DAO.TurmaDAO;
-import br.edu.ufersa.sei.model.DAO.UsuarioInterDAO;
 import br.edu.ufersa.sei.model.VO.AlunoVO;
 import br.edu.ufersa.sei.model.VO.TurmaVO;
 
@@ -175,24 +173,24 @@ public class AlunoBO<VO extends AlunoVO> extends BaseBO<AlunoVO> implements Alun
 	
 	//buscar alunos por turma
 	@Override
-	public List<AlunoVO> buscarPorTurma(TurmaVO turma) throws NotFoundException { //TESTAR ISSO!!!!!
+	public List<AlunoVO> buscarPorTurma(TurmaVO turma) throws NotFoundException { 
 		List<AlunoVO> alunos = new ArrayList<AlunoVO>();
 	
 		try {
-			 TurmaDAO tdao = new TurmaDAO();
+			 //TurmaDAO tdao = new TurmaDAO();
 			 TurmaVO tvo = new TurmaVO();
 			 
-//			 try {
-//				 ResultSet turRS = tdao.buscarPorId(turma);
-//				 while(turRS.next()) {
-//					 tvo.setIdTurma(turRS.getLong("idTurma"));
-//				 }
-//			 } catch (SQLException e) {
-//				e.printStackTrace();
-//			 }
+			 /*
+			 try {
+				 ResultSet turRS = tdao.buscarPorId(turma);
+				 while(turRS.next()) {
+					 tvo.setIdTurma(turRS.getLong("idTurma"));
+				 }
+			 } catch (SQLException e) {
+				e.printStackTrace();
+			 } */
 			 
 			 tvo.setIdTurma(turma.getIdTurma());
-
 	         aluRS = aluDAO.buscarPorTurma(tvo);
 	         
 	         while(aluRS.next()) {	 

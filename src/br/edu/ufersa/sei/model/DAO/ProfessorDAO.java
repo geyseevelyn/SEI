@@ -6,9 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import br.edu.ufersa.sei.model.VO.ProfessorVO;
-import br.edu.ufersa.sei.model.VO.TurmaVO;
 
-public class ProfessorDAO<VO extends ProfessorVO> extends UsuarioDAO<VO>  implements ProfessorInterDAO{
+public class ProfessorDAO<VO extends ProfessorVO> extends UsuarioDAO<VO> {
 	
 	@Override
 	public void inserir(VO vo) throws SQLException{
@@ -114,31 +113,5 @@ public class ProfessorDAO<VO extends ProfessorVO> extends UsuarioDAO<VO>  implem
 			e.printStackTrace();
 		}
 		return rs;
-	}
-	
-	//TurmaProf (atribuir turmas)
-	@Override
-	public void cadastrarTurmas(TurmaVO tur, ProfessorVO prof) throws SQLException {
-		String sql = "insert into turmaprof (idturma, idprof) values (?,?)";
-		PreparedStatement ptst;
-
-			try {		
-				ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-				ptst.setLong(1, tur.getIdTurma());
-				ptst.setLong(2, prof.getIdProf());
-			
-				int affectedRows = ptst.executeUpdate();
-				if (affectedRows == 0) {
-					throw new SQLException("Não foi possível atribuir turma");
-				}
-				
-				ResultSet generatedKeys = ptst.getGeneratedKeys();
-				if (!generatedKeys.next()) {
-					throw new SQLException("Não foi possível atribuir turma");
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 	}
 }

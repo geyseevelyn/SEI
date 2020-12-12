@@ -24,7 +24,7 @@
             <Image url="@card%20prof.png" />
          </image>
       </ImageView>
-      <Label layoutX="163.0" layoutY="43.0" text="Bem Vindo(a)">
+      <Label layoutX="163.0" layoutY="43.0" text="Bem-Vindo(a)">
          <font>
             <Font size="41.0" />
          </font>

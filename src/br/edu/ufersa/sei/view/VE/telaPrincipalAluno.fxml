@@ -31,7 +31,7 @@
          <image>
             <Image url="@card%20aluno.png" />
          </image></ImageView>
-      <Label layoutX="157.0" layoutY="41.0" text="Bem Vindo(a)">
+      <Label layoutX="157.0" layoutY="41.0" text="Bem-Vindo(a)">
          <font>
             <Font size="41.0" />
          </font>

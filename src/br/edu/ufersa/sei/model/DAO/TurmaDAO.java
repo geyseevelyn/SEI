@@ -5,11 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import br.edu.ufersa.sei.model.VO.DisciplinaVO;
-import br.edu.ufersa.sei.model.VO.ProfessorVO;
 import br.edu.ufersa.sei.model.VO.TurmaVO;
 
-public class TurmaDAO extends BaseDAO<TurmaVO> implements TurmaInterDAO{
+public class TurmaDAO extends BaseDAO<TurmaVO>{
 
 	@Override
 	public void inserir(TurmaVO vo) throws SQLException {
@@ -31,7 +29,6 @@ public class TurmaDAO extends BaseDAO<TurmaVO> implements TurmaInterDAO{
 			ResultSet generatedKeys = ptst.getGeneratedKeys();
 			if (generatedKeys.next()) {
 				vo.setIdTurma(generatedKeys.getLong("idTurma"));
-				//System.out.println(vo.getIdTurma());
 			} else {
 				throw new SQLException("Nenhum ID retornado, falha na inserção.");
 			}
@@ -43,7 +40,7 @@ public class TurmaDAO extends BaseDAO<TurmaVO> implements TurmaInterDAO{
 
 	@Override
 	public void atualizar(TurmaVO vo) throws SQLException {
-		String sql = "update turma set nome = ?, codturma = ?, sala = ?, turno = ? where idTurma= ?";
+		String sql = "update turma set nome = ?, codturma = ?, sala = ?, turno = ? where idTurma = ?";
 		PreparedStatement ptst;
 		
 		try {
@@ -69,7 +66,6 @@ public class TurmaDAO extends BaseDAO<TurmaVO> implements TurmaInterDAO{
 		try {
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setLong(1, vo.getIdTurma());
-			ptst.executeUpdate();
 			
 			ptst.executeUpdate();
 			
@@ -125,50 +121,5 @@ public class TurmaDAO extends BaseDAO<TurmaVO> implements TurmaInterDAO{
 			e.printStackTrace();
 		}
 		return rs;
-	}
-
-	//buscar turmas de um prof
-	@Override
-	public ResultSet buscarPorProf(ProfessorVO vo) {		
-		String sql = "select t.codturma, t.nome, t.sala, t.turno from turma t where t.idturma in" + 
-					 "(select tp.idturma from turmaprof tp where idprof = ?)";
-		PreparedStatement ptst;
-		ResultSet rs = null;
-				
- 		try {
-			ptst = getConnection().prepareStatement(sql);
-			ptst.setLong(1,vo.getIdProf());
-			rs = ptst.executeQuery();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return rs;
-	}
-	
-	//TurmaDisc (atribuir diciplinas a uma turma)
-	@Override
-	public void cadastrarDisicplinas(TurmaVO turma, DisciplinaVO disc) throws SQLException {
-		String sql = "insert into turmadisc (idturma, iddisc) values (?,?)";
-		PreparedStatement ptst;
-		
-			try {		
-				ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-				ptst.setLong(1, turma.getIdTurma());
-				ptst.setLong(2, disc.getIdDisc());
-			
-				int affectedRows = ptst.executeUpdate();
-				if (affectedRows == 0) {
-					throw new SQLException("Não foi possível cadastrar disciplina");
-				}
-//				
-//				ResultSet generatedKeys = ptst.getGeneratedKeys();
-//				if (!generatedKeys.next()) {
-//					throw new SQLException("Não foi possível cadastrar disciplina");
-//				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}	
 	}
 }

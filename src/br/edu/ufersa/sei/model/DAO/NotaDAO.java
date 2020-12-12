@@ -64,6 +64,7 @@ public class NotaDAO extends BaseDAO<NotaVO>{
 			ptst.setLong(2, vo.getDisc().getIdDisc());
 			
 			ptst.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -98,6 +99,7 @@ public class NotaDAO extends BaseDAO<NotaVO>{
  		try {
 			ptst = getConnection().prepareStatement(sql);
 			rs = ptst.executeQuery();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

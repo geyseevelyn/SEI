@@ -35,6 +35,7 @@ public class UsuarioDAO<VO extends UsuarioVO> extends BaseDAO<VO> implements Usu
 			}else {
 				throw new SQLException("A inserção falhou. Nenhum ID foi retornado.");
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		  }

@@ -8,10 +8,9 @@ import java.util.List;
 import br.edu.ufersa.sei.exception.InsertException;
 import br.edu.ufersa.sei.exception.NotFoundException;
 import br.edu.ufersa.sei.model.DAO.TurmaDAO;
-import br.edu.ufersa.sei.model.VO.ProfessorVO;
 import br.edu.ufersa.sei.model.VO.TurmaVO;
 
-public class TurmaBO extends BaseBO<TurmaVO> implements TurmaInterBO{
+public class TurmaBO extends BaseBO<TurmaVO>{
 	private static TurmaDAO tDAO = new TurmaDAO(); 
 	private static ResultSet turRS = null;
 	
@@ -132,13 +131,5 @@ public class TurmaBO extends BaseBO<TurmaVO> implements TurmaInterBO{
 			e.printStackTrace();
 		}
 		return null;
-	}
-	
-	//buscar turmas de um prof
-	@Override
-	public List<TurmaVO> buscarPorProf(ProfessorVO vo) throws NotFoundException{		
-		List<TurmaVO> turmas = new ArrayList<TurmaVO>();
-		return turmas;
-		//IMPLEMENTAR
 	}
 }
