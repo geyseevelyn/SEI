@@ -1,5 +1,6 @@
 package br.edu.ufersa.sei.view;
 
+import br.edu.ufersa.sei.controller.DiretorController;
 import br.edu.ufersa.sei.model.VO.UsuarioVO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -96,9 +97,14 @@ public class Telas extends Application {
 	}
 	
 	public static void telaGerenciarDiscDiretor() throws Exception {	
-		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaGerenciarDiscDiretor.fxml"));
+		FXMLLoader loader = new FXMLLoader(Telas.class.getResource("VE/telaGerenciarDiscDiretor.fxml"));
+		Parent root = loader.load();
+		DiretorController dc = loader.getController();
+		dc.carregarTabelaDisc();
+		dc.carregarCBDisc ();
 		Scene cena = new Scene(root);
 		primaryStage.setScene(cena);
+		
 	}
 	
 	public static void telaGerenciarPessoaDiretor() throws Exception {	

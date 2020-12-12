@@ -6,6 +6,8 @@ import br.edu.ufersa.sei.exception.InsertException;
 import br.edu.ufersa.sei.exception.NotFoundException;
 import br.edu.ufersa.sei.model.DAO.BaseDAO;
 import br.edu.ufersa.sei.model.VO.AlunoVO;
+import br.edu.ufersa.sei.model.VO.DisciplinaVO;
+import br.edu.ufersa.sei.model.VO.ProfessorVO;
 import br.edu.ufersa.sei.model.VO.TurmaVO;
 import br.edu.ufersa.sei.model.VO.UsuarioVO;
 
@@ -23,6 +25,10 @@ public class TesteBO {
 		
 		//cadastrar pelo BO
 		try {
+			
+			ProfessorVO pvo = new ProfessorVO();
+			pvo.setNome("Mauricionhooooo");
+			System.out.println(pvo.getNome());
 			
 			//setar novo usuário para ser cadastrado pelo BO
 			vo.setCpf("777.888.999-56");
@@ -90,6 +96,20 @@ public class TesteBO {
 			//aluBO.excluir(avo);  //não está pegando o IdUsu
 			
 			//System.out.println(avo2.getTurma().getIdTurma() + "\n\n\n");
+			DisciplinaBO dbo = new DisciplinaBO();
+//			DisciplinaVO dvo = new DisciplinaVO();
+//			ProfessorVO pvo = new ProfessorVO();
+			
+			try {
+				List<DisciplinaVO> disciplina = dbo.listar();
+
+					for(DisciplinaVO disc : disciplina) {
+						System.out.println(disc);
+					}
+				} catch (InsertException e) {
+					e.printStackTrace();
+				}
+			
 			
 			TurmaVO tvo2 = new TurmaVO();
 			
@@ -99,6 +119,9 @@ public class TesteBO {
 			tvo2.setHorario("Manhã");
 			
 			//tbo.cadastrar(tvo2);			
+
+			//System.out.println(tvo2.getIdTurma());
+
 			System.out.println(tvo2.getIdTurma());
 			
 			AlunoVO a1 = new AlunoVO();
@@ -114,6 +137,8 @@ public class TesteBO {
 			a1.setTurma(tvo2);
 			
 			//aluBO.cadastrar(a1);
+			//System.out.println(a1.getTurma().getIdTurma());
+
 			System.out.println(a1.getTurma().getIdTurma());
 			
 			a2.setCpf("123.555.000-76");
@@ -126,18 +151,22 @@ public class TesteBO {
 			a2.setTurma(tvo2);
 			
 			//aluBO.cadastrar(a2);
-			System.out.println(a2.getTurma().getIdTurma() + "\n\n\n");
-			
-			try {
-			List<AlunoVO> alunos = aluBO.buscarPorTurma(tvo2);
+			//System.out.println(a2.getTurma().getIdTurma() + "\n\n\n");
 
-				for(UsuarioVO alu : alunos) {
-				System.out.println(alu);
-				}
-			} catch (NotFoundException e) {
-				e.printStackTrace();
-			}
+			System.out.println(a2.getTurma().getIdTurma() + "\n\n\n");
+
 			
+
+//			try {
+//			List<AlunoVO> alunos = aluBO.listar();
+//
+//				for(UsuarioVO alu : alunos) {
+//					System.out.println(alu);
+//				}
+//			} catch (InsertException e) {
+//				e.printStackTrace();
+//			}
+
 			try {
 				List<AlunoVO> alunos = aluBO.listar();
 					

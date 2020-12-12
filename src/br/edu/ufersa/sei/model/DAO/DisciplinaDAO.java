@@ -51,7 +51,6 @@ public class DisciplinaDAO extends BaseDAO<DisciplinaVO> {
 			ptst.setLong(3, vo.getProfDisc().getIdProf());
 			ptst.setBoolean(4, vo.isStatus());
 			ptst.setLong(5, vo.getIdDisc());
-			
 			ptst.executeUpdate();
 
 		} catch (SQLException e) {

@@ -36,12 +36,11 @@ public class ProfessorVO extends UsuarioVO{
 	
 	public String toString() {
 		String saida;
-		saida = super.toString() + "Id: " + idProf + "\n" +
-		        "Turmas: \n"; 
+		saida = "Id: " + idProf + "\nNome: " + super.getNome() + "\nEmail: " + super.getEmail();
 		
-		for(TurmaVO tur : turmas) {
-			saida += tur.toString();
-		}	
+//		for(TurmaVO tur : turmas) {
+//			saida += tur.toString();
+//		}	
 		return saida;
 	}
 }

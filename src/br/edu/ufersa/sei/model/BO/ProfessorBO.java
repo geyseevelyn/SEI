@@ -88,6 +88,34 @@ public class ProfessorBO<VO extends ProfessorVO> extends BaseBO<ProfessorVO>{
 		}
 	    return profs;
 	}
+	
+	public List<ProfessorVO> listarBox() throws InsertException {
+		List<ProfessorVO> profs = new ArrayList<ProfessorVO>();
+		
+		try {
+	         pRS = pDAO.listar();
+	        	
+	         while(pRS.next()) {
+	        	 ProfessorVO vo = new ProfessorVO();
+				 
+	        	 //vo.setIdUsu(pRS.getLong("idusu"));
+	        	 vo.setNome(pRS.getString("nome"));
+	        	 //vo.setCpf(pRS.getString("cpf"));
+	        	 //vo.setEndereco(pRS.getString("endereco"));
+	        	 vo.setEmail(pRS.getString("email"));
+	        	 //vo.setLogin(pRS.getString("login"));
+	        	 //vo.setSenha(pRS.getString("senha"));
+	        	 vo.setIdProf(pRS.getLong("idProf"));
+    	
+	        	 profs.add(vo);
+	        }
+		} catch (SQLException e) {
+				e.printStackTrace();
+		}
+	    return profs;
+	}
+	
+	
 
 	@Override
 	public List<ProfessorVO> buscarPorNome(ProfessorVO vo) throws NotFoundException {

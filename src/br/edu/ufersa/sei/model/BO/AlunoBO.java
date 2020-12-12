@@ -67,11 +67,11 @@ public class AlunoBO<VO extends AlunoVO> extends BaseBO<AlunoVO> implements Alun
 		
 		try {
 	         aluRS = aluDAO.listar();
-	         TurmaVO tvo = new TurmaVO();
 	         //TurmaBO tbo = new TurmaBO();
 	        	
 	         while(aluRS.next()) {
 	        	 AlunoVO vo = new AlunoVO();
+	        	 TurmaVO tvo = new TurmaVO();
 				 
 	        	 vo.setIdUsu(aluRS.getLong("idusu"));
 	        	 vo.setNome(aluRS.getString("nome"));
@@ -82,8 +82,10 @@ public class AlunoBO<VO extends AlunoVO> extends BaseBO<AlunoVO> implements Alun
 	        	 vo.setSenha(aluRS.getString("senha"));
 	        	 vo.setIdAluno(aluRS.getLong("idaluno"));
 	        	 vo.setMatricula(aluRS.getString("matricula"));
-	        	 tvo.setIdTurma(aluRS.getLong("idturma")); //pegar o id da turma para setá-la
-	        	 vo.setTurma(tvo); //testar
+	        	 vo.setTurma(tvo);
+	        	 tvo.setIdTurma(aluRS.getLong("idturma"));
+	        	// vo.getTurma().setIdTurma(aluRS.getLong("idturma"));; //pegar o id da turma para setá-la
+	        	  //testar
 	        	 
 //	        	try {
 //					vo.setTurma(tbo.buscarPorId(tvo));  //não está setando...

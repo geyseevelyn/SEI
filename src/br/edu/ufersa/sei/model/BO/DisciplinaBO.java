@@ -68,17 +68,18 @@ public class DisciplinaBO extends BaseBO<DisciplinaVO>{
 		
 		try {
 	         discRS = discDAO.listar();
-	         ProfessorVO pvo = new ProfessorVO();
+	         
 	        	
 	         while(discRS.next()) {
+	        	 ProfessorVO pvo = new ProfessorVO();
 	        	 DisciplinaVO vo = new DisciplinaVO();
 				 
 	        	 vo.setIdDisc(discRS.getLong("iddisc"));
 	        	 vo.setCodigo(discRS.getString("coddisc"));
 	        	 vo.setNome(discRS.getString("nome"));
 	        	 vo.setStatus(discRS.getBoolean("status"));
-	        	 pvo.setIdProf(discRS.getLong("idprof"));
 	        	 vo.setProfDisc(pvo);
+	        	 pvo.setIdProf(discRS.getLong("idprof"));
 	        	
 	        	 disciplinas.add(vo);  //preencher lista
 	         }
