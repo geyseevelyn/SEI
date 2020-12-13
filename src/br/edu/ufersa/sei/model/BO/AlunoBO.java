@@ -175,7 +175,7 @@ public class AlunoBO<VO extends AlunoVO> extends BaseBO<AlunoVO> implements Alun
 	
 	//buscar alunos por turma
 	@Override
-	public List<AlunoVO> buscarPorTurma(TurmaVO turma) throws NotFoundException { 
+	public List<AlunoVO> buscarAlunosPorTurma(TurmaVO turma) throws InsertException { 
 		List<AlunoVO> alunos = new ArrayList<AlunoVO>();
 	
 		try {
@@ -192,15 +192,18 @@ public class AlunoBO<VO extends AlunoVO> extends BaseBO<AlunoVO> implements Alun
 				e.printStackTrace();
 			 } */
 			 
-			 tvo.setIdTurma(turma.getIdTurma());
-	         aluRS = aluDAO.buscarPorTurma(tvo);
+			 tvo.setNome(turma.getNome());
+			 
+	         aluRS = aluDAO.buscarAlunosPorTurma(tvo);
 	         
 	         while(aluRS.next()) {	 
 	        	 AlunoVO vo = new AlunoVO();
-	        	 
-	        	 vo.setIdUsu(aluRS.getLong("idusu"));
+	        	 	        	        	 
 	        	 vo.setNome(aluRS.getString("nome"));
+	        	 vo.setCpf(aluRS.getString("cpf"));
 	        	 vo.setMatricula(aluRS.getString("matricula"));
+	        	 vo.setEmail(aluRS.getString("email"));
+	        	 vo.setEndereco(aluRS.getString("endereco"));
 	        	 vo.setTurma(tvo);
 	        	 
 	        	 alunos.add(vo); 

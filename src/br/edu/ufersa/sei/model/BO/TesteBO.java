@@ -26,9 +26,9 @@ public class TesteBO {
 		//cadastrar pelo BO
 		try {
 			
-			ProfessorVO pvo = new ProfessorVO();
-			pvo.setNome("Mauricionhooooo");
-			System.out.println(pvo.getNome());
+//			ProfessorVO pvo = new ProfessorVO();
+//			pvo.setNome("Mauricionhooooo");
+//			System.out.println(pvo.getNome());
 			
 			//setar novo usuário para ser cadastrado pelo BO
 			vo.setCpf("777.888.999-56");
@@ -100,15 +100,15 @@ public class TesteBO {
 //			DisciplinaVO dvo = new DisciplinaVO();
 //			ProfessorVO pvo = new ProfessorVO();
 			
-			try {
-				List<DisciplinaVO> disciplina = dbo.listar();
-
-					for(DisciplinaVO disc : disciplina) {
-						System.out.println(disc);
-					}
-				} catch (InsertException e) {
-					e.printStackTrace();
-				}
+//			try {
+//				List<DisciplinaVO> disciplina = dbo.listar();
+//
+//					for(DisciplinaVO disc : disciplina) {
+//						System.out.println(disc);
+//					}
+//				} catch (InsertException e) {
+//					e.printStackTrace();
+//				}
 			
 			
 			TurmaVO tvo2 = new TurmaVO();
@@ -122,7 +122,7 @@ public class TesteBO {
 
 			//System.out.println(tvo2.getIdTurma());
 
-			System.out.println(tvo2.getIdTurma());
+			//System.out.println(tvo2.getIdTurma());
 			
 			AlunoVO a1 = new AlunoVO();
 			AlunoVO a2 = new AlunoVO();
@@ -139,7 +139,7 @@ public class TesteBO {
 			//aluBO.cadastrar(a1);
 			//System.out.println(a1.getTurma().getIdTurma());
 
-			System.out.println(a1.getTurma().getIdTurma());
+			//System.out.println(a1.getTurma().getIdTurma());
 			
 			a2.setCpf("123.555.000-76");
 			a2.setNome("Carlos Maia");
@@ -153,7 +153,7 @@ public class TesteBO {
 			//aluBO.cadastrar(a2);
 			//System.out.println(a2.getTurma().getIdTurma() + "\n\n\n");
 
-			System.out.println(a2.getTurma().getIdTurma() + "\n\n\n");
+			//System.out.println(a2.getTurma().getIdTurma() + "\n\n\n");
 
 			
 
@@ -167,15 +167,15 @@ public class TesteBO {
 //				e.printStackTrace();
 //			}
 
-			try {
-				List<AlunoVO> alunos = aluBO.listar();
-					
-				for(UsuarioVO alu : alunos) {
-					System.out.println(alu);
-				}
-			} catch (InsertException e) {
-					e.printStackTrace();
-			}	
+//			try {
+//				List<AlunoVO> alunos = aluBO.listar();
+//					
+//				for(UsuarioVO alu : alunos) {
+//					System.out.println(alu);
+//				}
+//			} catch (InsertException e) {
+//					e.printStackTrace();
+//			}	
 			
 //			try {
 //				List<AlunoVO> alunos = aluBO.buscarPorNome(avo2);
@@ -192,17 +192,19 @@ public class TesteBO {
 //			} catch (NotFoundException e) {
 //				e.printStackTrace();
 //			}	
-	
+			TurmaVO turma3 = new TurmaVO();
+			turma3.setNome("2º ANO A");
+			
 			//buscar por turma
-//			try {
-//			List<AlunoVO> alunos = aluBO.buscarPorTurma(turma2);
-//
-//				for(UsuarioVO alu : alunos) {
-//				System.out.println(alu);
-//				}
-//			} catch (InsertException e) {
-//				e.printStackTrace();
-//			}				
+			try {
+			List<AlunoVO> alunos = aluBO.buscarAlunosPorTurma(turma3);
+
+				for(UsuarioVO alu : alunos) {
+				System.out.println(alu);
+				}
+			} catch (InsertException e) {
+				e.printStackTrace();
+			}				
 			
 			//TurmaBO
 			TurmaVO tvo = new TurmaVO();
@@ -243,6 +245,8 @@ public class TesteBO {
 //			} catch (NotFoundException e) {
 //				e.printStackTrace();
 //			}	
+			
+			
 		
 		} catch (InsertException e) {
 			System.out.println("FALHOU\n");

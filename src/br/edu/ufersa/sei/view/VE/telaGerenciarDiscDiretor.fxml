@@ -27,21 +27,19 @@
       </ImageView>
       <VBox layoutX="133.0" layoutY="115.0" prefHeight="62.0" prefWidth="57.0" spacing="20.0">
          <children>
-            <Label layoutX="10.0" layoutY="10.0" lineSpacing="10.0" text="Id" textFill="#195683" />
             <Label lineSpacing="10.0" text="Nome:" textFill="#195683" />
-            <Label text="Código" textFill="#195683" />
+            <Label text="Código:" textFill="#195683" />
             <Label layoutX="10.0" layoutY="121.0" text="Professor:" textFill="#195683" />
          </children>
       </VBox>
       <VBox layoutX="191.0" layoutY="113.0" prefHeight="69.0" prefWidth="197.0" spacing="12.0">
          <children>
-            <TextField fx:id="tfId" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="277.0" promptText="para edição" />
             <TextField fx:id="tfNome" prefHeight="25.0" prefWidth="277.0" />
             <TextField fx:id="tfCodigo" prefHeight="25.0" prefWidth="368.0" />
             <ComboBox fx:id="cbProf" prefHeight="25.0" prefWidth="204.0" promptText="Selecionar Professor" />
          </children>
       </VBox>
-      <TableView fx:id="tvDisc" layoutX="124.0" layoutY="332.0" onMouseClicked="#pegarLinhaDisc" prefHeight="233.0" prefWidth="621.0">
+      <TableView fx:id="tvDisc" layoutX="124.0" layoutY="260.0" onMouseClicked="#pegarLinhaDisc" prefHeight="305.0" prefWidth="621.0">
         <columns>
           <TableColumn fx:id="colId" prefWidth="72.0" styleClass="-fx-text-color" text="Id" />
           <TableColumn fx:id="colDisc" prefWidth="132.0" text="Disciplina" />
@@ -60,38 +58,38 @@
             <Image url="@GERENCIAR%20DISCIPLINAS.png" />
          </image>
       </ImageView>
-      <ButtonBar layoutX="435.0" layoutY="102.0" prefHeight="156.0" prefWidth="307.0">
+      <ButtonBar layoutX="445.0" layoutY="182.0" prefHeight="25.0" prefWidth="307.0">
         <buttons>
-          <Button contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#cadastrarDisc" prefHeight="136.0" prefWidth="192.0" style="-fx-background-color: #FF7A00; -fx-border-color: black;" text="Cadastrar" textFill="WHITE">
+          <Button mnemonicParsing="false" onAction="#cadastrarDisc" prefHeight="30.0" prefWidth="192.0" style="-fx-background-color: #FF7A00; -fx-border-color: black;" text="Cadastrar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="51.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@add-button.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="BOTTOM" minWidth="50.0" mnemonicParsing="false" onAction="#editarDisc" prefHeight="137.0" style="-fx-background-color: #FF7A00; -fx-border-color: black;" text="Editar" textFill="WHITE">
+            <Button minWidth="50.0" mnemonicParsing="false" onAction="#editarDisc" prefHeight="0.0" style="-fx-background-color: #FF7A00; -fx-border-color: black;" text="Editar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="51.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@edit.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#removerDisc" prefHeight="137.0" style="-fx-background-color: red; -fx-border-color: black;" text="Remover" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#removerDisc" prefHeight="0.0" style="-fx-background-color: red; -fx-border-color: black;" text="Remover" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="51.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@trash.png" />
                      </image>

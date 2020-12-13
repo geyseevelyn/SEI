@@ -88,15 +88,21 @@ public class TurmaVO {
 		}		
 	}
 		
+//	public String toString() {
+//		String saida;
+//		saida = "Id: " + idTurma + "\nTurma: " + nome + "\nCódigo: " + codTurma + 
+//				"\nLocal: " + sala + "\nTurno: " + horario + "\n" +
+//				"Disciplinas: \n";
+//		
+//		for(DisciplinaVO disc : disciplinas) {
+//			saida += disc.toString();
+//		}
+//		return saida;
+//	}
+	
 	public String toString() {
 		String saida;
-		saida = "Id: " + idTurma + "\nTurma: " + nome + "\nCódigo: " + codTurma + 
-				"\nLocal: " + sala + "\nTurno: " + horario + "\n" +
-				"Disciplinas: \n";
-		
-		for(DisciplinaVO disc : disciplinas) {
-			saida += disc.toString();
-		}
+		saida = "Id: " + idTurma + "\nNome: " + this.nome;
 		return saida;
 	}
 }

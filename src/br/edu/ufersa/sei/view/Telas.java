@@ -114,9 +114,13 @@ public class Telas extends Application {
 	}
 	
 	public static void telaGerenciarAlunoDiretor() throws Exception {	
-		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaGerenciarAlunoDiretor.fxml"));
+		FXMLLoader loader = new FXMLLoader(Telas.class.getResource("VE/telaGerenciarAlunoDiretor.fxml"));
+		Parent root = loader.load();
+		DiretorController dc = loader.getController();
 		Scene cena = new Scene(root);
 		primaryStage.setScene(cena);
+		dc.carregarTabelaAluno();
+		dc.carregarCBAluno();
 	}
 	
 	public static void telaGerenciarProfDiretor() throws Exception {	
