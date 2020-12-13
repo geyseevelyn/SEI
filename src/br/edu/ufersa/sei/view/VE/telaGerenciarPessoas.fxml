@@ -36,7 +36,7 @@
       <Button layoutX="11.0" layoutY="147.0" mnemonicParsing="false" onAction="#goToTurmasDir" prefHeight="86.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
       <Button layoutX="15.0" layoutY="243.0" mnemonicParsing="false" onAction="#goToDiscDir" prefHeight="84.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
       <Button layoutX="14.0" layoutY="336.0" mnemonicParsing="false" onAction="#goToPessoasDir" prefHeight="84.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
-      <Button layoutX="14.0" layoutY="423.0" mnemonicParsing="false" onAction="#goToBuscar" prefHeight="77.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
+      <Button layoutX="14.0" layoutY="423.0" mnemonicParsing="false" onAction="#goToBuscarDir" prefHeight="77.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
       <Button layoutX="12.0" layoutY="508.0" mnemonicParsing="false" onAction="#sair" prefHeight="77.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
       <Button contentDisplay="TOP" layoutX="134.0" layoutY="140.0" mnemonicParsing="false" onAction="#goToGenrenciarAluno" prefHeight="376.0" prefWidth="296.0" text="Alunos" textFill="#1a5782">
          <graphic>

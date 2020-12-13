@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="623.0" prefWidth="973.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.sei.controller.GerenciarAlunoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="623.0" prefWidth="973.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.sei.controller.PrincipalDiretorController">
    <children>
       <ImageView fitHeight="624.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -36,10 +36,10 @@
          </image>
       </ImageView>
       <Button layoutX="11.0" layoutY="79.0" mnemonicParsing="false" onAction="#voltar" prefHeight="76.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
-      <Button layoutX="11.0" layoutY="169.0" mnemonicParsing="false" onAction="#goToGerenciarTurmas" prefHeight="86.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
-      <Button layoutX="14.0" layoutY="260.0" mnemonicParsing="false" onAction="#goToGerenciarDisciplinas" prefHeight="84.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
-      <Button layoutX="14.0" layoutY="351.0" mnemonicParsing="false" onAction="#goToGerenciarPessoas" prefHeight="84.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
-      <Button layoutX="14.0" layoutY="442.0" mnemonicParsing="false" onAction="#goToBuscar" prefHeight="77.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
+      <Button layoutX="11.0" layoutY="169.0" mnemonicParsing="false" onAction="#goToTurmasDir" prefHeight="86.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
+      <Button layoutX="14.0" layoutY="260.0" mnemonicParsing="false" onAction="#goToDiscDir" prefHeight="84.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
+      <Button layoutX="14.0" layoutY="351.0" mnemonicParsing="false" onAction="#goToPessoasDir" prefHeight="84.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
+      <Button layoutX="14.0" layoutY="442.0" mnemonicParsing="false" onAction="#goToBuscarDir" prefHeight="77.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
       <Button layoutX="12.0" layoutY="527.0" mnemonicParsing="false" onAction="#sair" prefHeight="77.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
       <VBox layoutX="126.0" layoutY="95.0" prefHeight="143.0" prefWidth="68.0" spacing="20.0">
          <children>
