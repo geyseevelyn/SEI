@@ -92,7 +92,7 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 	
 	@Override
 	public ResultSet buscarPorNome(VO vo) throws SQLException {
-		String sql = "select u.idusu, u.nome, u.cpf, u.endereco, u.email, a.matricula, a.idTurma "
+		String sql = "select u.idusu, u.nome, u.cpf, u.endereco, u.email, u.login, u.senha, a.matricula, a.idTurma "
 				+ "from usuario u, aluno a WHERE u.nome like ? and u.idUsu = a.idUsu";
 		PreparedStatement ptst;
 		ResultSet rs = null;
@@ -125,30 +125,10 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 		}
 		return rs;
 	}
-
-//	//buscar alunos por turma (por id)
-//	@Override
-//	public ResultSet buscarAlunosPorTurma(TurmaVO vo) throws SQLException {
-//		String sql = "select u.idusu, u.nome, a.matricula from usuario u inner join aluno a " + 
-//					 "on u.IdUsu = a.IdUsu where u.IdUsu in " + 
-//				     "(select a.idUsu from aluno a where t.nome like ? and t.IdTurma = a.IdTurma ))";
-//		PreparedStatement ptst;
-//		ResultSet rs = null;
-//				
-// 		try {
-//			ptst = getConnection().prepareStatement(sql);
-//			ptst.setString(1, "%"+vo.getNome()+"%");
-//			rs = ptst.executeQuery();
-//			
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		return rs;
-//	}
 	
 	@Override
 	public ResultSet buscarAlunosPorTurma(TurmaVO vo) throws SQLException {
-		String sql = "select u.nome,u.cpf, a.matricula, u.email, u.endereco, a.idturma from usuario u inner join aluno a " + 
+		String sql = "select u.nome,u.cpf, a.matricula, u.email, u.endereco, a.idturma, a.idusu, u.login, u.senha from usuario u inner join aluno a " + 
 				     "on u.idusu = a.idusu where u.idusu in " + 
 				     "(select a.idusu from turma t, aluno a where t.nome like ? and t.idturma = a.idturma)";
 		PreparedStatement ptst;
@@ -157,6 +137,7 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
  		try {
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setString(1, "%"+vo.getNome()+"%");
+			//ptst.setString(1, vo.getNome());
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {

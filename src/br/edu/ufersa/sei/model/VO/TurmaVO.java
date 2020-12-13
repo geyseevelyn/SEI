@@ -102,7 +102,7 @@ public class TurmaVO {
 	
 	public String toString() {
 		String saida;
-		saida = "Id: " + idTurma + "\nNome: " + this.nome;
+		saida = "Turma: " + idTurma + "\n" + this.nome;
 		return saida;
 	}
 }

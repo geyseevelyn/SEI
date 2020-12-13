@@ -121,6 +121,7 @@ public class Telas extends Application {
 		primaryStage.setScene(cena);
 		dc.carregarTabelaAluno();
 		dc.carregarCBAluno();
+		dc.buscarPor();
 	}
 	
 	public static void telaGerenciarProfDiretor() throws Exception {	

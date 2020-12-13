@@ -122,4 +122,20 @@ public class TurmaDAO extends BaseDAO<TurmaVO>{
 		}
 		return rs;
 	}
+	
+	public ResultSet buscarPorId(long id) throws SQLException {
+		String sql = "select * from turma where idTurma = ?";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+				
+ 		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setLong(1, id);
+			rs = ptst.executeQuery();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
 }

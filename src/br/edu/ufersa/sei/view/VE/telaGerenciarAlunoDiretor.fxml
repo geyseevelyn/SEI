@@ -15,41 +15,41 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="623.0" prefWidth="973.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.sei.controller.DiretorController">
    <children>
-      <ImageView fitHeight="600.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="624.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@MenuLateralDiretor.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="68.0" fitWidth="19.0" layoutX="77.0" layoutY="349.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="68.0" fitWidth="19.0" layoutX="80.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Selecionado.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="127.0" fitWidth="125.0" layoutX="831.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="127.0" fitWidth="125.0" layoutX="850.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@logotelas.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="25.0" fitWidth="371.0" layoutX="133.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="38.0" fitWidth="350.0" layoutX="126.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@GERENCIAR%20ALUNO.png" />
          </image>
       </ImageView>
-      <Button layoutX="13.0" layoutY="62.0" mnemonicParsing="false" onAction="#voltar" prefHeight="76.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
-      <Button layoutX="11.0" layoutY="147.0" mnemonicParsing="false" onAction="#goToTurmasDir" prefHeight="86.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
-      <Button layoutX="15.0" layoutY="243.0" mnemonicParsing="false" onAction="#goToDiscDir" prefHeight="84.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
-      <Button layoutX="14.0" layoutY="336.0" mnemonicParsing="false" onAction="#goToPessoasDir" prefHeight="84.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
-      <Button layoutX="14.0" layoutY="423.0" mnemonicParsing="false" onAction="#goToBuscarDir" prefHeight="77.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
-      <Button layoutX="12.0" layoutY="508.0" mnemonicParsing="false" onAction="#sair" prefHeight="77.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
-      <VBox layoutX="117.0" layoutY="95.0" prefHeight="143.0" prefWidth="68.0" spacing="20.0">
+      <Button layoutX="11.0" layoutY="79.0" mnemonicParsing="false" onAction="#voltar" prefHeight="76.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
+      <Button layoutX="11.0" layoutY="169.0" mnemonicParsing="false" onAction="#goToTurmasDir" prefHeight="86.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
+      <Button layoutX="14.0" layoutY="260.0" mnemonicParsing="false" onAction="#goToDiscDir" prefHeight="84.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
+      <Button layoutX="14.0" layoutY="351.0" mnemonicParsing="false" onAction="#goToPessoasDir" prefHeight="84.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
+      <Button layoutX="14.0" layoutY="442.0" mnemonicParsing="false" onAction="#goToBuscarDir" prefHeight="77.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
+      <Button layoutX="12.0" layoutY="527.0" mnemonicParsing="false" onAction="#sair" prefHeight="77.0" prefWidth="71.0" style="-fx-background-color: #00000000;" />
+      <VBox layoutX="126.0" layoutY="95.0" prefHeight="143.0" prefWidth="68.0" spacing="20.0">
          <children>
             <Label lineSpacing="10.0" text="Nome:" textFill="#195683" />
             <Label text="CPF:" textFill="#195683" />
             <Label text="Matricula:" textFill="#195683" />
-            <Label lineSpacing="20.0" text="Endereco" textFill="#195683" />
+            <Label lineSpacing="20.0" text="Endereço:" textFill="#195683" />
          </children>
       </VBox>
-      <VBox layoutX="184.0" layoutY="93.0" prefHeight="140.0" prefWidth="236.0" spacing="12.0">
+      <VBox layoutX="193.0" layoutY="93.0" prefHeight="140.0" prefWidth="236.0" spacing="12.0">
          <children>
             <TextField fx:id="tfNomeAluno" prefHeight="25.0" prefWidth="205.0" />
             <TextField fx:id="tfCpfAluno" prefHeight="25.0" prefWidth="368.0" />
@@ -57,19 +57,19 @@
             <TextField fx:id="tfEnderecoAluno" />
          </children>
       </VBox>
-      <TableView fx:id="tvAluno" layoutX="117.0" layoutY="285.0" onMouseClicked="#pegarLinhaAluno" prefHeight="286.0" prefWidth="823.0">
+      <TableView fx:id="tvAluno" layoutX="126.0" layoutY="285.0" onMouseClicked="#pegarLinhaAluno" prefHeight="286.0" prefWidth="823.0" style="-fx-alignment: CENTER-RIGHT;">
          <columns>
-            <TableColumn fx:id="colNomeAluno" prefWidth="154.0" styleClass="-fx-text-color" text="Nome" />
-            <TableColumn fx:id="colCpfAluno" prefWidth="103.0" text="CPF" />
-            <TableColumn fx:id="colMatriculaAluno" minWidth="0.0" prefWidth="100.0" text="Matricula" />
-            <TableColumn fx:id="colEmailAluno" prefWidth="187.0" text="Email" />
-            <TableColumn fx:id="colEnderecoAluno" prefWidth="203.0" styleClass="-fx-text-color" text="Endereço" />
-            <TableColumn fx:id="colTurmaAluno" minWidth="0.0" prefWidth="77.0" text="Turma [ID]" />
+            <TableColumn fx:id="colNomeAluno" prefWidth="154.0" style="-fx-alignment: CENTER;" text="Nome" />
+            <TableColumn fx:id="colCpfAluno" prefWidth="121.0" style="-fx-alignment: CENTER;" text="CPF" />
+            <TableColumn fx:id="colMatriculaAluno" minWidth="0.0" prefWidth="107.0" style="-fx-alignment: CENTER;" text="Matricula" />
+            <TableColumn fx:id="colEmailAluno" prefWidth="158.0" style="-fx-alignment: CENTER;" text="Email" />
+            <TableColumn fx:id="colEnderecoAluno" prefWidth="185.0" style="-fx-alignment: CENTER;" styleClass="-fx-text-color" text="Endereço" />
+            <TableColumn fx:id="colTurmaAluno" minWidth="0.0" prefWidth="99.0" style="-fx-alignment: CENTER;" text="Turma" />
          </columns>
       </TableView>
-      <ButtonBar layoutX="590.0" layoutY="576.0" prefHeight="38.0" prefWidth="350.0">
+      <ButtonBar layoutX="599.0" layoutY="576.0" prefHeight="38.0" prefWidth="350.0">
          <buttons>
-            <Button mnemonicParsing="false" onAction="#cadastrarAluno" prefHeight="25.0" prefWidth="219.0" style="-fx-background-color: #FF7A00;" text="Cadastrar" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#cadastrarAluno" prefHeight="25.0" prefWidth="219.0" style="-fx-background-color: #FF7A00; -fx-background-radius: 8px;" text="Cadastrar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -81,7 +81,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#editarAluno" prefHeight="25.0" prefWidth="219.0" style="-fx-background-color: #FF7A00;" text="Editar" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#editarAluno" prefHeight="25.0" prefWidth="219.0" style="-fx-background-color: #FF7A00; -fx-background-radius: 8px;" text="Editar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -93,7 +93,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#removerAluno" prefHeight="25.0" prefWidth="241.0" style="-fx-background-color: red;" text="Remover" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#removerAluno" prefHeight="25.0" prefWidth="241.0" style="-fx-background-color: red; -fx-background-radius: 8px;" text="Remover" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -107,24 +107,39 @@
             </Button>
          </buttons>
       </ButtonBar>
-      <VBox layoutX="481.0" layoutY="95.0" prefHeight="143.0" prefWidth="82.0" spacing="20.0">
+      <VBox layoutX="490.0" layoutY="95.0" prefHeight="143.0" prefWidth="82.0" spacing="20.0">
          <children>
             <Label lineSpacing="10.0" text="Email:" textFill="#195683" />
             <Label text="Login:" textFill="#195683" />
             <Label text="Senha:" textFill="#195683" />
-            <Label lineSpacing="20.0" text="Turma:" textFill="#195683" />
          </children>
       </VBox>
-      <VBox layoutX="539.0" layoutY="93.0" prefHeight="140.0" prefWidth="248.0" spacing="12.0">
+      <VBox layoutX="548.0" layoutY="93.0" prefHeight="140.0" prefWidth="248.0" spacing="12.0">
          <children>
             <TextField fx:id="tfEmailAluno" prefHeight="25.0" prefWidth="277.0" />
             <TextField fx:id="tfLoginAluno" prefHeight="25.0" prefWidth="368.0" />
             <TextField fx:id="tfSenhaAluno" prefHeight="25.0" prefWidth="312.0" />
-            <ComboBox fx:id="cbTurmaAluno" prefHeight="25.0" prefWidth="251.0" />
+            <ComboBox fx:id="cbTurmaAluno" prefHeight="25.0" prefWidth="251.0" promptText="Selecionar Turma" />
          </children>
       </VBox>
-      <ComboBox layoutX="116.0" layoutY="248.0" prefHeight="25.0" prefWidth="103.0" promptText="Buscar por:" />
-      <TextField fx:id="tfBuscaAluno" layoutX="232.0" layoutY="248.0" prefHeight="25.0" prefWidth="555.0" promptText="nome" />
-      <Button layoutX="795.0" layoutY="248.0" mnemonicParsing="false" onAction="#buscarAluno" text="Buscar" />
+      <ComboBox fx:id="cbBusca" layoutX="125.0" layoutY="248.0" prefHeight="25.0" prefWidth="103.0" promptText="Buscar por:" />
+      <TextField fx:id="tfBuscaAluno" layoutX="241.0" layoutY="248.0" prefHeight="25.0" prefWidth="555.0" promptText="nome" />
+      <Button layoutX="806.0" layoutY="248.0" mnemonicParsing="false" onAction="#buscarAluno" prefHeight="24.0" prefWidth="59.0" style="-fx-background-color: #FF7A00;">
+         <graphic>
+            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../../../../Downloads/magnifying-glass.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button layoutX="875.0" layoutY="248.0" mnemonicParsing="false" onAction="#goToGenrenciarAluno" prefHeight="24.0" prefWidth="68.0" style="-fx-background-color: #195683;">
+         <graphic>
+            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../../../../Downloads/reload.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </Pane>

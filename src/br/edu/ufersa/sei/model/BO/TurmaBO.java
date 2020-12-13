@@ -135,4 +135,27 @@ public class TurmaBO extends BaseBO<TurmaVO>{
 		}
 		return null;
 	}
+	
+	public TurmaVO buscarPorId(long id) throws NotFoundException {
+		try {
+			 turRS = tDAO.buscarPorId(id);
+			 
+			 if(turRS.next()) {
+	        	 TurmaVO tvo = new TurmaVO();
+				 
+	        	 tvo.setIdTurma(turRS.getLong("idTurma"));
+	        	 tvo.setCodTurma(turRS.getString("codturma"));
+	        	 tvo.setNome(turRS.getString("nome"));
+	        	 tvo.setSala(turRS.getString("sala"));
+	        	 tvo.setHorario(turRS.getString("turno"));
+	        	 
+	        	 return tvo;
+			 } else {
+				 throw new NotFoundException();
+			 }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

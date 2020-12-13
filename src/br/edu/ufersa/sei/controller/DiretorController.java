@@ -28,6 +28,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
@@ -167,7 +168,6 @@ public class DiretorController implements Initializable {
 	    	});
 	    	DisciplinaBO dbo = new DisciplinaBO();
 	    	disc = dbo.listar();
-	    	//System.out.println(disc);
 	    	tvDisc.setItems(FXCollections.observableArrayList(disc));
 	    	
 	    }
@@ -185,20 +185,10 @@ public class DiretorController implements Initializable {
 	 public void pegarLinhaDisc() throws InsertException {
 		 DisciplinaVO disc = tvDisc.getSelectionModel().getSelectedItem();
 		 disc.getProfDisc();
-		 //disc.setProfDisc(prof);
 		 disc.getIdDisc();
-		 //String iddisc = Long.toString(disc.getIdDisc());
-		 //tfId.setText(iddisc);
 		 tfNome.setText(disc.getNome());
 		 tfCodigo.setText(disc.getCodDisc());
-		 //String idprof = Long.toString(disc.getProfDisc().getIdProf());
-		 //cbProf.set
-//		 dvo.setProfDisc(cbProf.getSelectionModel().getSelectedItem());
 		 cbProf.getSelectionModel().select(disc.getProfDisc());
-		 //System.out.println(disc.getProfDisc());
- 		 //cbProf.setItems((ObservableList<ProfessorVO>) prof);
-// 		 long idprof = Long.parseLong(tfIdProf.getText());
-// 		 dvo.getProfDisc().setIdProf(idprof);
 	 }
     
 	 //Aluno
@@ -217,10 +207,10 @@ public class DiretorController implements Initializable {
 	 @FXML private TextField tfSenhaAluno;
 	 
 	 @FXML private TextField tfBuscaAluno;
-
-	 //@FXML private TextField tfTurmaAluno;
 	 
 	 @FXML private ComboBox<TurmaVO> cbTurmaAluno;
+	 
+	 @FXML private ComboBox<String> cbBusca;
 
 	 @FXML private TableView<AlunoVO> tvAluno;
 
@@ -251,8 +241,6 @@ public class DiretorController implements Initializable {
 	    		avo.setEmail(tfEmailAluno.getText());
 	    		avo.setLogin(tfLoginAluno.getText());
 	    		avo.setSenha(tfSenhaAluno.getText());
-	    		//avo.setTurma(tvo);
-	    		//long idturma = Long.parseLong(tfTurmaAluno.getText());
 	    		avo.setTurma(cbTurmaAluno.getSelectionModel().getSelectedItem());
 	    		avo.getTurma().getIdTurma();
 	    		abo.cadastrar(avo);
@@ -270,8 +258,6 @@ public class DiretorController implements Initializable {
 	    	 AlunoVO avo = new AlunoVO();
 	    	 TurmaVO tvo = new TurmaVO();
 		    	try {
-//		    		long idaluno = Long.parseLong(tfId.getText());
-//		    		avo.setIdAluno(iddisc);
 		    		AlunoVO avo2 = tvAluno.getSelectionModel().getSelectedItem();
 		    		avo.setNome(tfNomeAluno.getText());
 		    		avo.setCpf(tfCpfAluno.getText());
@@ -322,35 +308,39 @@ public class DiretorController implements Initializable {
 	    	});
 	    	AlunoBO<AlunoVO> abo = new AlunoBO<AlunoVO>();
 	    	alunos = abo.listar();
-	    	//System.out.println(disc);
 	    	tvAluno.setItems(FXCollections.observableArrayList(alunos));
 	    	
 	    }
 	    
 	    public void pegarLinhaAluno() throws InsertException {
-	    	 AlunoVO avo = tvAluno.getSelectionModel().getSelectedItem();
-			 avo.getTurma();
-			 avo.getIdAluno();
-			 avo.getIdUsu();
-			 //String iddisc = Long.toString(disc.getIdDisc());
-			 //tfId.setText(iddisc);
-			 tfNomeAluno.setText(avo.getNome());
-			 tfCpfAluno.setText(avo.getCpf());
-			 tfMatriculaAluno.setText(avo.getMatricula());
-			 tfEnderecoAluno.setText(avo.getEndereco());
-			 tfEmailAluno.setText(avo.getEmail());
-			 tfLoginAluno.setText(avo.getLogin());
-			 tfSenhaAluno.setText(avo.getLogin());
-			 //tfTurmaAluno.setText(""+avo.getTurma().getIdTurma());
-			 cbTurmaAluno.getSelectionModel().select(avo.getTurma());
-			 //String idprof = Long.toString(disc.getProfDisc().getIdProf());
-			 //cbProf.set
-//			 dvo.setProfDisc(cbProf.getSelectionModel().getSelectedItem());
-			 //cbProf.getSelectionModel().select(disc.getProfDisc());
-			 //System.out.println(disc.getProfDisc());
-	 		 //cbProf.setItems((ObservableList<ProfessorVO>) prof);
-//	 		 long idprof = Long.parseLong(tfIdProf.getText());
-//	 		 dvo.getProfDisc().setIdProf(idprof);
+	    	if(tvAluno.getSelectionModel().getSelectedItem() != null) {
+	    		AlunoVO avo = tvAluno.getSelectionModel().getSelectedItem();
+				 avo.getTurma();
+				 avo.getIdAluno();
+				 avo.getIdUsu();
+				 tfNomeAluno.setText(avo.getNome());
+				 tfCpfAluno.setText(avo.getCpf());
+				 tfMatriculaAluno.setText(avo.getMatricula());
+				 tfEnderecoAluno.setText(avo.getEndereco());
+				 tfEmailAluno.setText(avo.getEmail());
+				 tfLoginAluno.setText(avo.getLogin());
+				 tfSenhaAluno.setText(avo.getSenha());
+				 cbTurmaAluno.getSelectionModel().select(avo.getTurma());
+	    	}else {
+	    		Alert alert = new Alert(Alert.AlertType.ERROR);
+	    		alert.setHeaderText("Linha vazia!");
+	    		alert.setContentText("Você selecionou uma linha vazia");
+	    		alert.show();
+	    		tfNomeAluno.setText("");
+				tfCpfAluno.setText("");
+				tfMatriculaAluno.setText("");
+				tfEnderecoAluno.setText("");
+				tfEmailAluno.setText("");
+				tfLoginAluno.setText("");
+				tfSenhaAluno.setText("");
+	    		
+	    	}
+	    	 
 		 }
 	    
 	    public void carregarCBAluno() throws InsertException {
@@ -363,25 +353,46 @@ public class DiretorController implements Initializable {
 		 }
 	    
 	    public void buscarAluno() throws InsertException {
-	    	if (tfBuscaAluno.getText() != null && !(tfBuscaAluno.getText().equals(""))) {
-		    	AlunoBO<AlunoVO> abo = new AlunoBO<AlunoVO>();
-		    	TurmaVO tvo = new TurmaVO();
-		    	List<AlunoVO> alunos = new ArrayList<AlunoVO>();
-		    	tvo.setNome(tfBuscaAluno.getText());
-		    	try {
-					alunos = abo.buscarAlunosPorTurma(tvo);
-					//System.out.println(abo.buscarAlunosPorTurma(tvo));
-					carregarTabelaBuscarAluno(alunos);
-					
-				} catch (InsertException e) {
-					e.printStackTrace();
-				}
+	    	String str = cbBusca.getSelectionModel().getSelectedItem();
+	    	if(str == null) {
+	    		Alert alert = new Alert(Alert.AlertType.ERROR);
+	    		alert.setHeaderText("Tipo de Busca não selecionado");
+	    		alert.setContentText("Você não selecionou o tipo de busca!");
+	    		alert.show();
 	    	} else {
-	    		colTurmaAluno.setVisible(true);
-	    		carregarTabelaAluno();
+		    	if (str.equals("Turma")) {
+		    		//Buscar aluno pela turma
+			    	if (tfBuscaAluno.getText() != null && !(tfBuscaAluno.getText().equals(""))) {
+				    	AlunoBO<AlunoVO> abo = new AlunoBO<AlunoVO>();
+				    	TurmaVO tvo = new TurmaVO();
+				    	List<AlunoVO> alunos = new ArrayList<AlunoVO>();
+				    	tvo.setNome(tfBuscaAluno.getText());
+				    	try {
+							alunos = abo.buscarAlunosPorTurma(tvo);
+							carregarTabelaBuscarAluno(alunos);
+							
+						} catch (InsertException e) {
+							e.printStackTrace();
+						}
+			    	} else {
+			    		carregarTabelaAluno();
+			    		}
+		    	} else {
+		    		AlunoBO<AlunoVO> abo = new AlunoBO<AlunoVO>();
+		    		AlunoVO avo = new AlunoVO();
+		    		List<AlunoVO> alunos = new ArrayList<AlunoVO>();
+		    		avo.setNome(tfBuscaAluno.getText());
+		    		try {
+		    			alunos = abo.buscarPorNome(avo);
+		    			carregarTabelaBuscarAluno(alunos);
+		    		} catch (NotFoundException e) {
+		    			e.printStackTrace();
+		    		}
+		    		
+		    		
+		    	}	    		
+		    	}
 	    	}
-	    		
-	    }
 	    
 	    public void carregarTabelaBuscarAluno(List<AlunoVO> alunos) throws InsertException {
 	    	colNomeAluno.setCellValueFactory(new PropertyValueFactory<>("nome"));
@@ -394,9 +405,14 @@ public class DiretorController implements Initializable {
 	    			 return new SimpleObjectProperty<String>("" + a.getValue().getTurma().getIdTurma());
 	    	     }
 	    	});
-	    	colTurmaAluno.setVisible(false);
+	    	//colTurmaAluno.setVisible(false);
 	    	tvAluno.setItems(FXCollections.observableArrayList(alunos));
 	    	//System.out.println(alunos);
+	    }
+	    
+	    public void buscarPor() throws Exception {
+	    	ObservableList<String> buscarPorList = FXCollections.observableArrayList("Nome", "Turma");
+	    	cbBusca.setItems(buscarPorList);
 	    }
 	 
 	@Override
