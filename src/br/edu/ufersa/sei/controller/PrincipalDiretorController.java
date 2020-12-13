@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 
 public class PrincipalDiretorController implements Initializable {		 
 	
+	//navegação do menu
     public void goToGerenciarTurmas(ActionEvent event) throws Exception {
     	Telas.telaGerenciarTurmas();
     }

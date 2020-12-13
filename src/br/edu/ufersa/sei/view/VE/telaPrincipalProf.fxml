@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.sei.controller.ProfessorController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.sei.controller.PrincipalProfController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -34,8 +34,8 @@
             <Image url="@logotelas.png" />
          </image>
       </ImageView>
-      <Button fx:id="minhasTurmas" layoutX="3.0" layoutY="240.0" mnemonicParsing="false" onAction="#goToTurmaProf" prefHeight="103.0" prefWidth="89.0" style="-fx-background-color: #00000000;" />
-      <Button fx:id="notas" layoutX="2.0" layoutY="359.0" mnemonicParsing="false" onAction="#goToNotaProf" prefHeight="103.0" prefWidth="89.0" style="-fx-background-color: #00000000;" />
+      <Button layoutX="3.0" layoutY="240.0" mnemonicParsing="false" onAction="#goToTurmasProf" prefHeight="103.0" prefWidth="89.0" style="-fx-background-color: #00000000;" />
+      <Button layoutX="2.0" layoutY="359.0" mnemonicParsing="false" onAction="#goToNotaProf" prefHeight="103.0" prefWidth="89.0" style="-fx-background-color: #00000000;" />
       <Button layoutX="2.0" layoutY="505.0" mnemonicParsing="false" onAction="#sair" prefHeight="86.0" prefWidth="89.0" style="-fx-background-color: #00000000;" />
    </children>
 </Pane>

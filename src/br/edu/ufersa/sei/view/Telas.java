@@ -101,14 +101,14 @@ public class Telas extends Application {
 		primaryStage.setScene(cena);
 	};
 	
-	public static void telaNotaProf() throws Exception{
-		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaNotaProf.fxml"));
+	public static void telaTurmasProf() throws Exception{
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaTurmasProf.fxml"));
 		Scene cena = new Scene(root);
 		primaryStage.setScene(cena);
 	};
 	
-	public static void telaTurmaProf() throws Exception{
-		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaTurmaProf.fxml"));
+	public static void telaNotaProf() throws Exception{
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaNotaProf.fxml"));
 		Scene cena = new Scene(root);
 		primaryStage.setScene(cena);
 	};
@@ -120,14 +120,14 @@ public class Telas extends Application {
 		primaryStage.setScene(cena);
 	}
 	
-	public static void telaDisciplinaAluno() throws Exception {	
+	public static void telaDisciplinasAluno() throws Exception {	
 		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaDisciplinaAluno.fxml"));
 		Scene cena = new Scene(root);
 		primaryStage.setScene(cena);
 	}
 	
-	public static void telaNotaluno() throws Exception {	
-		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaNotaAluno.fxml"));
+	public static void telaNotasAluno() throws Exception {	
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaNotasAluno.fxml"));
 		Scene cena = new Scene(root);
 		primaryStage.setScene(cena);
 	}
