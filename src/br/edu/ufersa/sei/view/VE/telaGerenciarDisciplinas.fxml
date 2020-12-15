@@ -39,19 +39,18 @@
       </VBox>
       <TableView fx:id="tvDisc" layoutX="126.0" layoutY="257.0" onMouseClicked="#pegarLinhaDisc" prefHeight="286.0" prefWidth="817.0">
         <columns>
-          <TableColumn fx:id="colId" prefWidth="72.0" styleClass="-fx-text-color" text="Id" />
-          <TableColumn fx:id="colDisc" prefWidth="242.0" text="Disciplina" />
-            <TableColumn fx:id="colCod" prefWidth="178.0" text="Código" />
-            <TableColumn fx:id="colStatus" prefWidth="180.0" text="Status" />
-            <TableColumn fx:id="colProf" prefWidth="144.0" text="Professor" />
+          <TableColumn fx:id="colId" prefWidth="72.0" style="-fx-alignment: CENTER;" styleClass="-fx-text-color" text="Id" />
+          <TableColumn fx:id="colDisc" prefWidth="303.0" style="-fx-alignment: CENTER;" text="Disciplina" />
+            <TableColumn fx:id="colCod" prefWidth="194.0" style="-fx-alignment: CENTER;" text="Código" />
+            <TableColumn fx:id="colProf" prefWidth="247.0" style="-fx-alignment: CENTER;" text="Professor" />
         </columns>
       </TableView>
-      <ImageView fitHeight="127.0" fitWidth="125.0" layoutX="849.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="127.0" fitWidth="125.0" layoutX="850.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@logotelas.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="69.0" fitWidth="445.0" layoutX="126.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="69.0" fitWidth="445.0" layoutX="126.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@GERENCIAR%20DISCIPLINAS.png" />
          </image>
@@ -104,20 +103,20 @@
          </buttons>
       </ButtonBar>
       <TextField fx:id="tfBuscaDisc" layoutX="127.0" layoutY="218.0" prefHeight="25.0" prefWidth="669.0" promptText="nome" />
-      <Button layoutX="805.0" layoutY="218.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="59.0" style="-fx-background-color: #FF7A00;">
+      <Button layoutX="802.0" layoutY="218.0" mnemonicParsing="false" onAction="#buscarDisc" prefHeight="24.0" prefWidth="68.0" style="-fx-background-color: #FF7A00;">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../../../../../Downloads/magnifying-glass.png" />
+                  <Image url="@magnifying-glass.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="874.0" layoutY="218.0" mnemonicParsing="false" onAction="#goToGenrenciarAluno" prefHeight="24.0" prefWidth="68.0" style="-fx-background-color: #195683;">
+      <Button layoutX="874.0" layoutY="218.0" mnemonicParsing="false" onAction="#recarregarTelaGerenciarDisc" prefHeight="24.0" prefWidth="68.0" style="-fx-background-color: #195683;">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../../../../../Downloads/reload.png" />
+                  <Image url="@reload.png" />
                </image>
             </ImageView>
          </graphic>

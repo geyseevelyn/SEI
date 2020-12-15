@@ -1,6 +1,8 @@
 package br.edu.ufersa.sei.view;
 
-import br.edu.ufersa.sei.model.VO.UsuarioVO;
+import br.edu.ufersa.sei.model.VO.AlunoVO;
+import br.edu.ufersa.sei.model.VO.ProfessorVO;
+import br.edu.ufersa.sei.model.VO.TurmaVO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,8 +12,12 @@ import javafx.stage.Stage;
 public class Telas extends Application {
 	
 	private static Stage primaryStage;
-	private static UsuarioVO user; //??
-	
+	private static AlunoVO userAlu;
+	private static AlunoVO alu;
+	private static ProfessorVO prof;
+	private static ProfessorVO userProf;
+	private static TurmaVO turma;
+
 	public static Stage getPrimaryStage() {
 		return primaryStage;
 	}
@@ -20,18 +26,51 @@ public class Telas extends Application {
 		Telas.primaryStage = primaryStage;
 	}
 	
-	public static UsuarioVO getUser() {
-		return user;
+	public static ProfessorVO getUserProf() {
+		return userProf;
 	}
 
-	public static void setUser(UsuarioVO user) {
-		Telas.user = user;
+	public static void setUserProf(ProfessorVO userProf) {
+		Telas.userProf = userProf;
+	}
+
+	public static AlunoVO getAlu() {
+		return alu;
+	}
+
+	public static void setAlu(AlunoVO alu) {
+		Telas.alu = alu;
+	}
+
+	public static TurmaVO getTurma() {
+		return turma;
+	}
+
+	public static void setTurma(TurmaVO turma) {
+		Telas.turma = turma;
+	}
+
+	public static ProfessorVO getProf() {
+		return prof;
+	}
+
+	public static void setProf(ProfessorVO prof) {
+		Telas.prof = prof;
+	}
+
+	public static AlunoVO getUserAlu() {
+		return userAlu;
+	}
+
+	public static void setUserAlu(AlunoVO userAlu) {
+		Telas.userAlu = userAlu;
 	}
 	
 	public void start(Stage primaryStage) throws Exception {		
 		setPrimaryStage(primaryStage);
 		primaryStage.setTitle("SEI - Sistema de Ensino Integrado");
 		primaryStage.show();
+		primaryStage.setResizable(false);
 		telaLogin();
 	}
 	
@@ -58,11 +97,8 @@ public class Telas extends Application {
 	public static void telaGerenciarDisciplinas() throws Exception {	
 		FXMLLoader loader = new FXMLLoader(Telas.class.getResource("VE/telaGerenciarDisciplinas.fxml"));
 		Parent root = loader.load();
-		//GerenciarDisciplinasController gdc = loader.getController();
-		//gdc.carregarTabelaDisc();
-		//gdc.carregarCBDisc();
 		Scene cena = new Scene(root);
-		primaryStage.setScene(cena);	
+		primaryStage.setScene(cena);
 	}
 	
 	public static void telaGerenciarPessoas() throws Exception {	
@@ -74,18 +110,34 @@ public class Telas extends Application {
 	public static void telaGerenciarAluno() throws Exception {	
 		FXMLLoader loader = new FXMLLoader(Telas.class.getResource("VE/telaGerenciarAluno.fxml"));
 		Parent root = loader.load();
-		//GerenciarAlunoController gc = loader.getController();
 		Scene cena = new Scene(root);
 		primaryStage.setScene(cena);
-		//gc.carregarTabelaAluno();
-		//gc.carregarCBAluno();
-		//gc.carregarBuscarPor();
 	}
 	
-	public static void telaGerenciarProfDiretor() throws Exception {	
-		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaGerenciarProfDiretor.fxml"));
+	public static void telaGerenciarProf() throws Exception {	
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaGerenciarProf.fxml"));
 		Scene cena = new Scene(root);
 		primaryStage.setScene(cena);
+	}
+	
+	public static void telaGerenciarProfTurmas() throws Exception {	
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaGerenciarProfTurmas.fxml"));
+		Scene cena = new Scene(root);
+		Stage secondaryStage = new Stage();
+		secondaryStage.setScene(cena);
+		secondaryStage.setTitle("SEI - Sistema de Ensino Integrado");
+		secondaryStage.setResizable(false);
+		secondaryStage.show();
+	}
+	
+	public static void telaGerenciarTurmaDisc() throws Exception {	
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaGerenciarTurmaDisc.fxml"));
+		Scene cena = new Scene(root);
+		Stage secondaryStage = new Stage();
+		secondaryStage.setScene(cena);
+		secondaryStage.setTitle("SEI - Sistema de Ensino Integrado");
+		secondaryStage.setResizable(false);
+		secondaryStage.show();
 	}
 	
 	public static void telaBuscarDiretor() throws Exception {	
@@ -113,15 +165,26 @@ public class Telas extends Application {
 		primaryStage.setScene(cena);
 	};
 	
+	public static void telaCadastrarNota() throws Exception{
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaCadastrarNota.fxml"));
+		Scene cena = new Scene(root);
+		Stage secondaryStage = new Stage();
+		secondaryStage.setScene(cena);
+		secondaryStage.setTitle("SEI - Sistema de Ensino Integrado");
+		secondaryStage.setResizable(false);
+		secondaryStage.show();
+	};
+	
 	//ALUNO
 	public static void telaPrincipalAluno() throws Exception {	
 		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaPrincipalAluno.fxml"));
 		Scene cena = new Scene(root);
 		primaryStage.setScene(cena);
+		
 	}
 	
 	public static void telaDisciplinasAluno() throws Exception {	
-		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaDisciplinaAluno.fxml"));
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaDisciplinasAluno.fxml"));
 		Scene cena = new Scene(root);
 		primaryStage.setScene(cena);
 	}
@@ -132,7 +195,19 @@ public class Telas extends Application {
 		primaryStage.setScene(cena);
 	}
 	
+	public static void telaBoletim() throws Exception {	
+		Parent root = FXMLLoader.load(Telas.class.getResource("VE/telaBoletim.fxml"));
+		Scene cena = new Scene(root);
+		Stage secondaryStage = new Stage();
+		secondaryStage.setScene(cena);
+		secondaryStage.setTitle("SEI - Sistema de Ensino Integrado");
+		secondaryStage.setResizable(false);
+		secondaryStage.show();
+	}
+	
+	
 	public static void main(String[] args) {
 		launch();
 	}
+
 }

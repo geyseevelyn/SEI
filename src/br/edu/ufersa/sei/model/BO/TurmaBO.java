@@ -18,24 +18,24 @@ public class TurmaBO extends BaseBO<TurmaVO>{
 	public void cadastrar(TurmaVO vo) throws InsertException {
 		try {
 			turRS = tDAO.buscarPorId(vo);
-			
-				if(turRS.next()) {
-					throw new InsertException("Turma já cadastrada no sistema");
-				} else {
-					tDAO.inserir(vo);
-				}
+
+			if(turRS.next()) {
+				throw new InsertException("Turma já cadastrada no sistema");
+			} else {
+				tDAO.inserir(vo);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}		
 	}
-	
+
 	@Override
 	public void editar(TurmaVO vo) throws InsertException{
 		try {
 			 turRS = tDAO.buscarPorId(vo);
 			
 			if(turRS.next()) {
-				vo.setIdTurma(turRS.getLong("idTurma")); // testar isso
+				vo.setIdTurma(turRS.getLong("idTurma")); 
 				tDAO.atualizar(vo);
 			} else {
 				throw new InsertException("Turma informada não existe!");
@@ -64,48 +64,44 @@ public class TurmaBO extends BaseBO<TurmaVO>{
 	@Override
 	public List<TurmaVO> listar() throws InsertException {
 		List<TurmaVO> turmas = new ArrayList<TurmaVO>();
-		
-		try {
-	         turRS = tDAO.listar();
-	        	
-	         while(turRS.next()) {
-	        	 TurmaVO tvo = new TurmaVO();
-				 
-	        	 tvo.setIdTurma(turRS.getLong("idTurma"));
-	        	 tvo.setCodTurma(turRS.getString("codturma"));
-	        	 tvo.setNome(turRS.getString("nome"));
-	        	 tvo.setSala(turRS.getString("sala"));
-	        	 tvo.setHorario(turRS.getString("turno"));
 
-	        	 turmas.add(tvo);
-	        }
+		try {
+			turRS = tDAO.listar();
+
+			while(turRS.next()) {
+				TurmaVO tvo = new TurmaVO();
+				tvo.setIdTurma(turRS.getLong("idTurma"));
+				tvo.setCodTurma(turRS.getString("codturma"));
+				tvo.setNome(turRS.getString("nome"));
+				tvo.setSala(turRS.getString("sala"));
+				tvo.setHorario(turRS.getString("turno"));
+
+				turmas.add(tvo);
+			}
 		} catch (SQLException e) {
-				e.printStackTrace();
+			e.printStackTrace();
 		}
-	    return turmas;
+		return turmas;
 	}
-	
-	
-	
 
 	@Override
-	public List<TurmaVO> buscarPorNome(TurmaVO vo) throws NotFoundException {
-	List<TurmaVO> turmas = new ArrayList<TurmaVO>();
-		
-		try {
-			 turRS = tDAO.buscarPorNome(vo);
-			 
-			 while(turRS.next()) {
-	        	 TurmaVO tvo = new TurmaVO();
-				 
-	        	 tvo.setIdTurma(turRS.getLong("idTurma"));
-	        	 tvo.setCodTurma(turRS.getString("codturma"));
-	        	 tvo.setNome(turRS.getString("nome"));
-	        	 tvo.setSala(turRS.getString("sala"));
-	        	 tvo.setHorario(turRS.getString("turno"));
+	public List<TurmaVO> buscarPorNome(TurmaVO vo) throws InsertException {
+		List<TurmaVO> turmas = new ArrayList<TurmaVO>();
 
-	        	 turmas.add(tvo);
-			 }			
+		try {
+			turRS = tDAO.buscarPorNome(vo);
+
+			while(turRS.next()) {
+				TurmaVO tvo = new TurmaVO();
+
+				tvo.setIdTurma(turRS.getLong("idTurma"));
+				tvo.setCodTurma(turRS.getString("codturma"));
+				tvo.setNome(turRS.getString("nome"));
+				tvo.setSala(turRS.getString("sala"));
+				tvo.setHorario(turRS.getString("turno"));
+
+				turmas.add(tvo);
+			}			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -115,44 +111,44 @@ public class TurmaBO extends BaseBO<TurmaVO>{
 	@Override
 	public TurmaVO buscarPorId(TurmaVO vo) throws NotFoundException {
 		try {
-			 turRS = tDAO.buscarPorId(vo);
-			 
-			 if(turRS.next()) {
-	        	 TurmaVO tvo = new TurmaVO();
-				 
-	        	 tvo.setIdTurma(turRS.getLong("idTurma"));
-	        	 tvo.setCodTurma(turRS.getString("codturma"));
-	        	 tvo.setNome(turRS.getString("nome"));
-	        	 tvo.setSala(turRS.getString("sala"));
-	        	 tvo.setHorario(turRS.getString("turno"));
-	        	 
-	        	 return tvo;
-			 } else {
-				 throw new NotFoundException();
-			 }
+			turRS = tDAO.buscarPorId(vo);
+
+			if(turRS.next()) {
+				TurmaVO tvo = new TurmaVO();
+
+				tvo.setIdTurma(turRS.getLong("idTurma"));
+				tvo.setCodTurma(turRS.getString("codturma"));
+				tvo.setNome(turRS.getString("nome"));
+				tvo.setSala(turRS.getString("sala"));
+				tvo.setHorario(turRS.getString("turno"));
+
+				return tvo;
+			} else {
+				throw new NotFoundException();
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
+
 	public TurmaVO buscarPorId(long id) throws NotFoundException {
 		try {
-			 turRS = tDAO.buscarPorId(id);
-			 
-			 if(turRS.next()) {
-	        	 TurmaVO tvo = new TurmaVO();
-				 
-	        	 tvo.setIdTurma(turRS.getLong("idTurma"));
-	        	 tvo.setCodTurma(turRS.getString("codturma"));
-	        	 tvo.setNome(turRS.getString("nome"));
-	        	 tvo.setSala(turRS.getString("sala"));
-	        	 tvo.setHorario(turRS.getString("turno"));
-	        	 
-	        	 return tvo;
-			 } else {
-				 throw new NotFoundException();
-			 }
+			turRS = tDAO.buscarPorId(id);
+
+			if(turRS.next()) {
+				TurmaVO tvo = new TurmaVO();
+
+				tvo.setIdTurma(turRS.getLong("idTurma"));
+				tvo.setCodTurma(turRS.getString("codturma"));
+				tvo.setNome(turRS.getString("nome"));
+				tvo.setSala(turRS.getString("sala"));
+				tvo.setHorario(turRS.getString("turno"));
+
+				return tvo;
+			} else {
+				throw new NotFoundException();
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

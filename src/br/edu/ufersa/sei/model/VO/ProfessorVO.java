@@ -37,6 +37,7 @@ public class ProfessorVO extends UsuarioVO{
 	public String toString() {
 		String saida;
 		saida = "Id: " + idProf + "\nNome: " + super.getNome() + "\nEmail: " + super.getEmail();
+		//saida = super.toString() + "Id: " + idProf;
 		
 //		for(TurmaVO tur : turmas) {
 //			saida += tur.toString();

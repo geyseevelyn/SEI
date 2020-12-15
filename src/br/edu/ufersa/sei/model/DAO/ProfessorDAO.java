@@ -37,11 +37,10 @@ public class ProfessorDAO<VO extends ProfessorVO> extends UsuarioDAO<VO> {
 	} 
 	
 	@Override
-	public void atualizar(VO vo) throws SQLException {
+	public void atualizar(VO vo) throws SQLException {	
 		
 		try {		
 			super.atualizar(vo);  
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -81,7 +80,7 @@ public class ProfessorDAO<VO extends ProfessorVO> extends UsuarioDAO<VO> {
 	
 	@Override
 	public ResultSet buscarPorNome(VO vo) throws SQLException {
-		String sql = "select p.IdProf, u.nome, u.cpf, u.endereco, u.email from " +
+		String sql = "select u.idusu, p.IdProf, u.nome, u.cpf, u.endereco, u.email from " +
 					 "professor p, usuario u where u.nome like ? and p.idUsu = u.idUsu;";
 		PreparedStatement ptst;
 		ResultSet rs = null;
@@ -98,7 +97,7 @@ public class ProfessorDAO<VO extends ProfessorVO> extends UsuarioDAO<VO> {
 	}
 	
 	@Override
-	public ResultSet buscarPorId(VO vo) throws SQLException {
+	public ResultSet buscarPorId(ProfessorVO vo) throws SQLException {
 		String sql = "select * from usuario u, professor p where u.idUsu = ? and p.idUsu = ?";
 		PreparedStatement ptst;
 		ResultSet rs = null;
@@ -107,6 +106,22 @@ public class ProfessorDAO<VO extends ProfessorVO> extends UsuarioDAO<VO> {
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setLong(1, vo.getIdUsu());
 			ptst.setLong(2, vo.getIdUsu());
+			rs = ptst.executeQuery();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+	
+	public ResultSet buscarPorId(long id) throws SQLException {
+		String sql = "select * from usuario u, professor p where u.idUsu = p.idUsu and idProf = ?";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+				
+ 		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setLong(1, id);
 			rs = ptst.executeQuery();
 			
 		} catch (SQLException e) {

@@ -109,7 +109,7 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 	}
 	
 	@Override
-	public ResultSet buscarPorId(VO vo) throws SQLException {
+	public ResultSet buscarPorId(AlunoVO vo) throws SQLException {
 		String sql = "select * from usuario u, aluno a where a.idUsu = ? and u.idUsu = ?"; //select * from aluno where idUsu = ?
 		PreparedStatement ptst;
 		ResultSet rs = null;
@@ -128,7 +128,7 @@ public class AlunoDAO<VO extends AlunoVO> extends UsuarioDAO<VO> implements Alun
 	
 	@Override
 	public ResultSet buscarAlunosPorTurma(TurmaVO vo) throws SQLException {
-		String sql = "select u.nome,u.cpf, a.matricula, u.email, u.endereco, a.idturma, a.idusu, u.login, u.senha from usuario u inner join aluno a " + 
+		String sql = "select u.nome,u.cpf, a.matricula, u.email, u.endereco, a.idturma, a.idusu, a.idaluno, u.login, u.senha from usuario u inner join aluno a " + 
 				     "on u.idusu = a.idusu where u.idusu in " + 
 				     "(select a.idusu from turma t, aluno a where t.nome like ? and t.idturma = a.idturma)";
 		PreparedStatement ptst;
