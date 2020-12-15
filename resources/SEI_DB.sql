@@ -76,3 +76,73 @@ CREATE TABLE boletim (
 	situacao VARCHAR(10),
 	PRIMARY KEY (IdAluno, IdDisc)
 )
+
+CREATE VIEW UsuariosAlunos AS 
+(SELECT u.nome, u.cpf, u.endereco, u.email 
+FROM Usuario u, Aluno a 
+WHERE u.IdUsu = a.IdUsu)
+
+CREATE VIEW UsuariosProfs AS 
+(SELECT u.nome, u.cpf, u.endereco, u.email 
+FROM Usuario u, Professor p
+WHERE u.IdUsu = p.IdUsu)
+
+CREATE FUNCTION func_insert_boletim() RETURNS trigger AS $$
+BEGIN
+	INSERT INTO boletim (idaluno, iddisc, n1, n2, n3, media, faltas) VALUES
+	(new.idaluno, new.iddisc, new.n1, new.n2, new.n3, new.media, new.faltas); 
+	RETURN NEW;
+END;
+$$ 
+LANGUAGE 'plpgsql';
+
+CREATE TRIGGER insert_boletim
+AFTER INSERT ON nota
+FOR EACH ROW EXECUTE PROCEDURE func_insert_boletim()
+
+CREATE FUNCTION func_update_boletim() RETURNS trigger AS $$
+BEGIN
+	UPDATE boletim SET idaluno = new.idaluno, iddisc = new.iddisc, n1 = new.n1, n2 = new.n2, n3 = new.n3,
+	media = new.media, faltas = new.faltas where idaluno = new.idaluno and iddisc = new.iddisc;
+	RETURN NEW;
+END;
+$$ 
+LANGUAGE 'plpgsql';
+
+CREATE TRIGGER update_boletim
+AFTER UPDATE ON nota
+FOR EACH ROW EXECUTE PROCEDURE func_update_boletim()
+
+CREATE FUNCTION func_delete_boletim() RETURNS trigger AS $$
+BEGIN
+	DELETE FROM boletim WHERE idaluno = old.idaluno and iddisc = old.iddisc;
+	RETURN NEW;
+END;
+$$ 
+LANGUAGE 'plpgsql';
+
+CREATE TRIGGER delete_boletim
+AFTER DELETE ON nota
+FOR EACH ROW EXECUTE PROCEDURE func_delete_boletim()
+
+CREATE RULE insert_aprovado_rule AS ON INSERT TO nota
+WHERE NEW.media >= 7
+DO UPDATE boletim SET situacao = 'Aprovado' 
+WHERE idaluno = new.idaluno and iddisc = new.iddisc;
+
+CREATE RULE update_aprovado_rule AS ON UPDATE TO nota
+WHERE NEW.media >= 7
+DO UPDATE boletim SET idaluno = new.idaluno, iddisc = new.iddisc, n1 = new.n1,
+n2 = new.n2, n3 = new.n3, media = new.media, faltas = new.faltas, situacao = 'Aprovado'
+where idaluno = new.idaluno and iddisc = new.iddisc;
+
+CREATE RULE insert_reprovado_rule AS ON INSERT TO nota
+WHERE NEW.media < 7
+DO UPDATE boletim SET situacao = 'Reprovado' 
+WHERE idaluno = new.idaluno and iddisc = new.iddisc;
+
+CREATE RULE update_reprovado_rule AS ON UPDATE TO nota
+WHERE NEW.media < 7
+DO UPDATE boletim SET idaluno = new.idaluno, iddisc = new.iddisc, n1 = new.n1,
+n2 = new.n2, n3 = new.n3, media = new.media, faltas = new.faltas, situacao = 'Reprovado'
+where idaluno = new.idaluno and iddisc = new.iddisc;
