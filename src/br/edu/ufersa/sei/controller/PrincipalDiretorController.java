@@ -27,7 +27,7 @@ public class PrincipalDiretorController implements Initializable {
     }
     
     public void goToGerenciarProf(ActionEvent event) throws Exception {
-    	Telas.telaGerenciarProfDiretor(); 
+    	Telas.telaGerenciarProf(); 
     }
     
     public void goToBuscar(ActionEvent event) throws Exception {

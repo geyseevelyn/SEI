@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import br.edu.ufersa.sei.exception.InsertException;
-import br.edu.ufersa.sei.exception.NotFoundException;
 import br.edu.ufersa.sei.model.BO.AlunoBO;
 import br.edu.ufersa.sei.model.BO.TurmaBO;
 import br.edu.ufersa.sei.model.VO.AlunoVO;
@@ -51,7 +50,6 @@ public class GerenciarAlunoController implements Initializable{
 	 @FXML private TableColumn<AlunoVO, String> colEnderecoAluno;
 	 @FXML private TableColumn<AlunoVO, String> colTurmaAluno;
 
-
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		carregarTabelaAluno();
@@ -69,7 +67,7 @@ public class GerenciarAlunoController implements Initializable{
     	colEmailAluno.setCellValueFactory(new PropertyValueFactory<>("email"));
     	colTurmaAluno.setCellValueFactory(new Callback<CellDataFeatures<AlunoVO, String>, ObservableValue<String>>() {
     		 public ObservableValue<String> call(TableColumn.CellDataFeatures<AlunoVO , String> a) {
-    			 return new SimpleObjectProperty<String>("" + a.getValue().getTurma().getIdTurma());
+    			 return new SimpleObjectProperty<String>("" + a.getValue().getTurma().getNome());
     	     }
     	});
     	
@@ -195,8 +193,8 @@ public class GerenciarAlunoController implements Initializable{
 		 
 		 if(str == null) {
 			 Alert alert = new Alert(Alert.AlertType.ERROR);
-			 alert.setHeaderText("Tipo de Busca não selecionado");
-			 alert.setContentText("Você não selecionou o tipo de busca!");
+			 alert.setHeaderText("Tipo de busca não selecionado");
+			 alert.setContentText("Selecione o tipo de busca!");
 			 alert.show();
 		 } else {
 			 if (str.equals("Turma")) {
@@ -227,7 +225,7 @@ public class GerenciarAlunoController implements Initializable{
 				 try {
 					 alunos = abo.buscarPorNome(avo);
 					 carregarTabelaBuscarAluno(alunos);
-				 } catch (NotFoundException e) {
+				 } catch (InsertException e) {
 					 e.printStackTrace();
 				 }
 			 }	    		
@@ -242,7 +240,7 @@ public class GerenciarAlunoController implements Initializable{
 		 colEmailAluno.setCellValueFactory(new PropertyValueFactory<>("email"));
 		 colTurmaAluno.setCellValueFactory(new Callback<CellDataFeatures<AlunoVO, String>, ObservableValue<String>>() {
 			 public ObservableValue<String> call(TableColumn.CellDataFeatures<AlunoVO , String> a) {
-				 return new SimpleObjectProperty<String>("" + a.getValue().getTurma().getIdTurma());
+				 return new SimpleObjectProperty<String>("" + a.getValue().getTurma().getNome());
 			 }
 		 });
 		 //colTurmaAluno.setVisible(false);

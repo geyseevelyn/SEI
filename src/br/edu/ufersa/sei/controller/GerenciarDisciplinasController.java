@@ -38,10 +38,8 @@ public class GerenciarDisciplinasController implements Initializable{
 	@FXML private TableColumn<DisciplinaVO, Long> colId;
 	@FXML private TableColumn<DisciplinaVO, String> colDisc; //nome
 	@FXML private TableColumn<DisciplinaVO, String> colCod;
-	@FXML private TableColumn<DisciplinaVO, Boolean> colStatus;
 	@FXML private TableColumn<DisciplinaVO, String> colProf;
 	
-
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		carregarTabelaDisc();
@@ -54,10 +52,9 @@ public class GerenciarDisciplinasController implements Initializable{
 		colId.setCellValueFactory(new PropertyValueFactory<>("idDisc"));
 		colDisc.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colCod.setCellValueFactory(new PropertyValueFactory<>("codDisc"));
-		colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 		colProf.setCellValueFactory(new Callback<CellDataFeatures<DisciplinaVO, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(TableColumn.CellDataFeatures<DisciplinaVO , String> p) {
-				return new SimpleObjectProperty<String>("" + p.getValue().getProfDisc().getIdProf());
+				return new SimpleObjectProperty<String>("" + p.getValue().getProfDisc().getNome());
 			}
 		});
 		
@@ -88,8 +85,6 @@ public class GerenciarDisciplinasController implements Initializable{
 			dvo.setCodigo(tfCodigo.getText());
 			dvo.setProfDisc(cbProf.getSelectionModel().getSelectedItem());
 			dvo.getProfDisc().getIdProf();
-			//long idprof = Long.parseLong(tfIdProf.getText());
-			//dvo.getProfDisc().setIdProf(idprof);
 			dvo.setStatus(false);
 
 			dbo.cadastrar(dvo);
@@ -144,20 +139,51 @@ public class GerenciarDisciplinasController implements Initializable{
 	
 	 public void pegarLinhaDisc() throws InsertException {
 		 DisciplinaVO disc = tvDisc.getSelectionModel().getSelectedItem();
+		 
 		 disc.getProfDisc();
 		 disc.getIdDisc();
 		 tfNome.setText(disc.getNome());
 		 tfCodigo.setText(disc.getCodDisc());
 		 cbProf.getSelectionModel().select(disc.getProfDisc());
 	 }
-    
-    public void recarregarTelaGerenciarDisc() {
-    	try {
-    		Telas.telaGerenciarDisciplinas();
-    	} catch (Exception e) {
-    		e.printStackTrace();
-    	}
-    }
+	 
+	 public void buscarDisc() throws InsertException {
+		 if (tfBuscaDisc.getText() != null && !(tfBuscaDisc.getText().equals(""))) {
+			DisciplinaBO dbo = new DisciplinaBO();
+	   		DisciplinaVO dvo = new DisciplinaVO();
+	   		List<DisciplinaVO> disc = new ArrayList<DisciplinaVO>();
+	   		dvo.setNome(tfBuscaDisc.getText());
+	   		
+	   		try {
+	   			disc = dbo.buscarPorNome(dvo);
+	   			carregarTabelaBuscarDisc(disc);
+	   		} catch (InsertException e) {
+	   			e.printStackTrace();
+	   		}
+		 } else {
+			 carregarTabelaDisc();
+   		}
+	 }
+	 
+	 public void carregarTabelaBuscarDisc(List<DisciplinaVO> disc) throws InsertException {
+		 	colId.setCellValueFactory(new PropertyValueFactory<>("idDisc"));
+	    	colDisc.setCellValueFactory(new PropertyValueFactory<>("nome"));
+	    	colCod.setCellValueFactory(new PropertyValueFactory<>("codDisc"));
+	    	colProf.setCellValueFactory(new Callback<CellDataFeatures<DisciplinaVO, String>, ObservableValue<String>>() {
+	    		 public ObservableValue<String> call(TableColumn.CellDataFeatures<DisciplinaVO , String> d) {
+	    			 return new SimpleObjectProperty<String>("" + d.getValue().getProfDisc().getNome());
+	    		 }
+	    	});
+	    	tvDisc.setItems(FXCollections.observableArrayList(disc));
+	    }
+	 
+	 public void recarregarTelaGerenciarDisc() {
+	    	try {
+	    		Telas.telaGerenciarDisciplinas();
+	    	} catch (Exception e) {
+	    		e.printStackTrace();
+	    	}
+	    }
 	 
     //navegação do menu
     public void goToGerenciarTurmas(ActionEvent event) throws Exception {

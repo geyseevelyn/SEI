@@ -3,6 +3,11 @@ package br.edu.ufersa.sei.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import br.edu.ufersa.sei.exception.NotFoundException;
+import br.edu.ufersa.sei.model.BO.AlunoBO;
+import br.edu.ufersa.sei.model.BO.TurmaBO;
+import br.edu.ufersa.sei.model.VO.AlunoVO;
+import br.edu.ufersa.sei.model.VO.TurmaVO;
 import br.edu.ufersa.sei.view.Telas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,24 +23,30 @@ public class PrincipalAlunoController implements Initializable {
 	@FXML private Label turno;
 	@FXML private Label turma;
 	@FXML private Label email;
-	
-//	public void initialize(URL arg0, ResourceBundle arg1) {
-//		carregarPerfilAluno();	
-//	}
-//	
-//	public void carregarPerfilAluno() {
-//		AlunoVO avo = new AlunoVO();
-//		txf_nome.setText(avo.getNome());
-//		txf_matricula.setText(avo.getMatricula());
-//		txf_endereco.setText(avo.getEndereco());
-//		txf_email.setText(avo.getEmail());
-//		txf_turma.setText(avo.getTurma().getNome());
-//		txf_turno.setText(avo.getTurma().getHorario());
-//	};
-	
+	@FXML private Label endereco;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-			//cpf.setText(Telas.getUser().getCpf());
+		carregarPerfilAluno();
+	}
+	
+	public void carregarPerfilAluno() {
+		TurmaBO tbo = new TurmaBO();
+		TurmaVO tvo = new TurmaVO();
+		AlunoBO<AlunoVO> abo = new AlunoBO<AlunoVO>();
+		AlunoVO avo = Telas.getUserAlu();		
+		matricula.setText(avo.getMatricula());
+		nome.setText(avo.getNome());
+		cpf.setText(avo.getCpf());
+		endereco.setText(avo.getEndereco());
+		email.setText(avo.getEmail());
+		try {
+			tvo = tbo.buscarPorId(avo.getTurma().getIdTurma());
+		} catch (NotFoundException e) {
+			e.printStackTrace();
+		}
+		turma.setText("" + tvo.getNome());
+		turno.setText(tvo.getHorario());
 	}
 	    
 	public void goToDisciplinas(ActionEvent event) throws Exception {
@@ -46,7 +57,7 @@ public class PrincipalAlunoController implements Initializable {
 		Telas.telaNotasAluno();
 	}
 	    
-	public void voltarAluno() throws Exception {
+	public void voltar() throws Exception {
 		Telas.telaPrincipalAluno();
 	}
 	    
