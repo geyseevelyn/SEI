@@ -49,7 +49,7 @@ public class AlunoVO extends UsuarioVO {
 	@Override
 	public String toString() {
 		String saida;
-		saida = super.toString() + "Matrícula: " + matricula + 
+		saida = super.toString() + "Id: " + idAluno + "\nMatrícula: " + matricula + 
 		        "\nTurma: " + turma.getIdTurma() + " - " + turma.getNome() + " (" 
 				+ turma.getCodTurma() + ")\n";
 		return saida;

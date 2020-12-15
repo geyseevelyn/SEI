@@ -6,41 +6,48 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.sei.controller.PrincipalAlunoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="623.0" prefWidth="973.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.sei.controller.NotasAlunoController">
    <children>
-      <ImageView fitHeight="600.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="623.0" fitWidth="129.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@MenuLateralAluno.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="68.0" fitWidth="19.0" layoutX="80.0" layoutY="383.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="68.0" fitWidth="19.0" layoutX="80.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Selecionado.png" />
          </image>
       </ImageView>
-      <Button fx:id="minhasDisciplinas" layoutX="13.0" layoutY="241.0" mnemonicParsing="false" onAction="#goToDisciplina" prefHeight="104.0" prefWidth="70.0" style="-fx-background-color: #00000000;" />
-      <Button fx:id="meuPerfil" layoutX="6.0" layoutY="119.0" mnemonicParsing="false" onAction="#voltarAluno" prefHeight="104.0" prefWidth="85.0" style="-fx-background-color: #00000000;" />
-      <Button fx:id="sair" layoutX="13.0" layoutY="507.0" mnemonicParsing="false" onAction="#sair" prefHeight="79.0" prefWidth="70.0" style="-fx-background-color: #00000000;" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="657.0" layoutY="-20.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="minhasDisciplinas" layoutX="13.0" layoutY="241.0" mnemonicParsing="false" onAction="#goToDisciplinas" prefHeight="119.0" prefWidth="70.0" style="-fx-background-color: #00000000;" />
+      <Button fx:id="meuPerfil" layoutX="6.0" layoutY="136.0" mnemonicParsing="false" onAction="#voltar" prefHeight="95.0" prefWidth="85.0" style="-fx-background-color: #00000000;" />
+      <Button fx:id="sair" layoutX="12.0" layoutY="533.0" mnemonicParsing="false" onAction="#sair" prefHeight="79.0" prefWidth="70.0" style="-fx-background-color: #00000000;" />
+      <ImageView fitHeight="127.0" fitWidth="125.0" layoutX="850.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@logotelas.png" />
          </image>
       </ImageView>
-      <TableView editable="true" layoutX="155.0" layoutY="132.0" prefHeight="393.0" prefWidth="574.0">
+      <TableView fx:id="tvNotas" editable="true" layoutX="155.0" layoutY="132.0" prefHeight="396.0" prefWidth="757.0">
         <columns>
-          <TableColumn prefWidth="232.33334350585938" text="Disciplina" />
-          <TableColumn minWidth="0.0" prefWidth="64.0" text="N1" />
-            <TableColumn minWidth="0.0" prefWidth="64.0" text="N2" />
-            <TableColumn prefWidth="64.0" text="N3" />
-            <TableColumn prefWidth="75.0" text="Média" />
-            <TableColumn prefWidth="75.0" text="Faltas" />
+          <TableColumn fx:id="colDisc" prefWidth="232.33334350585938" style="-fx-alignment: CENTER;" text="Disciplina" />
+          <TableColumn fx:id="colN1" minWidth="0.0" prefWidth="110.0" style="-fx-alignment: CENTER;" text="N1" />
+            <TableColumn fx:id="colN2" minWidth="0.0" prefWidth="95.0" style="-fx-alignment: CENTER;" text="N2" />
+            <TableColumn fx:id="colN3" prefWidth="100.0" style="-fx-alignment: CENTER;" text="N3" />
+            <TableColumn fx:id="colMedia" prefWidth="113.0" style="-fx-alignment: CENTER;" text="Média" />
+            <TableColumn fx:id="colFaltas" prefWidth="105.0" style="-fx-alignment: CENTER;" text="Faltas" />
         </columns>
       </TableView>
-      <ImageView fitHeight="33.0" fitWidth="359.0" layoutX="157.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="33.0" fitWidth="359.0" layoutX="159.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@MINHAS%20NOTAS.png" />
          </image>
       </ImageView>
+      <Button layoutX="1.0" layoutY="378.0" mnemonicParsing="false" onAction="#goToNotas" prefHeight="104.0" prefWidth="92.0" style="-fx-background-color: #00000000;" />
+      <Button layoutX="749.0" layoutY="548.0" mnemonicParsing="false" onAction="#goToBoletim" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: #FF7A00; -fx-background-radius: 8px;" text="Meu Boletim" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

@@ -7,31 +7,31 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.sei.controller.PrincipalAlunoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="623.0" prefWidth="973.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.sei.controller.DisciplinasAlunoController">
    <children>
-      <ImageView fitHeight="600.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="624.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@MenuLateralAluno.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="68.0" fitWidth="19.0" layoutX="80.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="68.0" fitWidth="19.0" layoutX="81.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Selecionado.png" />
          </image>
       </ImageView>
-      <Button fx:id="meuPerfil" layoutX="13.0" layoutY="120.0" mnemonicParsing="false" onAction="#voltarAluno" prefHeight="104.0" prefWidth="70.0" style="-fx-background-color: #00000000;" />
-      <Button fx:id="minhasNotas" layoutX="5.0" layoutY="357.0" mnemonicParsing="false" onAction="#goToNota" prefHeight="104.0" prefWidth="85.0" style="-fx-background-color: #00000000;" />
+      <Button fx:id="meuPerfil" layoutX="13.0" layoutY="120.0" mnemonicParsing="false" onAction="#voltar" prefHeight="104.0" prefWidth="70.0" style="-fx-background-color: #00000000;" />
+      <Button fx:id="minhasNotas" layoutX="5.0" layoutY="374.0" mnemonicParsing="false" onAction="#goToNotas" prefHeight="104.0" prefWidth="85.0" style="-fx-background-color: #00000000;" />
       <Button fx:id="sair" layoutX="13.0" layoutY="507.0" mnemonicParsing="false" onAction="#sair" prefHeight="79.0" prefWidth="70.0" style="-fx-background-color: #00000000;" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="657.0" layoutY="-20.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="127.0" fitWidth="125.0" layoutX="850.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@logotelas.png" />
          </image>
       </ImageView>
-      <TableView layoutX="155.0" layoutY="132.0" prefHeight="393.0" prefWidth="574.0">
+      <TableView fx:id="tvDiscAluno" layoutX="155.0" layoutY="132.0" prefHeight="420.0" prefWidth="767.0">
         <columns>
-          <TableColumn prefWidth="141.66665649414062" text="Código" />
-          <TableColumn minWidth="0.0" prefWidth="216.0" text="Disciplina" />
-            <TableColumn minWidth="0.0" prefWidth="216.0" text="Professor" />
+          <TableColumn fx:id="colCodigo" prefWidth="141.66665649414062" style="-fx-alignment: CENTER;" text="Código" />
+          <TableColumn fx:id="colDisc" minWidth="0.0" prefWidth="301.0" style="-fx-alignment: CENTER;" text="Disciplina" />
+            <TableColumn fx:id="colProf" minWidth="0.0" prefWidth="323.0" style="-fx-alignment: CENTER;" text="Professor" />
         </columns>
       </TableView>
       <ImageView fitHeight="70.0" fitWidth="360.0" layoutX="157.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
@@ -39,5 +39,6 @@
             <Image url="@MINHAS%20DISCIPLINAS.png" />
          </image>
       </ImageView>
+      <Button fx:id="minhasNotas1" layoutX="7.0" layoutY="247.0" mnemonicParsing="false" onAction="#goToDisciplinas" prefHeight="104.0" prefWidth="85.0" style="-fx-background-color: #00000000;" />
    </children>
 </Pane>

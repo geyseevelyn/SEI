@@ -8,18 +8,17 @@ import java.util.List;
 import br.edu.ufersa.sei.exception.InsertException;
 import br.edu.ufersa.sei.exception.NotFoundException;
 import br.edu.ufersa.sei.model.DAO.ProfessorDAO;
-import br.edu.ufersa.sei.model.DAO.UsuarioInterDAO;
 import br.edu.ufersa.sei.model.VO.ProfessorVO;
 
 public class ProfessorBO<VO extends ProfessorVO> extends BaseBO<ProfessorVO>{
-	private static UsuarioInterDAO<ProfessorVO> pDAO = new ProfessorDAO<ProfessorVO>();
+	private static ProfessorDAO<ProfessorVO> pDAO = new ProfessorDAO<ProfessorVO>();
 	private static ResultSet pRS = null;
 
 	@Override
 	public void cadastrar(ProfessorVO vo) throws InsertException {
 		try {
 			pRS = pDAO.buscarPorId(vo);
-		
+
 			if(pRS.next()) {
 				throw new InsertException("Professor já cadastrado no sistema");
 			} else {
@@ -65,79 +64,77 @@ public class ProfessorBO<VO extends ProfessorVO> extends BaseBO<ProfessorVO>{
 	@Override
 	public List<ProfessorVO> listar() throws InsertException {
 		List<ProfessorVO> profs = new ArrayList<ProfessorVO>();
-		
+
 		try {
-	         pRS = pDAO.listar();
-	        	
-	         while(pRS.next()) {
-	        	 ProfessorVO vo = new ProfessorVO();
-				 
-	        	 vo.setIdUsu(pRS.getLong("idusu"));
-	        	 vo.setNome(pRS.getString("nome"));
-	        	 vo.setCpf(pRS.getString("cpf"));
-	        	 vo.setEndereco(pRS.getString("endereco"));
-	        	 vo.setEmail(pRS.getString("email"));
-	        	 vo.setLogin(pRS.getString("login"));
-	        	 vo.setSenha(pRS.getString("senha"));
-	        	 vo.setIdProf(pRS.getLong("idProf"));
-    	
-	        	 profs.add(vo);
-	        }
+			pRS = pDAO.listar();
+
+			while(pRS.next()) {
+				ProfessorVO vo = new ProfessorVO();
+
+				vo.setIdUsu(pRS.getLong("idusu"));
+				vo.setNome(pRS.getString("nome"));
+				vo.setCpf(pRS.getString("cpf"));
+				vo.setEndereco(pRS.getString("endereco"));
+				vo.setEmail(pRS.getString("email"));
+				vo.setLogin(pRS.getString("login"));
+				vo.setSenha(pRS.getString("senha"));
+				vo.setIdProf(pRS.getLong("idProf"));
+
+				profs.add(vo);
+			}
 		} catch (SQLException e) {
-				e.printStackTrace();
+			e.printStackTrace();
 		}
-	    return profs;
+		return profs;
 	}
-	
+
 	public List<ProfessorVO> listarBox() throws InsertException {
 		List<ProfessorVO> profs = new ArrayList<ProfessorVO>();
-		
+
 		try {
-	         pRS = pDAO.listar();
-	        	
-	         while(pRS.next()) {
-	        	 ProfessorVO vo = new ProfessorVO();
-				 
-	        	 //vo.setIdUsu(pRS.getLong("idusu"));
-	        	 vo.setNome(pRS.getString("nome"));
-	        	 //vo.setCpf(pRS.getString("cpf"));
-	        	 //vo.setEndereco(pRS.getString("endereco"));
-	        	 vo.setEmail(pRS.getString("email"));
-	        	 //vo.setLogin(pRS.getString("login"));
-	        	 //vo.setSenha(pRS.getString("senha"));
-	        	 vo.setIdProf(pRS.getLong("idProf"));
-    	
-	        	 profs.add(vo);
-	        }
+			pRS = pDAO.listar();
+
+			while(pRS.next()) {
+				ProfessorVO vo = new ProfessorVO();
+
+				//vo.setIdUsu(pRS.getLong("idusu"));
+				vo.setNome(pRS.getString("nome"));
+				//vo.setCpf(pRS.getString("cpf"));
+				//vo.setEndereco(pRS.getString("endereco"));
+				vo.setEmail(pRS.getString("email"));
+				//vo.setLogin(pRS.getString("login"));
+				//vo.setSenha(pRS.getString("senha"));
+				vo.setIdProf(pRS.getLong("idProf"));
+
+				profs.add(vo);
+			}
 		} catch (SQLException e) {
-				e.printStackTrace();
+			e.printStackTrace();
 		}
-	    return profs;
+		return profs;
 	}
-	
-	
 
 	@Override
-	public List<ProfessorVO> buscarPorNome(ProfessorVO vo) throws NotFoundException {
+	public List<ProfessorVO> buscarPorNome(ProfessorVO vo) throws InsertException {
 		List<ProfessorVO> profs = new ArrayList<ProfessorVO>();
-		
+
 		try {
-	         pRS = pDAO.buscarPorNome(vo);
-	        	
-	         while(pRS.next()) {
-	        	 ProfessorVO vo2 = new ProfessorVO();
-				 
-	        	 vo2.setIdUsu(pRS.getLong("idUsu"));
-	        	 vo2.setNome(pRS.getString("nome"));
-	        	 vo2.setCpf(pRS.getString("cpf"));
-	        	 vo2.setEndereco(pRS.getString("endereco"));
-	        	 vo2.setEmail(pRS.getString("email"));
-	        	 vo2.setIdProf(pRS.getLong("idProf"));
-    	
-	        	 profs.add(vo2);
-	        }
+			pRS = pDAO.buscarPorNome(vo);
+
+			while(pRS.next()) {
+				ProfessorVO vo2 = new ProfessorVO();
+
+				vo2.setIdUsu(pRS.getLong("idUsu"));
+				vo2.setNome(pRS.getString("nome"));
+				vo2.setCpf(pRS.getString("cpf"));
+				vo2.setEndereco(pRS.getString("endereco"));
+				vo2.setEmail(pRS.getString("email"));
+				vo2.setIdProf(pRS.getLong("idProf"));
+
+				profs.add(vo2);
+			}
 		} catch (SQLException e) {
-				e.printStackTrace();
+			e.printStackTrace();
 		}
 		return profs;
 	}
@@ -145,26 +142,47 @@ public class ProfessorBO<VO extends ProfessorVO> extends BaseBO<ProfessorVO>{
 	@Override
 	public ProfessorVO buscarPorId(ProfessorVO vo) throws NotFoundException {
 		try {
-	         pRS = pDAO.buscarPorId(vo);
-	        	
-	         if(pRS.next()) {
-	        	ProfessorVO vo2 = new ProfessorVO();
-				 
-	        	vo2.setIdUsu(pRS.getLong("idusu"));
-	        	vo2.setNome(pRS.getString("nome"));
-	        	vo2.setCpf(pRS.getString("cpf"));
-	        	vo2.setEndereco(pRS.getString("endereco"));
-	        	vo2.setEmail(pRS.getString("email"));
-	        	vo2.setLogin(pRS.getString("login"));
-	        	vo2.setSenha(pRS.getString("senha"));
-	            vo2.setIdProf(pRS.getLong("idaProf"));
-    	 	        	
-	        	return vo2;
-	        } else throw new NotFoundException();
-	         
+			pRS = pDAO.buscarPorId(vo);
+
+			if(pRS.next()) {
+				ProfessorVO vo2 = new ProfessorVO();
+
+				vo2.setIdUsu(pRS.getLong("idusu"));
+				vo2.setNome(pRS.getString("nome"));
+				vo2.setCpf(pRS.getString("cpf"));
+				vo2.setEndereco(pRS.getString("endereco"));
+				vo2.setEmail(pRS.getString("email"));
+				vo2.setLogin(pRS.getString("login"));
+				vo2.setSenha(pRS.getString("senha"));
+				vo2.setIdProf(pRS.getLong("idProf"));
+
+				return vo2;
+			} else throw new NotFoundException();
+
 		} catch (SQLException e) {
-				e.printStackTrace();
+			e.printStackTrace();
 		}
-	    return null;
+		return null;
 	}	
+
+	public ProfessorVO buscarPorId(long id) throws NotFoundException {
+		try {
+			pRS = pDAO.buscarPorId(id);
+
+			if(pRS.next()) {
+				ProfessorVO vo2 = new ProfessorVO();
+
+				vo2.setIdUsu(pRS.getLong("idusu"));
+				vo2.setNome(pRS.getString("nome"));
+				vo2.setEmail(pRS.getString("email"));
+				vo2.setIdProf(pRS.getLong("idProf"));
+
+				return vo2;
+			} else throw new NotFoundException();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

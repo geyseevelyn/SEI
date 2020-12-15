@@ -54,7 +54,7 @@ public class TurmaDiscDAO extends BaseDAO<TurmaVO>{
 	//buscar disciplinas de uma turma
 	public ResultSet buscarDiscTurma(TurmaVO turma) throws SQLException{
 		
-			String sql = "select d.coddisc, d.nome from disciplina d where d.iddisc in " + 
+			String sql = "select * from disciplina d where d.iddisc in " + 
 						 "(select td.iddisc from turmadisc td where td.idturma = ?)";
 			PreparedStatement ptst;
 			ResultSet rs = null;

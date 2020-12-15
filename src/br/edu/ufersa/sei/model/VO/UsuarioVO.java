@@ -82,7 +82,7 @@ public class UsuarioVO {
 			this.login = login;
 		}else {
 			throw new InsertException("Login Inválido! \n(Login deve começar com uma letra,"
-					+ " ter no mínimo 6 e no máximo 10 caracteres)\n");
+					+ " ter no mínimo 6 e no máximo 15 caracteres)\n");
 		}	
 	}
 	

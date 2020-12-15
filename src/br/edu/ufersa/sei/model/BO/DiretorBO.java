@@ -33,7 +33,7 @@ public class DiretorBO<VO extends DiretorVO> extends BaseBO<DiretorVO> {
 	}
 
 	@Override
-	public List<DiretorVO> buscarPorNome(DiretorVO vo) throws NotFoundException {
+	public List<DiretorVO> buscarPorNome(DiretorVO vo) throws InsertException {
 		// TODO Auto-generated method stub
 		return null;
 	}

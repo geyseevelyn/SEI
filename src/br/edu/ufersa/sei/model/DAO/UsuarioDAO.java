@@ -88,7 +88,7 @@ public class UsuarioDAO<VO extends UsuarioVO> extends BaseDAO<VO> implements Usu
 
 	@Override
 	public ResultSet listar() throws SQLException {
-		String sql = "select * from usuario";  //mostra a senha
+		String sql = "select * from usuario";  
 		PreparedStatement ptst;
 		ResultSet rs = null;
 		
@@ -103,7 +103,7 @@ public class UsuarioDAO<VO extends UsuarioVO> extends BaseDAO<VO> implements Usu
 
 	@Override
 	public ResultSet buscarPorNome(VO vo) throws SQLException {
-		String sql = "select * from usuario where nome like ?"; //mostra a senha
+		String sql = "select * from usuario where nome like ?"; 
 		PreparedStatement ptst;
 		ResultSet rs = null;
 				
@@ -147,6 +147,38 @@ public class UsuarioDAO<VO extends UsuarioVO> extends BaseDAO<VO> implements Usu
 			rs = ptst.executeQuery();
 		} 
 		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+	
+	//VIEW BD 
+	@Override
+	public ResultSet listarUsuariosAlunos() throws SQLException {
+		String sql = "select * from UsuariosAlunos"; //view que mostra os usuários que são alunos
+		PreparedStatement ptst;
+		ResultSet rs = null;
+		
+ 		try {
+			ptst = getConnection().prepareStatement(sql);
+			rs = ptst.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+	
+	//VIEW BD
+	@Override
+	public ResultSet listarUsuariosProfs() throws SQLException {
+		String sql = "select * from UsuariosProfs"; //view que mostra os usuários que são professores
+		PreparedStatement ptst;
+		ResultSet rs = null;
+		
+ 		try {
+			ptst = getConnection().prepareStatement(sql);
+			rs = ptst.executeQuery();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return rs;

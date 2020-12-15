@@ -9,9 +9,11 @@ import br.edu.ufersa.sei.exception.InsertException;
 import br.edu.ufersa.sei.exception.NotFoundException;
 import br.edu.ufersa.sei.model.DAO.TurmaDiscDAO;
 import br.edu.ufersa.sei.model.VO.DisciplinaVO;
+import br.edu.ufersa.sei.model.VO.ProfessorVO;
 import br.edu.ufersa.sei.model.VO.TurmaVO;
 
 //Tabela TurmaDisc (cadastrar, excluir, buscar disciplinas de uma turma)
+
 public class TurmaDiscBO extends BaseBO<TurmaVO>{
 	private static TurmaDiscDAO tdDAO = new TurmaDiscDAO();
 	
@@ -42,10 +44,16 @@ public class TurmaDiscBO extends BaseBO<TurmaVO>{
 			 
 			 while(tdRS.next()) {
 				 DisciplinaVO dvo = new DisciplinaVO();
+				 ProfessorVO pvo = new ProfessorVO();
+				 ProfessorBO<ProfessorVO> pbo = new ProfessorBO<ProfessorVO>();
 			 
 	        	 dvo.setCodigo(tdRS.getString("coddisc"));
+	        	 dvo.setIdDisc(tdRS.getLong("iddisc"));
 	        	 dvo.setNome(tdRS.getString("nome"));
-	        	
+	        	 dvo.setStatus(tdRS.getBoolean("status"));
+	        	 pvo = pbo.buscarPorId(tdRS.getLong("idprof"));
+	        	 dvo.setProfDisc(pvo);
+	        	 
 	        	 disciplinasTurma.add(dvo);
 			 }
 		} catch (SQLException e) {
@@ -79,7 +87,7 @@ public class TurmaDiscBO extends BaseBO<TurmaVO>{
 	}
 
 	@Override
-	public List<TurmaVO> buscarPorNome(TurmaVO vo) throws NotFoundException {
+	public List<TurmaVO> buscarPorNome(TurmaVO vo) throws InsertException {
 		// TODO Auto-generated method stub
 		return null;
 	}

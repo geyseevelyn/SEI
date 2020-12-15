@@ -4,25 +4,17 @@ import java.text.DecimalFormat;
 
 import br.edu.ufersa.sei.exception.InsertException;
 
-public class NotaVO {
-	private long idNota;
+public class BoletimVO {
 	private double n1;
 	private double n2;
 	private double n3;
 	private double media;
 	private int faltas;
+	private String situacao;
 	private AlunoVO aluno;
 	private DisciplinaVO disc;
 	
 	//getters and setters
-
-	public long getIdNota() {
-		return idNota;
-	}
-
-	public void setIdNota(long idNota) {
-		this.idNota = idNota;
-	}
 	
 	public double getN1() {
 		return n1;
@@ -107,6 +99,14 @@ public class NotaVO {
             throw new InsertException("Necessário informar Disciplina!");
         }
     }
+    
+	public String getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(String situacao) throws InsertException{
+		this.situacao = situacao;
+	}
 	
 	public String toString() {
 		String saida;
@@ -114,7 +114,7 @@ public class NotaVO {
 		
 		saida = "Aluno: " + aluno.getNome() + "\nDisciplina: " + disc.getNome() + 
 				" (" + disc.getCodDisc() + ")" + "\nP1: " + n1 + "\nP2: " + n2 +
-				"\nP3: " + n3 + "\nMedia: " + media + "\nFaltas: " + faltas + "\n";
+				"\nP3: " + n3 + "\nMedia: " + media + "\nSituação: " + situacao + "\nFaltas: " + faltas + "\n";
 		
 	    return saida;
 	}
