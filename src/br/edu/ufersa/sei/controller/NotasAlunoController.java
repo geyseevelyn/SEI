@@ -6,11 +6,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import br.edu.ufersa.sei.exception.InsertException;
-import br.edu.ufersa.sei.exception.NotFoundException;
-import br.edu.ufersa.sei.model.BO.DisciplinaBO;
 import br.edu.ufersa.sei.model.BO.NotaBO;
-import br.edu.ufersa.sei.model.VO.AlunoVO;
-import br.edu.ufersa.sei.model.VO.DisciplinaVO;
 import br.edu.ufersa.sei.model.VO.NotaVO;
 import br.edu.ufersa.sei.view.Telas;
 import javafx.beans.property.SimpleObjectProperty;

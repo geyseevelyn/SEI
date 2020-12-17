@@ -3,12 +3,7 @@ package br.edu.ufersa.sei.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import br.edu.ufersa.sei.exception.InsertException;
-import br.edu.ufersa.sei.exception.NotFoundException;
-import br.edu.ufersa.sei.model.BO.AlunoBO;
-import br.edu.ufersa.sei.model.BO.TurmaBO;
 import br.edu.ufersa.sei.model.BO.TurmaProfBO;
-import br.edu.ufersa.sei.model.VO.AlunoVO;
 import br.edu.ufersa.sei.model.VO.TurmaVO;
 import br.edu.ufersa.sei.view.Telas;
 import javafx.collections.FXCollections;

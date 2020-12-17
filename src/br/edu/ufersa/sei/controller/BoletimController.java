@@ -30,12 +30,10 @@ import com.itextpdf.text.pdf.PdfWriter;
 import br.edu.ufersa.sei.exception.InsertException;
 import br.edu.ufersa.sei.exception.NotFoundException;
 import br.edu.ufersa.sei.model.BO.DisciplinaBO;
-import br.edu.ufersa.sei.model.BO.NotaBO;
 import br.edu.ufersa.sei.model.DAO.BoletimDAO;
 import br.edu.ufersa.sei.model.VO.AlunoVO;
 import br.edu.ufersa.sei.model.VO.BoletimVO;
 import br.edu.ufersa.sei.model.VO.DisciplinaVO;
-import br.edu.ufersa.sei.model.VO.NotaVO;
 import br.edu.ufersa.sei.view.Telas;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;
@@ -165,7 +163,7 @@ public void gerarPDF() {
 
 				doc.setPageSize(PageSize.A4);
 				
-				Image imagem = Image.getInstance("C:\\Users\\Alex\\Desktop\\Logão.png");
+				Image imagem = Image.getInstance("C:\\Users\\Notebook\\Documents\\UFERSA\\POO\\eclipse-workspace\\ProjetoPOO\\src\\br\\edu\\ufersa\\sei\\view\\VE\\Logão.png");
 				imagem.scaleToFit(120, 120);
 				imagem.setAbsolutePosition(80, 750);
 				doc.add(imagem);

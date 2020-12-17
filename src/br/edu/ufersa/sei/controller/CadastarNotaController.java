@@ -7,15 +7,11 @@ import java.util.ResourceBundle;
 
 import br.edu.ufersa.sei.exception.InsertException;
 import br.edu.ufersa.sei.exception.NotFoundException;
-import br.edu.ufersa.sei.model.BO.AlunoBO;
 import br.edu.ufersa.sei.model.BO.DisciplinaBO;
 import br.edu.ufersa.sei.model.BO.NotaBO;
-import br.edu.ufersa.sei.model.VO.AlunoVO;
 import br.edu.ufersa.sei.model.VO.DisciplinaVO;
 import br.edu.ufersa.sei.model.VO.NotaVO;
 import br.edu.ufersa.sei.view.Telas;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,9 +21,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Callback;
 
 public class CadastarNotaController implements Initializable{	
     

@@ -5,8 +5,6 @@ import java.util.ResourceBundle;
 
 import br.edu.ufersa.sei.exception.NotFoundException;
 import br.edu.ufersa.sei.model.BO.DisciplinaBO;
-import br.edu.ufersa.sei.model.BO.ProfessorBO;
-import br.edu.ufersa.sei.model.VO.AlunoVO;
 import br.edu.ufersa.sei.model.VO.DisciplinaVO;
 import br.edu.ufersa.sei.model.VO.ProfessorVO;
 import br.edu.ufersa.sei.view.Telas;
@@ -20,17 +18,16 @@ import javafx.scene.control.TextField;
 public class PrincipalProfController implements Initializable {
 	
 	//Componentes de todas as telas de professor
-	
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		carregarPerfilProf();
-	}
-	
 	@FXML private TextField tfCpf;
 	@FXML private TextField tfEndereco;
 	@FXML private TextField tfEmail;
 	@FXML private TextField tfDisc;
 	@FXML private Label nome;
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		carregarPerfilProf();
+	}
 	
 	public void carregarPerfilProf() {
 		ProfessorVO pvo = Telas.getUserProf();
@@ -63,5 +60,4 @@ public class PrincipalProfController implements Initializable {
 	public void sair(ActionEvent event) throws Exception {
 		Telas.telaLogin();
 	}
-
 }

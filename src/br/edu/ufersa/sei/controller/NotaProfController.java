@@ -1,20 +1,15 @@
 package br.edu.ufersa.sei.controller;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import br.edu.ufersa.sei.exception.InsertException;
 import br.edu.ufersa.sei.exception.NotFoundException;
 import br.edu.ufersa.sei.model.BO.AlunoBO;
-import br.edu.ufersa.sei.model.BO.TurmaBO;
 import br.edu.ufersa.sei.model.BO.TurmaProfBO;
 import br.edu.ufersa.sei.model.VO.AlunoVO;
 import br.edu.ufersa.sei.model.VO.TurmaVO;
 import br.edu.ufersa.sei.view.Telas;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,9 +18,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Callback;
 
 public class NotaProfController implements Initializable{
 	

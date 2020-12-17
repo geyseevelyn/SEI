@@ -80,5 +80,4 @@ public class DisciplinaVO {
 		        status + "\nId Professor: " + profDisc.getIdProf() + "\n";
 		return saida;
 	}
-
 }

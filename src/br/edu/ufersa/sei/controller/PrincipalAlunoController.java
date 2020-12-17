@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import br.edu.ufersa.sei.exception.NotFoundException;
-import br.edu.ufersa.sei.model.BO.AlunoBO;
 import br.edu.ufersa.sei.model.BO.TurmaBO;
 import br.edu.ufersa.sei.model.VO.AlunoVO;
 import br.edu.ufersa.sei.model.VO.TurmaVO;
@@ -33,7 +32,7 @@ public class PrincipalAlunoController implements Initializable {
 	public void carregarPerfilAluno() {
 		TurmaBO tbo = new TurmaBO();
 		TurmaVO tvo = new TurmaVO();
-		AlunoBO<AlunoVO> abo = new AlunoBO<AlunoVO>();
+
 		AlunoVO avo = Telas.getUserAlu();		
 		matricula.setText(avo.getMatricula());
 		nome.setText(avo.getNome());

@@ -6,11 +6,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import br.edu.ufersa.sei.exception.InsertException;
-import br.edu.ufersa.sei.exception.NotFoundException;
-import br.edu.ufersa.sei.model.BO.ProfessorBO;
 import br.edu.ufersa.sei.model.BO.TurmaBO;
-import br.edu.ufersa.sei.model.BO.TurmaProfBO;
-import br.edu.ufersa.sei.model.VO.ProfessorVO;
 import br.edu.ufersa.sei.model.VO.TurmaVO;
 import br.edu.ufersa.sei.view.Telas;
 import javafx.collections.FXCollections;

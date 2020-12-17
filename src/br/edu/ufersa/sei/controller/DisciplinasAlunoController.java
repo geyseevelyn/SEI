@@ -5,14 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import br.edu.ufersa.sei.exception.InsertException;
 import br.edu.ufersa.sei.exception.NotFoundException;
-import br.edu.ufersa.sei.model.BO.DisciplinaBO;
 import br.edu.ufersa.sei.model.BO.TurmaDiscBO;
 import br.edu.ufersa.sei.model.VO.AlunoVO;
 import br.edu.ufersa.sei.model.VO.DisciplinaVO;
-import br.edu.ufersa.sei.model.VO.ProfessorVO;
-import br.edu.ufersa.sei.model.VO.TurmaVO;
 import br.edu.ufersa.sei.view.Telas;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;
