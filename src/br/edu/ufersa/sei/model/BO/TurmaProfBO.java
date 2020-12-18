@@ -36,7 +36,7 @@ public class TurmaProfBO extends BaseBO<TurmaVO>{
 	} 
 
 	//buscar turmas de um professor
-	public List<TurmaVO> buscarPorProf(ProfessorVO prof) throws NotFoundException {  //TESTAR!!!
+	public List<TurmaVO> buscarPorProf(ProfessorVO prof) throws NotFoundException { 
 		List<TurmaVO> turmasProf = new ArrayList<TurmaVO>();
 
 		try {

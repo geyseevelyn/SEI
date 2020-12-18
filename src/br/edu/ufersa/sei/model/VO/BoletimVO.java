@@ -15,7 +15,6 @@ public class BoletimVO {
 	private DisciplinaVO disc;
 	
 	//getters and setters
-	
 	public double getN1() {
 		return n1;
 	}
